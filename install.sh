@@ -36,7 +36,7 @@ function symlink-dotfiles() {
   echo "Symlinking dotfiles"
   local DOTFILES_SOURCE_DIR = "./dotfiles/*"
   local DOTFILES_DEST_DIR = "~/"
-  ln -s $DOTFILES_SOURCE_DIR $DOTFILES_DEST_DIR
+  ln -s "${DOTFILES_SOURCE_DIR}" "${DOTFILES_DEST_DIR}"
 }
 
 function install-atom-plugins() {
@@ -63,7 +63,6 @@ for func in "update-macos" \
             "symlink-dotfiles" \
             "install-atom-plugins" \
             "set-github-user"; do
-  echo ""
   echo "========================================================================"
   "$func"
   echo "========================================================================"
