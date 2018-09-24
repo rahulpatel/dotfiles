@@ -1,0 +1,17 @@
+cask_args appdir: "/Applications"
+
+brew "coreutils"
+brew "diff-so-fancy"
+brew "git"
+brew "node"
+
+cask "atom"
+cask "dropbox"
+cask "google-chrome"
+cask "iterm2"
+cask "kap"
+cask "keepingyouawake"
+cask "nordvpn"
+cask "slack"
+cask "spotify"
+cask "whatsapp"
