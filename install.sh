@@ -34,9 +34,13 @@ function install-oh-my-zsh() {
 
 function symlink-dotfiles() {
   echo "Symlinking dotfiles"
-  local DOTFILES_SOURCE_DIR="./dotfiles/*"
-  local DOTFILES_DEST_DIR="${HOME}"
-  ln -si "${DOTFILES_SOURCE_DIR}" "${DOTFILES_DEST_DIR}"
+
+  for src in $(find "$(pwd -P)" -maxdepth 2 -name '*.symlink')
+  do
+    local dst="$HOME/$(basename "${src%.*}")"
+    echo "$src -> $dst"
+    ln -s "$src" "$dst"
+  done
 }
 
 function install-atom-plugins() {
