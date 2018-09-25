@@ -34,9 +34,9 @@ function install-oh-my-zsh() {
 
 function symlink-dotfiles() {
   echo "Symlinking dotfiles"
-  local DOTFILES_SOURCE_DIR = "./dotfiles/*"
-  local DOTFILES_DEST_DIR = "~/"
-  ln -s "${DOTFILES_SOURCE_DIR}" "${DOTFILES_DEST_DIR}"
+  local DOTFILES_SOURCE_DIR="./dotfiles/*"
+  local DOTFILES_DEST_DIR="${HOME}"
+  ln -si "${DOTFILES_SOURCE_DIR}" "${DOTFILES_DEST_DIR}"
 }
 
 function install-atom-plugins() {
@@ -52,7 +52,13 @@ function set-github-user() {
   git config --global user.email "$email"
 }
 
-echo "Bootstrapping your mac...\n"
+echo "Bootstrapping your mac..."
+
+# Ask for the administrator password upfront
+sudo -v
+
+# Keep-alive: update existing `sudo` time stamp until `.macos` has finished
+while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 for func in "update-macos" \
             "modify-macos" \
