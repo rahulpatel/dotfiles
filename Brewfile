@@ -6,6 +6,7 @@ brew "git"
 brew "node"
 
 cask "atom"
+cask "docker"
 cask "dropbox"
 cask "google-chrome"
 cask "iterm2"
