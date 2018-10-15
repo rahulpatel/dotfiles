@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+set -e
+
+cd "$(dirname "$0")/.."
+DOTFILES_ROOT=$(pwd -P)
+source "$DOTFILES_ROOT/script/utils"
+
+if ! [ -f '~/Code' ]; then
+  info '> mkdir -p ~/Code'
+  mkdir -p ~/Code
+fi
+
+info '> softwareupdate -i -a'
+softwareupdate -i -a | indent
+
+success '> macos'

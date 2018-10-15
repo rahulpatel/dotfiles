@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+set -e
+
+cd "$(dirname "$0")/.."
+DOTFILES_ROOT=$(pwd -P)
+source "$DOTFILES_ROOT/script/utils"
+
+if [ hash brew 2>/dev/null ]; then
+  info '> install brew'
+  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" | indent
+fi
+
+info '> brew update'
+brew update | indent
+
+info '> brew bundle'
+brew bundle --file="./homebrew/Brewfile" | indent
+
+info '> brew cleanup'
+brew cleanup | indent
+
+success '> brew'

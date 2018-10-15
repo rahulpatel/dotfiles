@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+set -e
+
+cd "$(dirname "$0")/.."
+DOTFILES_ROOT=$(pwd -P)
+source "$DOTFILES_ROOT/script/utils"
+
+run_bootstraps () {
+  local bootstrap_files=$(find_files 'bootstrap')
+
+  for file in $bootstrap_files; do
+    if ! sh $file; then
+      fail $file
+    fi
+  done
+}
+
+add_symlinks () {
+  local symlinks=$(find_files '*.symlink')
+
+  for src in $symlinks; do
+    local dst="$HOME/.$(basename "${src%.*}")"
+    link_file "$src" "$dst"
+  done
+}
+
+# run_bootstraps
+add_symlinks

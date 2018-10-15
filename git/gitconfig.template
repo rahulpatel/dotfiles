@@ -1,6 +1,6 @@
 [core]
   excludesfile = ~/.gitignore
-  
+
   pager = diff-so-fancy | less --tabs=4 -RFX
 
   # Make `git rebase` safer on macOS
@@ -26,19 +26,17 @@
   newHighlight = "green bold 22"
 
 [help]
-	# Automatically correct and execute mistyped commands
 	autocorrect = 1
 
 [merge]
-	# Include summaries of merged commits in newly created merge commit messages
 	log = true
 
 [push]
-  default = current
+  default = simple
 
 [apply]
 	whitespace = fix
 
-[commit]
-	# https://help.github.com/articles/signing-commits-using-gpg/
-	gpgsign = true
+[user]
+  name = {AUTHOR_NAME}
+  email = {AUTHOR_EMAIL}

@@ -1,0 +1,9 @@
+editorconfig
+file-icons
+highlight-line
+highlight-selected
+language-babel
+linter-eslint
+nord-atom-syntax
+nord-atom-ui
+project-manager

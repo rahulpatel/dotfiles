@@ -1,0 +1,54 @@
+"*":
+  "autocomplete-plus":
+    autoActivationDelay: 100
+    backspaceTriggersAutocomplete: true
+    confirmCompletion: "tab always, enter when suggestion explicitly selected"
+    moveToCancel: true
+  core:
+    closeDeletedFileTabs: true
+    disabledPackages: [
+      "github"
+      "open-on-github"
+      "background-tips"
+      "exception-reporting"
+      "metrics"
+    ]
+    followSymlinks: false
+    projectHome: "~/Code"
+    telemetryConsent: "no"
+    themes: [
+      "nord-atom-ui"
+      "nord-atom-syntax"
+    ]
+  editor:
+    fontFamily: "Monaco"
+    scrollPastEnd: true
+    showIndentGuide: true
+  "exception-reporting":
+    userId: "774fd3a2-03a4-4dfd-80f3-0e78b1dc0145"
+  fonts:
+    fontFamily: "Profont"
+  "highlight-line": {}
+  "highlight-selected":
+    ignoreCase: true
+    minimumLength: 3
+    onlyHighlightWholeWords: false
+    showResultsOnScrollBar: true
+  "linter-eslint": {}
+  "linter-ui-default": {}
+  "nord-atom-syntax":
+    accessibility:
+      commentContrast: 20
+  "nord-atom-ui": {}
+  "prettier-atom":
+    formatOnSaveOptions:
+      enabled: true
+      isDisabledIfNoConfigFile: true
+      isDisabledIfNotInPackageJson: true
+    prettierEslintOptions:
+      prettierLast: true
+    useEslint: true
+  "project-manager":
+    includeGitRepositories: true
+  welcome:
+    showOnStartup: false

@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+set -e
+
+cd "$(dirname "$0")/.."
+DOTFILES_ROOT=$(pwd -P)
+source "$DOTFILES_ROOT/script/utils"
+
+ZSH_CUSTOM=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}
+
+if ! [ -d "$HOME/.oh-my-zsh" ]; then
+  info '> install oh-my-zsh'
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" | indent
+fi
+
+if ! [ -d "$ZSH_CUSTOM/plugins/zsh-autosuggestions" ]; then
+  info '> install zsh-autosuggestions'
+  git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM}/plugins/zsh-autosuggestions | indent
+fi
+
+if ! [ -d "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting" ]; then
+  info '> install zsh-syntax-highlighting'
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM}/plugins/zsh-syntax-highlighting | indent
+fi
+
+if ! [ -f "$ZSH_CUSTOM/themes/zeit.zsh-theme" ]; then
+  info '> install zeit theme'
+  curl https://raw.githubusercontent.com/zeit/zeit.zsh-theme/master/zeit.zsh-theme -Lo ${ZSH_CUSTOM}/themes/zeit.zsh-theme | indent
+fi
+
+success '> zsh'

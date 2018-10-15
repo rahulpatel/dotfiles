@@ -1,3 +1,7 @@
+#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+#!														CURRENTLY NOT IN USE														 !
+#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 #!/usr/bin/env bash
 
 # ~/.macos — https://mths.be/macos
@@ -14,7 +18,8 @@ osascript -e 'tell application "System Preferences" to quit'
 defaults write com.apple.dock autohide -bool true
 
 # Save screenshots to the desktop & as PNG
-defaults write com.apple.screencapture location -string “$HOME/Desktop”
+mkdir "$HOME/Desktop/Screenshots"
+defaults write com.apple.screencapture location -string “$HOME/Desktop/Screenshots”
 defaults write com.apple.screencapture type -string “png”
 
 # Expand save panel by default
@@ -120,12 +125,6 @@ launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist 2> /dev/nul
 # Require password immediately after sleep or screen saver begins
 defaults write com.apple.screensaver askForPassword -int 1
 defaults write com.apple.screensaver askForPasswordDelay -int 0
-
-# Save screenshots to the desktop
-defaults write com.apple.screencapture location -string "${HOME}/Desktop"
-
-# Save screenshots in PNG format (other options: BMP, GIF, JPG, PDF, TIFF)
-defaults write com.apple.screencapture type -string "png"
 
 # Enable subpixel font rendering on non-Apple LCDs
 # Reference: https://github.com/kevinSuttle/macOS-Defaults/issues/17#issuecomment-266633501
