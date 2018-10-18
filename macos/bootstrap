@@ -6,9 +6,17 @@ cd "$(dirname "$0")/.."
 DOTFILES_ROOT=$(pwd -P)
 source "$DOTFILES_ROOT/script/utils"
 
-if ! [ -f '~/Code' ]; then
-  info '> mkdir -p ~/Code'
-  mkdir -p ~/Code
+CODE_VOLUME_NAME="Repositories"
+CODE_SYMLINK_NAME="Repos"
+
+if ! [[ -d "/Volumes/$CODE_VOLUME_NAME" ]]; then
+  info '> create repositories volume'
+  diskutil apfs addVolume disk1 "Case-sensitive APFS" $CODE_VOLUME_NAME -passprompt | indent
+fi
+
+if ! [ -L "$HOME/Repos" ]; then
+  info "> ln -s /Volumes/$CODE_VOLUME_NAME $HOME/$CODE_SYMLINK_NAME"
+  ln -s  "/Volumes/$CODE_VOLUME_NAME" "$HOME/$CODE_SYMLINK_NAME"
 fi
 
 info '> softwareupdate -i -a'
