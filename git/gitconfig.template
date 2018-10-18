@@ -1,6 +1,6 @@
 [core]
   excludesfile = ~/.gitignore
-
+  editor = vi
   pager = diff-so-fancy | less --tabs=4 -RFX
 
   # Make `git rebase` safer on macOS
