@@ -8,3 +8,6 @@ mv ./dotfiles-master ~/.dotfiles
 cd ~/.dotfiles
 script/bootstrap
 ```
+
+## Themes
+- [Relaxed](https://github.com/Relaxed-Theme)

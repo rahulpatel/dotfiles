@@ -25,5 +25,5 @@ add_symlinks () {
   done
 }
 
-# run_bootstraps
+run_bootstraps
 add_symlinks

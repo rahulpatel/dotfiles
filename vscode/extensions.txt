@@ -1,0 +1,8 @@
+alefragnani.project-manager
+CoenraadS.bracket-pair-colorizer-2
+dbaeumer.vscode-eslint
+esbenp.prettier-vscode
+file-icons.file-icons
+mikestead.dotenv
+mischah.relaxed-theme
+VisualStudioExptTeam.vscodeintellicode

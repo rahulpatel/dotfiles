@@ -6,7 +6,7 @@ autoload -U $DOTFILES/functions/*(:t)
 if [[ -n $SSH_CONNECTION ]]; then
  export EDITOR='vim'
 else
- export EDITOR='atom'
+ export EDITOR='code'
 fi
 
 # Better history (https://coderwall.com/p/jpj_6q/zsh-better-history-searching-with-arrow-keys)

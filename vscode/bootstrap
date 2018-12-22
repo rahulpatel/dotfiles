@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+set -e
+
+cd "$(dirname "$0")/.."
+DOTFILES_ROOT=$(pwd -P)
+source "$DOTFILES_ROOT/script/utils"
+
+SETTINGS_SRC="$DOTFILES_ROOT/vscode/settings.json"
+SETTINGS_DST="$HOME/Library/Application Support/Code/User/settings.json"
+
+if [ -x $(command -v code) ]; then
+  info '> install vscode extensions'
+  EXTENSIONS=$(cat ./vscode/extensions.txt)
+  for extension in $EXTENSIONS; do
+    code --install-extension $extension | indent
+  done
+
+  info '> symlink vscode settings'
+  link_file "$SETTINGS_SRC" "$SETTINGS_DST"
+
+  success '> vscode'
+fi

@@ -1,0 +1,45 @@
+{
+    "editor.fontFamily": "Monaco",
+    "editor.fontSize": 14,
+    "editor.tabSize": 2,
+    "editor.formatOnSave": true,
+    "editor.minimap.enabled": false,
+
+    "files.trimTrailingWhitespace": true,
+    "files.exclude": {
+        "**/.virtualenv": true,
+        "**/.yarn-cache": true
+    },
+
+    "search.quickOpen.includeSymbols": false,
+    "search.useGlobalIgnoreFiles": true,
+    "search.followSymlinks": false,
+    "search.exclude": {
+        "**/.cache-loader": true,
+        "**/.virtualenv": true,
+        "**/eslint*": true
+    },
+
+    "terminal.external.osxExec": "iTerm.app",
+    "terminal.integrated.cursorStyle": "line",
+    "terminal.integrated.cursorBlinking": true,
+    "terminal.integrated.fontSize": 14,
+    "terminal.explorerKind": "external",
+
+    "telemetry.enableTelemetry": false,
+
+    "workbench.fontAliasing": "antialiased",
+    "workbench.tree.horizontalScrolling": true,
+    "workbench.iconTheme": "file-icons",
+    "workbench.colorTheme": "Relaxed",
+    "workbench.startupEditor": "none",
+    "workbench.panel.defaultLocation": "right",
+    "workbench.statusBar.feedback.visible": false,
+
+    "window.restoreWindows": "all",
+    "window.newWindowDimensions": "maximized",
+
+    "prettier.eslintIntegration": true,
+    "prettier.requireConfig": true,
+    "prettier.singleQuote": true,
+}

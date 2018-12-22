@@ -1,0 +1,1 @@
+alias code-backup-extensions="code --list-extensions > $DOTFILES/vscode/extensions.txt"

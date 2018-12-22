@@ -1,8 +1,8 @@
 export ZSH=~/.oh-my-zsh
-export PROJECTS=~/Code
+export PROJECTS=~/Repos
 export DOTFILES="~/.dotfiles"
 
-ZSH_THEME="zeit"
+ZSH_THEME="refined"
 
 # Just update
 DISABLE_UPDATE_PROMPT=true
@@ -17,12 +17,17 @@ ENABLE_CORRECTION="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 plugins=(
+  git
   zsh-autosuggestions
   zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
 source "$DOTFILES/script/utils"
+
+if [ -f "$HOME/.localrc" ]; then
+  source "$HOME/.localrc"
+fi
 
 for file in $(find_files 'config.zsh'); do
   source $file
