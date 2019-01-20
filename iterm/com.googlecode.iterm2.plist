@@ -414,7 +414,7 @@
 	<key>NSWindow Frame SharedPreferences</key>
 	<string>821 901 796 486 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>320 180 1920 1057 0 0 2560 1417 </string>
+	<string>-1917 383 1273 1057 -1920 360 1920 1080 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -1367,11 +1367,11 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2018-12-22T14:27:02Z</date>
+	<date>2019-01-02T13:49:35Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>ShowFullScreenTabBar</key>
-	<false/>
+	<true/>
 	<key>StretchTabsToFillBar</key>
 	<true/>
 	<key>TmuxDashboardLimit</key>
