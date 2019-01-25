@@ -43,4 +43,5 @@
     "prettier.requireConfig": true,
     "prettier.singleQuote": true,
     "window.zoomLevel": 0,
+    "cSpell.language": "en",
 }
