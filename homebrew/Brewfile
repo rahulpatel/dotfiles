@@ -6,6 +6,7 @@ brew "git"
 brew "nvm"
 brew "yarn"
 
+cask "aerial"
 cask "docker"
 cask "dropbox"
 cask "figma"
