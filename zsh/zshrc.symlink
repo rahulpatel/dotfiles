@@ -2,7 +2,7 @@ export ZSH=~/.oh-my-zsh
 export PROJECTS=~/Repos
 export DOTFILES="~/.dotfiles"
 
-ZSH_THEME="refined"
+ZSH_THEME="zeit"
 
 # Just update
 DISABLE_UPDATE_PROMPT=true

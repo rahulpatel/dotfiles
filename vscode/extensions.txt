@@ -1,8 +1,17 @@
 alefragnani.project-manager
+auchenberg.vscode-browser-preview
+chenxsan.vscode-standardjs
 CoenraadS.bracket-pair-colorizer-2
+cssho.vscode-svgviewer
 dbaeumer.vscode-eslint
 esbenp.prettier-vscode
 file-icons.file-icons
+jpoissonnier.vscode-styled-components
 mikestead.dotenv
 mischah.relaxed-theme
+ms-python.python
+msjsdiag.debugger-for-chrome
+naumovs.color-highlight
+streetsidesoftware.code-spell-checker
 VisualStudioExptTeam.vscodeintellicode
+vsmobile.vscode-react-native

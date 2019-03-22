@@ -45,4 +45,13 @@
     "window.zoomLevel": 0,
     "cSpell.language": "en",
     "cSpell.allowCompoundWords": true,
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "javascript.validate.enable": false,
+    "standard.autoFixOnSave": true,
+    "editor.formatOnPaste": true,
+    "workbench.editor.highlightModifiedTabs": true,
+    "editor.cursorBlinking": "smooth",
+    "editor.cursorStyle": "line-thin",
+    "files.trimFinalNewlines": true,
+    "editor.acceptSuggestionOnEnter": "smart",
 }
