@@ -19,7 +19,7 @@ if ! [ -L "$HOME/Repos" ]; then
   ln -s  "/Volumes/$CODE_VOLUME_NAME" "$HOME/$CODE_SYMLINK_NAME"
 fi
 
-info '> softwareupdate -i -a'
-softwareupdate -i -a | indent
+info '> set macos defaults'
+source $DOTFILES_ROOT/macos/defaults
 
 success '> macos'
