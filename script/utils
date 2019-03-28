@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 find_files () {
-  find -H "$DOTFILES_ROOT" -maxdepth 2 -name "$1" -not -path '*script/*'
+  find -H $DOTFILES_ROOT -maxdepth 2 -name "$1" -not -path '*script/*'
 }
 
 link_file () {

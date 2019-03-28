@@ -1,6 +1,6 @@
 # Add custom functions
-fpath=($DOTFILES/functions $fpath)
-autoload -U $DOTFILES/functions/*(:t)
+fpath=($DOTFILES_ROOT/functions $fpath)
+autoload -U $DOTFILES_ROOT/functions/*(:t)
 
 # Use vim for ssh sessions
 if [[ -n $SSH_CONNECTION ]]; then

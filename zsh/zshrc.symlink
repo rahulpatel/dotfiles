@@ -1,6 +1,6 @@
 export ZSH=~/.oh-my-zsh
 export PROJECTS=~/Repos
-export DOTFILES="~/.dotfiles"
+export DOTFILES_ROOT=~/.dotfiles
 
 ZSH_THEME="zeit"
 
@@ -9,9 +9,6 @@ DISABLE_UPDATE_PROMPT=true
 
 # Update zsh every x days
 UPDATE_ZSH_DAYS=1
-
-# Command auto correction
-ENABLE_CORRECTION="true"
 
 # Don't check for untracked files in git repos
 DISABLE_UNTRACKED_FILES_DIRTY="true"
@@ -23,7 +20,7 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
-source "$DOTFILES/script/utils"
+source $DOTFILES_ROOT/script/utils
 
 if [ -f "$HOME/.localrc" ]; then
   source "$HOME/.localrc"
