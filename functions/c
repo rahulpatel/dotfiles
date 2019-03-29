@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-cd "$PROJECTS/$1"
+cd $PROJECTS/$1

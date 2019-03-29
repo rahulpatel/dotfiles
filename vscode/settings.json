@@ -54,4 +54,6 @@
     "editor.cursorStyle": "line-thin",
     "files.trimFinalNewlines": true,
     "editor.acceptSuggestionOnEnter": "smart",
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
 }
