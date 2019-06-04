@@ -17,6 +17,7 @@
     "search.exclude": {
         "**/.cache-loader": true,
         "**/.virtualenv": true,
+        "**/.yarn-cache": true,
         "**/eslint*": true
     },
 
@@ -30,8 +31,7 @@
 
     "workbench.fontAliasing": "antialiased",
     "workbench.tree.horizontalScrolling": true,
-    "workbench.iconTheme": "file-icons",
-    "workbench.colorTheme": "Relaxed",
+    "workbench.iconTheme": "ayu",
     "workbench.startupEditor": "none",
     "workbench.panel.defaultLocation": "right",
     "workbench.statusBar.feedback.visible": false,
@@ -56,4 +56,15 @@
     "editor.acceptSuggestionOnEnter": "smart",
     "editor.suggestSelection": "first",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "workbench.colorTheme": "Relaxed",
+    "eslint.autoFixOnSave": true,
+    "bracket-pair-colorizer-2.showBracketsInGutter": true,
+    "workbench.useExperimentalGridLayout": true,
+    "files.watcherExclude": {
+        "**/.virtualenv/**": true,
+        "**/.yarn-cache/**": true
+    }
 }
