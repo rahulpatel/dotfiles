@@ -1,6 +1,5 @@
 {
-    "editor.fontFamily": "Monaco",
-    "editor.fontSize": 14,
+    "editor.fontFamily": "FuraCode Nerd Font",
     "editor.tabSize": 2,
     "editor.formatOnSave": true,
     "editor.minimap.enabled": false,
@@ -42,7 +41,7 @@
     "prettier.eslintIntegration": true,
     "prettier.requireConfig": true,
     "prettier.singleQuote": true,
-    "window.zoomLevel": 0,
+    "window.zoomLevel": 1,
     "cSpell.language": "en",
     "cSpell.allowCompoundWords": true,
     "javascript.updateImportsOnFileMove.enabled": "always",
@@ -59,12 +58,19 @@
     "[javascript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-    "workbench.colorTheme": "Relaxed",
     "eslint.autoFixOnSave": true,
     "bracket-pair-colorizer-2.showBracketsInGutter": true,
     "workbench.useExperimentalGridLayout": true,
     "files.watcherExclude": {
         "**/.virtualenv/**": true,
         "**/.yarn-cache/**": true
-    }
+    },
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "breadcrumbs.enabled": false,
+    "editor.fontSize": 15,
+    "extensions.ignoreRecommendations": true,
+    "workbench.colorTheme": "Nord",
+    "javascript.suggest.autoImports": false
 }

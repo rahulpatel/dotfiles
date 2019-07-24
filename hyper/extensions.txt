@@ -1,0 +1,6 @@
+hyper-highlight-active-pane
+hyper-tabs-enhanced
+hyper-tab-icons
+hyper-search
+hyper-statusline
+nord-hyper
