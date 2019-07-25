@@ -4,11 +4,8 @@ CoenraadS.bracket-pair-colorizer-2
 dbaeumer.vscode-eslint
 EditorConfig.EditorConfig
 esbenp.prettier-vscode
-file-icons.file-icons
-hsnazar.hyper-term-theme
 mgmcdermott.vscode-language-babel
 mischah.relaxed-theme
 naumovs.color-highlight
 silvenon.mdx
-teabyii.ayu
-zhuangtongfa.Material-theme
+Yummygum.city-lights-icon-vsc

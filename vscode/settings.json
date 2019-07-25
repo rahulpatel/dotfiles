@@ -1,5 +1,5 @@
 {
-    "editor.fontFamily": "FuraCode Nerd Font",
+    "editor.fontFamily": "Fira Code",
     "editor.tabSize": 2,
     "editor.formatOnSave": true,
     "editor.minimap.enabled": false,
@@ -30,7 +30,7 @@
 
     "workbench.fontAliasing": "antialiased",
     "workbench.tree.horizontalScrolling": true,
-    "workbench.iconTheme": "ayu",
+    "workbench.iconTheme": "city-lights-icons-vsc-light",
     "workbench.startupEditor": "none",
     "workbench.panel.defaultLocation": "right",
     "workbench.statusBar.feedback.visible": false,
@@ -71,6 +71,6 @@
     "breadcrumbs.enabled": false,
     "editor.fontSize": 15,
     "extensions.ignoreRecommendations": true,
-    "workbench.colorTheme": "Nord",
+    "workbench.colorTheme": "Relaxed",
     "javascript.suggest.autoImports": false
 }
