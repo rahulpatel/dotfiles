@@ -41,7 +41,6 @@
     "prettier.eslintIntegration": true,
     "prettier.requireConfig": true,
     "prettier.singleQuote": true,
-    "window.zoomLevel": 1,
     "cSpell.language": "en",
     "cSpell.allowCompoundWords": true,
     "javascript.updateImportsOnFileMove.enabled": "always",
@@ -72,5 +71,6 @@
     "editor.fontSize": 15,
     "extensions.ignoreRecommendations": true,
     "workbench.colorTheme": "Relaxed",
-    "javascript.suggest.autoImports": false
+    "javascript.suggest.autoImports": false,
+    "window.zoomLevel": 1
 }
