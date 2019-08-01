@@ -33,3 +33,11 @@ done
 for file in $(find_files 'alias.zsh'); do
   source $file
 done
+
+# Initialize autocomplete
+autoload -U compinit
+compinit
+
+for file in $(find_files 'completion.zsh'); do
+  source $file
+done

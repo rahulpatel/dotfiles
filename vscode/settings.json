@@ -55,10 +55,13 @@
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "breadcrumbs.enabled": false,
-    "editor.fontSize": 16,
+    "editor.fontSize": 14,
     "extensions.ignoreRecommendations": true,
     "workbench.colorTheme": "Relaxed",
     "javascript.suggest.autoImports": false,
     "window.zoomLevel": 1,
-    "workbench.iconTheme": "file-icons"
+    "workbench.iconTheme": "file-icons",
+    "eslint.packageManager": "yarn",
+    "npm.packageManager": "yarn",
+    "bracket-pair-colorizer-2.showBracketsInRuler": true
 }
