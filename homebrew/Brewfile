@@ -7,7 +7,6 @@ brew "nvm"
 
 cask "1password"
 cask "aerial"
-cask "brave-browser"
 cask "docker"
 cask "dropbox"
 cask "figma"

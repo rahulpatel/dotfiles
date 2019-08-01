@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+set -e
+
+cd "$(dirname "$0")/.."
+DOTFILES_ROOT=$(pwd -P)
+source "$DOTFILES_ROOT/script/utils"
+
+if ! [ -f "$DOTFILES_ROOT/downloads/Relaxed.itermcolors" ]; then
+  info '> item download relaxed theme'
+  curl -L https://gitcdn.link/repo/mischah/Relaxed/master/themes/Relaxed.itermcolors -o "$DOTFILES_ROOT/downloads/Relaxed.itermcolors" --silent | indent
+fi
+
+success '> iterm'
