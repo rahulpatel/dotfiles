@@ -63,5 +63,6 @@
     "workbench.iconTheme": "file-icons",
     "eslint.packageManager": "yarn",
     "npm.packageManager": "yarn",
-    "bracket-pair-colorizer-2.showBracketsInRuler": true
+    "bracket-pair-colorizer-2.showBracketsInRuler": true,
+    "editor.fontLigatures": true
 }

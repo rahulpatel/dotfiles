@@ -1,1 +1,0 @@
-alias hyper-backup-extensions="hyper list > $DOTFILES_ROOT/hyper/extensions.txt"
