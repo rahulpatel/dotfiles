@@ -13,3 +13,6 @@ script/bootstrap
 
 ## Themes
 - [Relaxed](https://github.com/Relaxed-Theme)
+- Palenight
+  - [Code](https://marketplace.visualstudio.com/items?itemName=Equinusocio.vsc-material-theme)
+  - [iTerm](https://github.com/JonathanSpeek/palenight-iterm2)
