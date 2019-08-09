@@ -1,11 +1,9 @@
 alefragnani.project-manager
-arcticicestudio.nord-visual-studio-code
 CoenraadS.bracket-pair-colorizer-2
 dbaeumer.vscode-eslint
-EditorConfig.EditorConfig
+Equinusocio.vsc-material-theme
 esbenp.prettier-vscode
-file-icons.file-icons
-mgmcdermott.vscode-language-babel
-mischah.relaxed-theme
-naumovs.color-highlight
-silvenon.mdx
+ms-python.python
+ms-vscode.Go
+PKief.material-icon-theme
+VisualStudioExptTeam.vscodeintellicode

@@ -11,4 +11,9 @@ if ! [ -f "$DOTFILES_ROOT/downloads/Relaxed.itermcolors" ]; then
   curl -L https://gitcdn.link/repo/mischah/Relaxed/master/themes/Relaxed.itermcolors -o "$DOTFILES_ROOT/downloads/Relaxed.itermcolors" --silent | indent
 fi
 
+if ! [ -f "$DOTFILES_ROOT/downloads/palenight.itermcolors" ]; then
+  info '> item download palenight theme'
+  curl -L https://raw.githubusercontent.com/JonathanSpeek/palenight-iterm2/master/palenight.itermcolors -o "$DOTFILES_ROOT/downloads/palenight.itermcolors" --silent | indent
+fi
+
 success '> iterm'
