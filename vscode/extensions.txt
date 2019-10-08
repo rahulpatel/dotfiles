@@ -7,3 +7,4 @@ ms-python.python
 ms-vscode.Go
 PKief.material-icon-theme
 VisualStudioExptTeam.vscodeintellicode
+wix.vscode-import-cost
