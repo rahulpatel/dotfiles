@@ -1,0 +1,2 @@
+#compdef cgo
+_files -W $PROJECTS/go/src/github.com/rahulpatel -/

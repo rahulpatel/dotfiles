@@ -3,6 +3,7 @@ cask_args appdir: "/Applications"
 brew "coreutils"
 brew "diff-so-fancy"
 brew "git"
+brew "go"
 brew "nvm"
 
 cask "1password"
