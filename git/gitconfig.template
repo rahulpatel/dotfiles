@@ -25,6 +25,9 @@
   newNormal = "green bold"
   newHighlight = "green bold 22"
 
+[fetch]
+  prune = true
+
 [help]
 	autocorrect = 1
 
