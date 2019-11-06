@@ -92,7 +92,6 @@
         "styleguide_docs/lib": true,
         "**/.next": true,
     },
-    "editor.fontSize": 14,
     "editor.fontWeight": "300",
     "files.exclude": {
         "*_api/lib": true,
@@ -136,4 +135,6 @@
         "styleguide_docs/lib": true,
         "**/.next": true,
     },
+    "window.zoomLevel": 0,
+    "editor.fontSize": 14,
 }
