@@ -5,7 +5,6 @@
     "editor.cursorBlinking": "smooth",
     "editor.find.addExtraSpaceOnTop": false,
     "editor.fontLigatures": true,
-    "editor.formatOnPaste": true,
     "editor.formatOnSave": true,
     "editor.acceptSuggestionOnEnter": "smart",
     "editor.suggest.localityBonus": true,
@@ -92,7 +91,6 @@
         "styleguide_docs/lib": true,
         "**/.next": true,
     },
-    "editor.fontWeight": "300",
     "files.exclude": {
         "*_api/lib": true,
         "*_ui/lib": true,
@@ -137,4 +135,5 @@
     },
     "window.zoomLevel": 0,
     "editor.fontSize": 14,
+    "editor.fontWeight": "100",
 }
