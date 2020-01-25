@@ -8,6 +8,7 @@ brew "nvm"
 
 cask "1password"
 cask "aerial"
+cask "android-studio"
 cask "docker"
 cask "figma"
 cask "firefox"
@@ -31,3 +32,4 @@ cask "whatsapp"
 tap "homebrew/cask-fonts"
 
 cask "font-fira-code"
+cask "font-jetbrains-mono"

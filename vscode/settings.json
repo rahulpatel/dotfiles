@@ -1,5 +1,5 @@
 {
-    "editor.fontFamily": "Fira Code, Cascadia Code, Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontFamily": "JetBrains Mono, Fira Code, Cascadia Code, Menlo, Monaco, Courier New, monospace",
     "editor.tabSize": 2,
     "editor.cursorStyle": "line-thin",
     "editor.cursorBlinking": "smooth",
@@ -26,8 +26,8 @@
     "telemetry.enableCrashReporter": false,
     "javascript.suggest.autoImports": false,
     "npm.packageManager": "yarn",
-    "workbench.colorTheme": "Material Theme Palenight",
-    "workbench.iconTheme": "material-icon-theme",
+    "workbench.colorTheme": "Material Theme Palenight High Contrast",
+    "workbench.iconTheme": "eq-material-theme-icons-palenight",
     "eslint.autoFixOnSave": true,
     "eslint.packageManager": "yarn",
     "material-icon-theme.activeIconPack": "react",
@@ -133,7 +133,11 @@
         "styleguide_docs/lib": true,
         "**/.next": true,
     },
+    "problems.showCurrentInStatus": true,
+    "editor.fontWeight": "400",
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    },
     "window.zoomLevel": 0,
     "editor.fontSize": 14,
-    "editor.fontWeight": "100",
 }
