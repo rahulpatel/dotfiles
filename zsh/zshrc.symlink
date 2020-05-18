@@ -2,7 +2,7 @@ export ZSH=~/.oh-my-zsh
 export PROJECTS=~/Repos
 export DOTFILES_ROOT=~/.dotfiles
 
-ZSH_THEME="zeit"
+ZSH_THEME="vercel"
 
 # Just update
 DISABLE_UPDATE_PROMPT=true

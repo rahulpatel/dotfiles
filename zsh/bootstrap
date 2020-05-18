@@ -23,9 +23,9 @@ if ! [ -d "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting" ]; then
   git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM}/plugins/zsh-syntax-highlighting | indent
 fi
 
-if ! [ -f "$ZSH_CUSTOM/themes/zeit.zsh-theme" ]; then
-  info '> install zeit theme'
-  curl https://raw.githubusercontent.com/zeit/zeit.zsh-theme/master/zeit.zsh-theme -Lo ${ZSH_CUSTOM}/themes/zeit.zsh-theme | indent
+if ! [ -f "$ZSH_CUSTOM/themes/vercel.zsh-theme" ]; then
+  info '> install vercel theme'
+  curl https://raw.githubusercontent.com/zeit/zsh-theme/master/vercel.zsh-theme -Lo ${ZSH_CUSTOM}/themes/vercel.zsh-theme | indent
 fi
 
 success '> zsh'
