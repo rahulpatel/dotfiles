@@ -1,5 +1,5 @@
 {
-    "editor.fontFamily": "Fira Code, Monaco, JetBrains Mono, SF Mono, Menlo, Victor Mono, Cascadia Code, Courier New, monospace",
+    "editor.fontFamily": "Fira Code, SF Mono, Monaco, JetBrains Mono, Menlo, Victor Mono, Cascadia Code, Courier New, monospace",
     "editor.tabSize": 2,
     "editor.cursorStyle": "line-thin",
     "editor.cursorBlinking": "smooth",
@@ -103,7 +103,7 @@
         "source.fixAll.eslint": true
     },
     "window.zoomLevel": 0,
-    "materialTheme.accent": "Yellow",
+    "materialTheme.accent": "Orange",
     "files.associations": {
         "Fastfile": "ruby",
         "Appfile": "ruby",
@@ -123,5 +123,36 @@
     "prettier.trailingComma": "es5",
     "editor.fontSize": 14,
     "workbench.fontAliasing": "auto",
-    "eslint.alwaysShowStatus": true
+    "eslint.alwaysShowStatus": true,
+    "workbench.colorCustomizations": {
+        "activityBarBadge.background": "#FF7042",
+        "activityBar.activeBorder": "#FF7042",
+        "list.activeSelectionForeground": "#FF7042",
+        "list.inactiveSelectionForeground": "#FF7042",
+        "list.highlightForeground": "#FF7042",
+        "scrollbarSlider.activeBackground": "#FF704250",
+        "editorSuggestWidget.highlightForeground": "#FF7042",
+        "textLink.foreground": "#FF7042",
+        "progressBar.background": "#FF7042",
+        "pickerGroup.foreground": "#FF7042",
+        "tab.activeBorder": "#FF7042",
+        "notificationLink.foreground": "#FF7042",
+        "editorWidget.resizeBorder": "#FF7042",
+        "editorWidget.border": "#FF7042",
+        "settings.modifiedItemIndicator": "#FF7042",
+        "settings.headerForeground": "#FF7042",
+        "panelTitle.activeBorder": "#FF7042",
+        "breadcrumb.activeSelectionForeground": "#FF7042",
+        "menu.selectionForeground": "#FF7042",
+        "menubar.selectionForeground": "#FF7042",
+        "editor.findMatchBorder": "#FF7042",
+        "selection.background": "#FF704240"
+    },
+    "editor.fontWeight": "300",
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[jsonc]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    }
 }

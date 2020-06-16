@@ -37,6 +37,9 @@
 [push]
   default = simple
 
+[pull]
+  ff = only
+
 [apply]
 	whitespace = fix
 
