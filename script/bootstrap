@@ -25,6 +25,6 @@ add_symlinks () {
   done
 }
 
-mkdir $DOTFILES_ROOT/downloads
+mkdir -p $DOTFILES_ROOT/downloads
 run_bootstraps
 add_symlinks

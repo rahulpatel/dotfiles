@@ -1,6 +1,6 @@
 export ZSH=~/.oh-my-zsh
 export PROJECTS=~/Repos
-export DOTFILES_ROOT=~/.dotfiles
+export DOTFILES_ROOT=/Volumes/Repositories/dotfiles/
 
 ZSH_THEME="vercel"
 
