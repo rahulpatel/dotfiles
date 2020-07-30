@@ -1,5 +1,5 @@
 {
-    "editor.fontFamily": "Fira Code, SF Mono, Monaco, JetBrains Mono, Menlo, Victor Mono, Cascadia Code, Courier New, monospace",
+    "editor.fontFamily": "Monaco",
     "editor.tabSize": 2,
     "editor.cursorStyle": "line-thin",
     "editor.cursorBlinking": "smooth",
@@ -13,7 +13,6 @@
     "workbench.list.horizontalScrolling": true,
     "workbench.quickOpen.closeOnFocusLost": false,
     "workbench.startupEditor": "welcomePage",
-    "breadcrumbs.enabled": false,
     "workbench.editor.highlightModifiedTabs": true,
     "workbench.editor.restoreViewState": false,
     "window.restoreWindows": "all",
@@ -32,7 +31,6 @@
     "[json]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-    "python.jediEnabled": false,
     "workbench.panel.defaultLocation": "right",
     "terminal.explorerKind": "external",
     "terminal.external.osxExec": "iTerm.app",
@@ -121,7 +119,6 @@
     },
     "prettier.arrowParens": "always",
     "prettier.trailingComma": "es5",
-    "editor.fontSize": 14,
     "workbench.fontAliasing": "auto",
     "eslint.alwaysShowStatus": true,
     "workbench.colorCustomizations": {
@@ -148,11 +145,23 @@
         "editor.findMatchBorder": "#FF7042",
         "selection.background": "#FF704240"
     },
-    "editor.fontWeight": "300",
     "[typescript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "[jsonc]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
-    }
+    },
+    "python.languageServer": "Microsoft",
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "bracket-pair-colorizer-2.forceUniqueOpeningColor": true,
+    "projectManager.git.baseFolders": [
+        "/Volumes/Repositories/"
+    ],
+    "workbench.activityBar.visible": false,
+    "workbench.tree.indent": 21,
+    "workbench.settings.useSplitJSON": true,
+    "editor.fontWeight": "300",
+    "editor.fontSize": 14
 }

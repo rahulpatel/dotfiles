@@ -1,10 +1,14 @@
 alefragnani.project-manager
+andys8.jest-snippets
 CoenraadS.bracket-pair-colorizer-2
 dbaeumer.vscode-eslint
 Equinusocio.vsc-material-theme
+equinusocio.vsc-material-theme-icons
 esbenp.prettier-vscode
-ms-python.python
-ms-vscode.Go
-PKief.material-icon-theme
+golang.go
+jock.svg
+mgmcdermott.vscode-language-babel
+naumovs.color-highlight
+Tyriar.sort-lines
 VisualStudioExptTeam.vscodeintellicode
 wix.vscode-import-cost
