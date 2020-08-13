@@ -46,6 +46,32 @@
             }
           }
         }
+      },
+      "curl": {
+        "version": "7.71.1",
+        "bottle": {
+          "cellar": ":any",
+          "prefix": "/usr/local",
+          "files": {
+            "catalina": {
+              "url": "https://homebrew.bintray.com/bottles/curl-7.71.1.catalina.bottle.tar.gz",
+              "sha256": "36dc71f1899b803ab093e727c920b40f91b197402d9c73124c86d02feb0023c5"
+            },
+            "mojave": {
+              "url": "https://homebrew.bintray.com/bottles/curl-7.71.1.mojave.bottle.tar.gz",
+              "sha256": "99d574c0dec0a50f21ce736d77759038353f2301c7d7a64d5855d311aac4b506"
+            },
+            "high_sierra": {
+              "url": "https://homebrew.bintray.com/bottles/curl-7.71.1.high_sierra.bottle.tar.gz",
+              "sha256": "083d119978d82e86d68567b5fc48faf3d80bf66bf3f6e1c21400a2462d3c460c"
+            }
+          }
+        }
+      },
+      "gpg": null,
+      "asdf": {
+        "version": "0.7.8",
+        "bottle": false
       }
     },
     "cask": {
@@ -187,17 +213,17 @@
     },
     "tap": {
       "homebrew/cask-fonts": {
-        "revision": "013ba756595f8daabccbf21008096201a6d23150"
+        "revision": "7348c351238aa0c3f472cc050199453db3a35c52"
       }
     }
   },
   "system": {
     "macos": {
       "catalina": {
-        "HOMEBREW_VERSION": "2.4.9",
+        "HOMEBREW_VERSION": "2.4.11",
         "HOMEBREW_PREFIX": "/usr/local",
-        "Homebrew/homebrew-core": "d0f31fb67a37df7d166dbf2e18713e58d362cafc",
-        "CLT": "11.5.0.0.1.1588476445",
+        "Homebrew/homebrew-core": "87f8c84d489323375a0cd8683056a01b12169573",
+        "CLT": "12.0.0.0.1.1595091463",
         "Xcode": "11.6",
         "macOS": "10.15.6"
       }

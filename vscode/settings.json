@@ -1,10 +1,11 @@
 {
-    "editor.fontFamily": "Monaco",
+    "editor.fontFamily": "Fira Code, RecursiveMonoLnr-Regular, RecursiveMonoCsl-Regular, CodeNewRoman Nerd Font Mono",
     "editor.tabSize": 2,
     "editor.cursorStyle": "line-thin",
     "editor.cursorBlinking": "smooth",
     "editor.find.addExtraSpaceOnTop": false,
     "editor.fontLigatures": true,
+    // "editor.fontLigatures": "'ss01','ss05','dlig'", // font ligatures for recursive mono
     "editor.formatOnSave": true,
     "editor.acceptSuggestionOnEnter": "smart",
     "editor.suggest.localityBonus": true,
@@ -22,7 +23,7 @@
     "telemetry.enableTelemetry": false,
     "telemetry.enableCrashReporter": false,
     "javascript.suggest.autoImports": false,
-    "workbench.colorTheme": "Material Theme Palenight",
+    "workbench.colorTheme": "Material Theme Palenight High Contrast",
     "prettier.requireConfig": true,
     "editor.suggestSelection": "first",
     "[javascript]": {
@@ -100,8 +101,7 @@
     "editor.codeActionsOnSave": {
         "source.fixAll.eslint": true
     },
-    "window.zoomLevel": 0,
-    "materialTheme.accent": "Orange",
+    "window.zoomLevel": 1,
     "files.associations": {
         "Fastfile": "ruby",
         "Appfile": "ruby",
@@ -109,7 +109,6 @@
         "Matchfile": "ruby",
         "Pluginfile": "ruby"
     },
-    "explorer.decorations.badges": false,
     "editor.minimap.enabled": false,
     "editor.renderControlCharacters": false,
     "editor.renderWhitespace": "none",
@@ -121,30 +120,7 @@
     "prettier.trailingComma": "es5",
     "workbench.fontAliasing": "auto",
     "eslint.alwaysShowStatus": true,
-    "workbench.colorCustomizations": {
-        "activityBarBadge.background": "#FF7042",
-        "activityBar.activeBorder": "#FF7042",
-        "list.activeSelectionForeground": "#FF7042",
-        "list.inactiveSelectionForeground": "#FF7042",
-        "list.highlightForeground": "#FF7042",
-        "scrollbarSlider.activeBackground": "#FF704250",
-        "editorSuggestWidget.highlightForeground": "#FF7042",
-        "textLink.foreground": "#FF7042",
-        "progressBar.background": "#FF7042",
-        "pickerGroup.foreground": "#FF7042",
-        "tab.activeBorder": "#FF7042",
-        "notificationLink.foreground": "#FF7042",
-        "editorWidget.resizeBorder": "#FF7042",
-        "editorWidget.border": "#FF7042",
-        "settings.modifiedItemIndicator": "#FF7042",
-        "settings.headerForeground": "#FF7042",
-        "panelTitle.activeBorder": "#FF7042",
-        "breadcrumb.activeSelectionForeground": "#FF7042",
-        "menu.selectionForeground": "#FF7042",
-        "menubar.selectionForeground": "#FF7042",
-        "editor.findMatchBorder": "#FF7042",
-        "selection.background": "#FF704240"
-    },
+    "workbench.colorCustomizations": {},
     "[typescript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
@@ -156,12 +132,13 @@
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "bracket-pair-colorizer-2.forceUniqueOpeningColor": true,
-    "projectManager.git.baseFolders": [
-        "/Volumes/Repositories/"
-    ],
     "workbench.activityBar.visible": false,
     "workbench.tree.indent": 21,
     "workbench.settings.useSplitJSON": true,
-    "editor.fontWeight": "300",
-    "editor.fontSize": 14
+    "projectManager.git.baseFolders": [
+        "/Volumes/Repositories/"
+    ],
+    "explorer.decorations.badges": false,
+    "editor.renderLineHighlight": "all",
+    "editor.fontSize": 13,
 }

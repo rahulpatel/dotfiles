@@ -9,11 +9,25 @@ source "$DOTFILES_ROOT/script/utils"
 run_bootstraps () {
   local bootstrap_files=$(find_files 'bootstrap')
 
+  info '> bootstrap'
   for file in $bootstrap_files; do
     if ! sh $file; then
       fail $file
     fi
   done
+  success '> bootstrap'
+}
+
+run_post_bootstraps () {
+  local post_bootstrap_files=$(find_files 'post-bootstrap')
+
+  info '> post-bootstrap'
+  for file in $post_bootstrap_files; do
+    if ! sh $file; then
+      fail $file
+    fi
+  done
+  success '> post-bootstrap'
 }
 
 add_symlinks () {
@@ -28,3 +42,4 @@ add_symlinks () {
 mkdir -p $DOTFILES_ROOT/downloads
 run_bootstraps
 add_symlinks
+run_post_bootstraps

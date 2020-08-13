@@ -1,8 +1,13 @@
 cask_args appdir: "/Applications"
 
 brew "coreutils"
+brew "curl"
 brew "diff-so-fancy"
 brew "git"
+brew "gpg" # for asdf nodejs
+
+# This depends on coreutils, curl & git
+brew "asdf"
 
 cask "1password"
 cask "docker"

@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+set -e
+
+cd "$(dirname "$0")/.."
+DOTFILES_ROOT=$(pwd -P)
+source "$DOTFILES_ROOT/script/utils"
+
+if [[ -x $(command -v asdf) ]]; then
+  info '> asdf plugin add nodejs'
+  asdf plugin add nodejs | indent
+  bash -c '${ASDF_DATA_DIR:=$HOME/.asdf}/plugins/nodejs/bin/import-release-team-keyring'
+
+  info '> asdf plugin add python'
+  asdf plugin add python | indent
+
+  info '> asdf install'
+  cd ~ && asdf install
+
+  success '> asdf'
+else
+  fail '> asdf'
+fi
