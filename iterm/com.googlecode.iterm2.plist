@@ -707,9 +707,15 @@
 	<string>A4FE8A96-D9AF-4C09-976B-7475CE2E399C</string>
 	<key>DisableFullscreenTransparency</key>
 	<true/>
+	<key>DisableWindowSizeSnap</key>
+	<true/>
 	<key>EnableDivisionView</key>
 	<true/>
 	<key>FlashTabBarInFullscreen</key>
+	<true/>
+	<key>FontsForGenerousRounding</key>
+	<string>consolas,fira code</string>
+	<key>ForceAntialiasingOnRetina</key>
 	<true/>
 	<key>HapticFeedbackForEsc</key>
 	<false/>
@@ -1028,6 +1034,8 @@
 			</dict>
 			<key>Background Image Location</key>
 			<string></string>
+			<key>Background Image Mode</key>
+			<integer>0</integer>
 			<key>Badge Color</key>
 			<dict>
 				<key>Alpha Component</key>
@@ -1647,7 +1655,7 @@
 					<key>auto-rainbow style</key>
 					<integer>3</integer>
 					<key>font</key>
-					<string>FiraCode-Regular 12</string>
+					<string>FiraCode-Regular 13</string>
 					<key>remove empty components</key>
 					<false/>
 				</dict>
@@ -1683,7 +1691,7 @@
 								<key>auto-rainbow style</key>
 								<integer>3</integer>
 								<key>font</key>
-								<string>FiraCode-Regular 12</string>
+								<string>FiraCode-Regular 13</string>
 								<key>remove empty components</key>
 								<false/>
 							</dict>
@@ -1721,7 +1729,7 @@
 								<key>auto-rainbow style</key>
 								<integer>3</integer>
 								<key>font</key>
-								<string>FiraCode-Regular 12</string>
+								<string>FiraCode-Regular 13</string>
 								<key>remove empty components</key>
 								<false/>
 							</dict>
@@ -1759,7 +1767,7 @@
 								<key>auto-rainbow style</key>
 								<integer>3</integer>
 								<key>font</key>
-								<string>FiraCode-Regular 12</string>
+								<string>FiraCode-Regular 13</string>
 								<key>remove empty components</key>
 								<false/>
 							</dict>
@@ -1772,8 +1780,14 @@
 						<dict>
 							<key>knobs</key>
 							<dict>
+								<key>base: compression resistance</key>
+								<integer>1</integer>
+								<key>base: priority</key>
+								<real>5</real>
+								<key>iTermStatusBarSpringComponentSizeMultipleKey</key>
+								<integer>1</integer>
 								<key>iTermStatusBarSpringComponentSpringConstantKey</key>
-								<real>0.0</real>
+								<real>0.01</real>
 								<key>shared text color</key>
 								<dict>
 									<key>Alpha Component</key>
@@ -1795,7 +1809,7 @@
 								<key>auto-rainbow style</key>
 								<integer>3</integer>
 								<key>font</key>
-								<string>FiraCode-Regular 12</string>
+								<string>FiraCode-Regular 13</string>
 								<key>remove empty components</key>
 								<false/>
 							</dict>
@@ -1839,7 +1853,7 @@
 								<key>auto-rainbow style</key>
 								<integer>3</integer>
 								<key>font</key>
-								<string>FiraCode-Regular 12</string>
+								<string>FiraCode-Regular 13</string>
 								<key>remove empty components</key>
 								<false/>
 							</dict>
@@ -1883,7 +1897,7 @@
 								<key>auto-rainbow style</key>
 								<integer>3</integer>
 								<key>font</key>
-								<string>FiraCode-Regular 12</string>
+								<string>FiraCode-Regular 13</string>
 								<key>remove empty components</key>
 								<false/>
 							</dict>
@@ -1924,14 +1938,17 @@
 			<key>Visual Bell</key>
 			<true/>
 			<key>Window Type</key>
-			<integer>15</integer>
+			<integer>0</integer>
 			<key>Working Directory</key>
 			<string>/Users/rahul</string>
 		</dict>
 	</array>
 	<key>NoSyncAllAppVersions</key>
 	<array>
+		<string>3.4.0beta5</string>
+		<string>3.4.0beta3</string>
 		<string>3.3.12</string>
+		<string>3.4.0beta4</string>
 		<string>3.4.0beta2</string>
 	</array>
 	<key>NoSyncBFPRecents</key>
@@ -1948,12 +1965,14 @@
 	</dict>
 	<key>NoSyncHaveUsedCopyMode</key>
 	<true/>
+	<key>NoSyncIgnoreSystemWindowRestoration</key>
+	<true/>
 	<key>NoSyncInstallationId</key>
 	<string>9FB764EC-D912-416E-9599-243D40F08B99</string>
 	<key>NoSyncLastOSVersion</key>
-	<string>Version 10.15.6 (Build 19G73)</string>
+	<string>Version 10.15.6 (Build 19G2021)</string>
 	<key>NoSyncLaunchExperienceControllerRunCount</key>
-	<integer>11</integer>
+	<integer>29</integer>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
@@ -2072,6 +2091,14 @@
 				<true/>
 				<key>name</key>
 				<string>selectionLength</string>
+				<key>nonterminalContext</key>
+				<integer>0</integer>
+			</dict>
+			<dict>
+				<key>isTerminal</key>
+				<true/>
+				<key>name</key>
+				<string>processTitle</string>
 				<key>nonterminalContext</key>
 				<integer>0</integer>
 			</dict>
@@ -2362,6 +2389,14 @@
 				<key>isTerminal</key>
 				<true/>
 				<key>name</key>
+				<string>currentTab.currentSession.processTitle</string>
+				<key>nonterminalContext</key>
+				<integer>0</integer>
+			</dict>
+			<dict>
+				<key>isTerminal</key>
+				<true/>
+				<key>name</key>
 				<string>currentTab.currentSession</string>
 				<key>nonterminalContext</key>
 				<integer>0</integer>
@@ -2475,11 +2510,11 @@
 		<array>
 			<dict>
 				<key>isTerminal</key>
-				<false/>
+				<true/>
 				<key>name</key>
 				<string>currentSession</string>
 				<key>nonterminalContext</key>
-				<integer>1</integer>
+				<integer>0</integer>
 			</dict>
 			<dict>
 				<key>isTerminal</key>
@@ -2675,17 +2710,17 @@
 			</dict>
 			<dict>
 				<key>isTerminal</key>
-				<true/>
+				<false/>
 				<key>name</key>
-				<string>tmuxWindow</string>
+				<string>currentSession</string>
 				<key>nonterminalContext</key>
-				<integer>0</integer>
+				<integer>1</integer>
 			</dict>
 			<dict>
 				<key>isTerminal</key>
 				<true/>
 				<key>name</key>
-				<string>currentSession</string>
+				<string>tmuxWindow</string>
 				<key>nonterminalContext</key>
 				<integer>0</integer>
 			</dict>
@@ -2731,6 +2766,8 @@
 	<key>OpenTmuxWindowsIn</key>
 	<integer>1</integer>
 	<key>PMPrintingExpandedStateForPrint2</key>
+	<false/>
+	<key>PassOnControlClick</key>
 	<false/>
 	<key>PerPaneBackgroundImage</key>
 	<true/>
@@ -2788,7 +2825,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2020-08-06T09:09:23Z</date>
+	<date>2020-09-02T09:57:26Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SUUpdateGroupIdentifier</key>
@@ -2797,12 +2834,20 @@
 	<false/>
 	<key>SeparateStatusBarsPerPane</key>
 	<false/>
+	<key>SeparateWindowTitlePerTab</key>
+	<true/>
 	<key>ShowFullScreenTabBar</key>
 	<false/>
+	<key>ShowMetalFPSmeter</key>
+	<false/>
+	<key>ShowNewOutputIndicator</key>
+	<true/>
 	<key>ShowPaneTitles</key>
 	<true/>
 	<key>SmartPlacement</key>
-	<true/>
+	<false/>
+	<key>SolidUnderlines</key>
+	<false/>
 	<key>SoundForEsc</key>
 	<false/>
 	<key>StatusBarPosition</key>
@@ -2822,7 +2867,7 @@
 	<key>UseBorder</key>
 	<false/>
 	<key>UseLionStyleFullscreen</key>
-	<true/>
+	<false/>
 	<key>VisualIndicatorForEsc</key>
 	<false/>
 	<key>WindowNumber</key>
@@ -2834,7 +2879,7 @@
 	<key>findMode_iTerm</key>
 	<integer>0</integer>
 	<key>iTerm Version</key>
-	<string>3.4.0beta2</string>
+	<string>3.4.0beta5</string>
 	<key>kCPKSelectionViewPreferredModeKey</key>
 	<integer>0</integer>
 	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>
