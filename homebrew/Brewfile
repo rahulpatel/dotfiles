@@ -5,6 +5,7 @@ brew "curl"
 brew "diff-so-fancy"
 brew "git"
 brew "gpg" # for asdf nodejs
+brew "zsh"
 
 # This depends on coreutils, curl & git
 brew "asdf"
