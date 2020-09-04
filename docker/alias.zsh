@@ -1,6 +1,7 @@
-function nuke-docker {
-  docker stop $(docker ps -aq)
+function docker-nuke() {
+  docker kill $(docker ps -q)
   docker system prune -a
 }
+alias docker-nuke="docker-nuke"
 
-alias nuke-docker="nuke-docker"
+alias docker-space="docker system df"
