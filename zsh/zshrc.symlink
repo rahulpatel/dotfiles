@@ -5,7 +5,7 @@ export DOTFILES_ROOT=/Volumes/Repositories/dotfiles/
 ZSH_THEME="vercel"
 
 # Just update
-DISABLE_UPDATE_PROMPT=true
+DISABLE_UPDATE_PROMPT="true"
 
 # Update zsh every x days
 UPDATE_ZSH_DAYS=1
@@ -35,7 +35,7 @@ for file in $(find_files 'alias.zsh'); do
 done
 
 # Initialize autocomplete
-autoload -U compinit
+autoload -Uz compinit
 compinit
 
 for file in $(find_files 'completion.zsh'); do

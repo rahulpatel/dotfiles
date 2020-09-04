@@ -1,5 +1,5 @@
-# Add custom functions
-fpath=($DOTFILES_ROOT/functions $fpath)
+# Add custom functions with autocomplete
+FPATH=$DOTFILES_ROOT/functions:$FPATH
 autoload -U $DOTFILES_ROOT/functions/*(:t)
 
 # Use vim for ssh sessions
