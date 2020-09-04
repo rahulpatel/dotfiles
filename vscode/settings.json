@@ -103,7 +103,7 @@
     "editor.codeActionsOnSave": {
         "source.fixAll.eslint": true
     },
-    "window.zoomLevel": 1,
+    "window.zoomLevel": 0,
     "files.associations": {
         "Fastfile": "ruby",
         "Appfile": "ruby",
@@ -158,7 +158,7 @@
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "bracket-pair-colorizer-2.forceUniqueOpeningColor": true,
-    "workbench.activityBar.visible": false,
+    "workbench.activityBar.visible": true,
     "workbench.tree.indent": 21,
     "workbench.settings.useSplitJSON": true,
     "projectManager.git.baseFolders": [
