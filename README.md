@@ -16,3 +16,21 @@ script/bootstrap
 - Palenight
   - [Code](https://marketplace.visualstudio.com/items?itemName=Equinusocio.vsc-material-theme)
   - [iTerm](https://github.com/JonathanSpeek/palenight-iterm2)
+
+
+## Custom Functions
+
+### c <repo>
+`cd` directly into `$PROJECTS/<repo>` if `repo` is provided, else it'll `cd` into `$PROJECTS`. This function has auto-complete.
+
+### cgo <repo>
+`cd` directly into `$PROJECTS/go/src/github.com/rahulpatel`. This function has auto-complete.
+
+### extract <file>
+Extract any archive without having to remember which command you need to run.
+
+### kill-port <port>
+Kill the process running on `<port>`.
+
+### show-port <port>
+Show the process running on `<port>`.
