@@ -6,7 +6,6 @@ jock.svg
 jpoissonnier.vscode-styled-components
 mgmcdermott.vscode-language-babel
 naumovs.color-highlight
-rafamel.subtle-brackets
 Tyriar.sort-lines
 VisualStudioExptTeam.vscodeintellicode
 whizkydee.material-palenight-theme

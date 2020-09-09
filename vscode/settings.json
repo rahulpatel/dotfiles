@@ -1,15 +1,21 @@
 {
     "editor.acceptSuggestionOnEnter": "smart",
+    "editor.codeActionsOnSave": {
+        "source.fixAll": true,
+    },
     "editor.cursorBlinking": "smooth",
     "editor.cursorStyle": "line-thin",
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.fontFamily": "Fira Code",
     "editor.fontLigatures": true,
     "editor.fontSize": 13,
     "editor.formatOnSave": true,
     "editor.find.addExtraSpaceOnTop": false,
-    "editor.matchBrackets": false,
     "editor.renderLineHighlight": "all",
+    "editor.suggestSelection": "first",
     "editor.tabSize": 2,
+
+    "eslint.alwaysShowStatus": true,
 
     "explorer.decorations.badges": false,
 
@@ -52,5 +58,5 @@
 
     "window.newWindowDimensions": "maximized",
     "window.restoreWindows": "all",
-    "window.zoomLevel": 1    
+    "window.zoomLevel": 1,
 }
