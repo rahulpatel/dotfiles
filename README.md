@@ -12,10 +12,12 @@ script/bootstrap
 ```
 
 ## Themes
-- [Relaxed](https://github.com/Relaxed-Theme)
 - Palenight
   - [Code](https://marketplace.visualstudio.com/items?itemName=Equinusocio.vsc-material-theme)
   - [iTerm](https://github.com/JonathanSpeek/palenight-iterm2)
+- Light/Night Owl
+  - [Code](https://marketplace.visualstudio.com/items?itemName=sdras.night-owl)
+  - [iTerm](https://github.com/nickcernis/iterm2-night-owl)
 
 
 ## Custom Functions

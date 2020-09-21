@@ -1,14 +1,14 @@
 {
     "editor.acceptSuggestionOnEnter": "smart",
     "editor.codeActionsOnSave": {
-        "source.fixAll": true,
+        "source.fixAll.eslint": false,
+        "source.fixAll.prettier": true,
     },
     "editor.cursorBlinking": "smooth",
     "editor.cursorStyle": "line-thin",
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.fontFamily": "Fira Code",
     "editor.fontLigatures": true,
-    "editor.fontSize": 13,
     "editor.formatOnSave": true,
     "editor.find.addExtraSpaceOnTop": false,
     "editor.renderLineHighlight": "all",
@@ -48,15 +48,17 @@
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
 
     "workbench.activityBar.visible": false,
-    "workbench.colorTheme": "Palenight Theme",
+    "workbench.colorTheme": "Night Owl Light",
     "workbench.editor.highlightModifiedTabs": true,
     "workbench.editor.restoreViewState": true,
     "workbench.iconTheme": "vscode-great-icons",
-    "workbench.panel.defaultLocation": "right",
+    "workbench.panel.defaultLocation": "bottom",
+    "workbench.preferredLightColorTheme": "Night Owl Light",
+    "workbench.preferredDarkColorTheme": "Night Owl",
     "workbench.quickOpen.closeOnFocusLost": false,
-    "workbench.tree.indent": 14,
 
+    "window.autoDetectColorScheme": true,
     "window.newWindowDimensions": "maximized",
     "window.restoreWindows": "all",
-    "window.zoomLevel": 1,
+    "window.zoomLevel": 1
 }

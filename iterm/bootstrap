@@ -6,9 +6,21 @@ cd "$(dirname "$0")/.."
 DOTFILES_ROOT=$(pwd -P)
 source "$DOTFILES_ROOT/script/utils"
 
-if ! [ -f "$DOTFILES_ROOT/downloads/palenight.itermcolors" ]; then
-  info '> item download palenight theme'
-  curl -L https://raw.githubusercontent.com/JonathanSpeek/palenight-iterm2/master/palenight.itermcolors -o "$DOTFILES_ROOT/downloads/palenight.itermcolors" --silent | indent
+mkdir -p $DOTFILES_ROOT/downloads
+
+if ! [ -f "$DOTFILES_ROOT/downloads/Palenight.itermcolors" ]; then
+  info '> item download Palenight theme'
+  curl -L https://raw.githubusercontent.com/JonathanSpeek/palenight-iterm2/master/palenight.itermcolors -o "$DOTFILES_ROOT/downloads/Palenight.itermcolors" --silent | indent
+fi
+
+if ! [ -f "$DOTFILES_ROOT/downloads/Night Owl.itermcolors" ]; then
+  info '> item download Night Owl theme'
+  curl -L https://raw.githubusercontent.com/nickcernis/iterm2-night-owl/master/Night%20Owl.itermcolors -o "$DOTFILES_ROOT/downloads/Night Owl.itermcolors" --silent | indent
+fi
+
+if ! [ -f "$DOTFILES_ROOT/downloads/Light Owl.itermcolors" ]; then
+  info '> item download Light Owl theme'
+  curl -L https://raw.githubusercontent.com/fcaldera/night-owl-light-iterm2/master/Night%20Owl%20Light.itermcolors -o "$DOTFILES_ROOT/downloads/Light Owl.itermcolors" --silent | indent
 fi
 
 success '> iterm'
