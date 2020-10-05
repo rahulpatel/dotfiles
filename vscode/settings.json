@@ -2,15 +2,17 @@
     "editor.acceptSuggestionOnEnter": "smart",
     "editor.codeActionsOnSave": {
         "source.fixAll.eslint": false,
-        "source.fixAll.prettier": true,
+        "source.fixAll.prettier": true
     },
     "editor.cursorBlinking": "smooth",
     "editor.cursorStyle": "line-thin",
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.fontFamily": "Fira Code",
     "editor.fontLigatures": true,
+    "editor.fontSize": 13,
     "editor.formatOnSave": true,
     "editor.find.addExtraSpaceOnTop": false,
+    "editor.find.cursorMoveOnType": false,
     "editor.renderLineHighlight": "all",
     "editor.suggestSelection": "first",
     "editor.tabSize": 2,
@@ -44,10 +46,10 @@
 
     "terminal.explorerKind": "external",
     "terminal.external.osxExec": "iTerm.app",
+    "terminal.integrated.fontWeight": "300",
 
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
 
-    "workbench.activityBar.visible": false,
     "workbench.colorTheme": "Night Owl Light",
     "workbench.editor.highlightModifiedTabs": true,
     "workbench.editor.restoreViewState": true,
