@@ -11,6 +11,7 @@ brew "zsh"
 brew "asdf"
 
 cask "1password"
+cask "alfred"
 cask "docker"
 cask "figma"
 cask "google-chrome"
