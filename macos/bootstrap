@@ -15,7 +15,7 @@ if ! [[ -d "/Volumes/$CODE_VOLUME_NAME" ]]; then
 fi
 
 if ! [ -L "$HOME/Repos" ]; then
-  info "> ln -s /Volumes/$CODE_VOLUME_NAME $HOME/$CODE_SYMLINK_NAME"
+  info "> symlink repositories volume to home directory"
   ln -s  "/Volumes/$CODE_VOLUME_NAME" "$HOME/$CODE_SYMLINK_NAME"
 fi
 

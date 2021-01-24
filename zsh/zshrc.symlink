@@ -8,7 +8,7 @@ ZSH_THEME="vercel"
 DISABLE_UPDATE_PROMPT="true"
 
 # Update zsh every x days
-UPDATE_ZSH_DAYS=1
+UPDATE_ZSH_DAYS=7
 
 # Don't check for untracked files in git repos
 DISABLE_UNTRACKED_FILES_DIRTY="true"
