@@ -5,6 +5,7 @@ brew "curl"
 brew "diff-so-fancy"
 brew "git"
 brew "gpg" # for asdf nodejs
+brew "jq"
 brew "zsh"
 
 # This depends on coreutils, curl & git
@@ -12,6 +13,7 @@ brew "asdf"
 
 cask "1password"
 cask "alfred"
+cask "authy"
 cask "docker"
 cask "figma"
 cask "google-chrome"

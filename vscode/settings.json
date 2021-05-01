@@ -7,8 +7,8 @@
     "editor.cursorBlinking": "smooth",
     "editor.cursorStyle": "line-thin",
     "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.fontFamily": "Cascadia Code, Monaco, Fira Code",
-    "editor.fontLigatures": false,
+    "editor.fontFamily": "Fira Code, Monaco",
+    "editor.fontLigatures": "'calt', 'ss01'",
     "editor.fontSize": 14,
     "editor.formatOnSave": true,
     "editor.find.addExtraSpaceOnTop": false,
@@ -17,7 +17,7 @@
     "editor.suggestSelection": "first",
     "editor.tabSize": 2,
 
-    "eslint.alwaysShowStatus": true,
+    "emmet.showExpandedAbbreviation": "never",
 
     "explorer.decorations.badges": false,
 
@@ -26,18 +26,19 @@
     "files.insertFinalNewline": true,
     "files.trimFinalNewlines": true,
 
-    "javascript.suggest.autoImports": false,
-    "javascript.updateImportsOnFileMove.enabled": "never",
+    "graphql-config.load.filePath": "/Users/rahulpatel/Downloads/schema.graphql",
 
-    "prettier.arrowParens": "always",
+    "javascript.suggest.autoImports": false,
+
     "prettier.requireConfig": true,
-    "prettier.trailingComma": "es5",
 
     "problems.showCurrentInStatus": true,
 
     "projectManager.git.baseFolders": [
         "/Volumes/Repositories/"
     ],
+
+    "python.showStartPage": false,
 
     "search.followSymlinks": false,
 
@@ -46,20 +47,21 @@
     "terminal.explorerKind": "external",
     "terminal.external.osxExec": "iTerm.app",
     "terminal.integrated.fontWeight": "300",
-
-    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-
-    "workbench.colorTheme": "Night Owl",
+    "workbench.colorTheme": "Monokai Pro (Filter Octagon)",
+    "workbench.editorAssociations": [
+        {
+            "viewType": "jupyter.notebook.ipynb",
+            "filenamePattern": "*.ipynb"
+        }
+    ],
     "workbench.editor.highlightModifiedTabs": true,
     "workbench.editor.restoreViewState": true,
-    "workbench.iconTheme": "vscode-great-icons",
+    "workbench.iconTheme": "Monokai Pro (Filter Octagon) Icons",
     "workbench.panel.defaultLocation": "bottom",
-    "workbench.preferredLightColorTheme": "Night Owl Light",
-    "workbench.preferredDarkColorTheme": "Night Owl",
     "workbench.quickOpen.closeOnFocusLost": false,
+    "workbench.tree.indent": 19,
 
     "window.autoDetectColorScheme": true,
     "window.newWindowDimensions": "maximized",
-    "window.restoreWindows": "all",
-    "window.zoomLevel": 0
+    "window.restoreWindows": "all"
 }

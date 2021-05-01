@@ -1,0 +1,83 @@
+sudo yabai --load-sa
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+
+# default management type for yabai on startup
+yabai -m config layout bsp
+
+# New window spawns to the right if vertical split, or bottom if horizontal split
+yabai -m config window_placement second_child
+
+# Set all padding and gaps to 0pt (default: 0)
+yabai -m config external_bar all:28:0
+yabai -m config top_padding    4
+yabai -m config bottom_padding 4
+yabai -m config left_padding   4
+yabai -m config right_padding  4
+yabai -m config window_gap     4
+
+# on or off (default: off)
+yabai -m config auto_balance on
+
+# turn off manage and border for various apps
+yabai -m rule --add app="Installer" manage=off
+yabai -m rule --add app="System\ Preferences" manage=off
+yabai -m rule --add app="Alfred" manage=off
+yabai -m rule --add app="Übersicht" manage=off
+
+# yabai -m space 1 --label web
+# yabai -m rule --add app="Chrome" space=^"web"
+# yabai -m rule --add app="Safari" space=^"web"
+
+# yabai -m space 2 --label comms
+# yabai -m rule --add app="Messages" space=^"comms"
+# yabai -m rule --add app="FaceTime" space=^"comms"
+# yabai -m rule --add app="Find\ My" space=^"comms"
+# yabai -m rule --add app="Discord" space=^"comms"
+# yabai -m rule --add app="WhatsApp" space=^"comms"
+# yabai -m rule --add app="Slack" space=^"comms"
+# yabai -m rule --add app="zoom\.us" space=^"comms"
+
+# yabai -m space 3 --label dev
+# yabai -m rule --add app="Code" space=^"dev"
+# yabai -m rule --add app="iTerm" space=^"dev"
+
+# yabai -m space 4 --label media
+# yabai -m rule --add app="Spotify" space=^"media"
+
+# yabai -m space 5 --label os
+# yabai -m rule --add app="System\ Preferences" space=^"os"
+# yabai -m rule --add app="The\ Unarchiver" space=^"os"
+# yabai -m rule --add app="Home" space=^"os"
+# yabai -m rule --add app="Alfred\ Preferences" space=^"os"
+
+# refresh my Übersicht bar when the space changes
+yabai -m signal --add event=space_changed action="osascript -e 'tell application \"Übersicht\" to refresh widget id \"spaces-widget\"'"
+
+# ============= Übersicht Simple Bar =============
+# Refresh spaces widget on space change
+yabai -m signal --add event=space_changed action="osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"simple-bar-spaces-jsx\"'"
+# Refresh spaces widget on display focus change
+yabai -m signal --add event=display_changed action="osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"simple-bar-spaces-jsx\"'"
+# Refresh spaces widget on window resize
+yabai -m signal --add event=window_resized action="osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"simple-bar-spaces-jsx\"'"
+# Refresh process widget on space change
+yabai -m signal --add event=space_changed action="osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"simple-bar-process-jsx\"'"
+
+# Refresh process widget on when focused application changes
+yabai -m signal --add event=window_focused action="osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"simple-bar-process-jsx\"'"
+# Refresh spaces widget on when focused application changes
+yabai -m signal --add event=window_focused action="osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"simple-bar-spaces-jsx\"'"
+
+# Refresh process widget on when focused application changes
+yabai -m signal --add event=application_front_switched action="osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"simple-bar-process-jsx\"'"
+# Refresh spaces widget on when focused application changes
+yabai -m signal --add event=application_front_switched action="osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"simple-bar-spaces-jsx\"'"
+
+# Refresh process widget on when an application window is closed
+yabai -m signal --add event=window_destroyed action="osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"simple-bar-process-jsx\"'"
+# Refresh spaces widget on when an application window is closed
+yabai -m signal --add event=window_destroyed action="osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"simple-bar-spaces-jsx\"'"
+
+# Refresh process widget when current window title changes
+yabai -m signal --add event=window_title_changed action="osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"simple-bar-process-jsx\"'"
+# =======================================================

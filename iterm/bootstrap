@@ -18,9 +18,9 @@ if ! [ -f "$DOTFILES_ROOT/downloads/Night Owl.itermcolors" ]; then
   curl -L https://raw.githubusercontent.com/nickcernis/iterm2-night-owl/master/Night%20Owl.itermcolors -o "$DOTFILES_ROOT/downloads/Night Owl.itermcolors" --silent | indent
 fi
 
-if ! [ -f "$DOTFILES_ROOT/downloads/Light Owl.itermcolors" ]; then
-  info '> item download Light Owl theme'
-  curl -L https://raw.githubusercontent.com/fcaldera/night-owl-light-iterm2/master/Night%20Owl%20Light.itermcolors -o "$DOTFILES_ROOT/downloads/Light Owl.itermcolors" --silent | indent
+if ! [ -f "$DOTFILES_ROOT/downloads/Monokai Pro.itermcolors" ]; then
+  info '> item download Monokai Pro theme'
+  curl -L https://raw.githubusercontent.com/ayatmaulana/iterm2-monokai-pro/master/monokai_pro.itermcolors -o "$DOTFILES_ROOT/downloads/Monokai Pro.itermcolors" --silent | indent
 fi
 
 success '> iterm'

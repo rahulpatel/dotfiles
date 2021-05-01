@@ -1,0 +1,37 @@
+# create desktop, move window and follow focus - uses jq for parsing json (brew install jq)
+ctrl + cmd + alt - n : yabai -m space --create && \
+                        index="$(yabai -m query --spaces --display | jq 'map(select(."native-fullscreen" == 0))[-1].index')" && \
+                        yabai -m window --space "${index}" && \
+                        yabai -m space --focus "${index}"
+
+# delete desktop
+ctrl + cmd + alt - d : yabai -m space --destroy; yabai -m space --focus prev
+
+# fast focus desktop
+alt + cmd - left  : yabai -m space --focus prev
+alt + cmd - right : yabai -m space --focus next
+alt + cmd - 1     : yabai -m space --focus 1
+alt + cmd - 2     : yabai -m space --focus 2
+alt + cmd - 3     : yabai -m space --focus 3
+alt + cmd - 4     : yabai -m space --focus 4
+alt + cmd - 5     : yabai -m space --focus 5
+alt + cmd - 6     : yabai -m space --focus 6
+alt + cmd - 7     : yabai -m space --focus 7
+alt + cmd - 8     : yabai -m space --focus 8
+alt + cmd - 9     : yabai -m space --focus 9
+
+# send window to desktop and follow focus
+ctrl + alt + cmd - right : yabai -m window --space next; yabai -m space --focus next
+ctrl + alt + cmd - left : yabai -m window --space prev; yabai -m space --focus prev
+
+# focus monitor
+shift + ctrl - 1 : yabai -m display --focus 2
+shift + ctrl - 2 : yabai -m display --focus 1
+
+# send window to monitor and follow focus
+shift + ctrl - right : yabai -m window --display prev; yabai -m display --focus prev
+shift + ctrl - left : yabai -m window --display next; yabai -m display --focus next
+
+# toggle window zoom
+cmd + alt - g : yabai -m window --toggle zoom-parent
+cmd + alt - f : yabai -m window --toggle zoom-fullscreen
