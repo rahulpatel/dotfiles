@@ -1,5 +1,6 @@
 {
     "editor.acceptSuggestionOnEnter": "smart",
+    "editor.accessibilitySupport": "off",
     "editor.codeActionsOnSave": {
         "source.fixAll.eslint": false,
         "source.fixAll.prettier": true
@@ -47,13 +48,8 @@
     "terminal.explorerKind": "external",
     "terminal.external.osxExec": "iTerm.app",
     "terminal.integrated.fontWeight": "300",
+
     "workbench.colorTheme": "Monokai Pro (Filter Octagon)",
-    "workbench.editorAssociations": [
-        {
-            "viewType": "jupyter.notebook.ipynb",
-            "filenamePattern": "*.ipynb"
-        }
-    ],
     "workbench.editor.highlightModifiedTabs": true,
     "workbench.editor.restoreViewState": true,
     "workbench.iconTheme": "Monokai Pro (Filter Octagon) Icons",
@@ -61,7 +57,6 @@
     "workbench.quickOpen.closeOnFocusLost": false,
     "workbench.tree.indent": 19,
 
-    "window.autoDetectColorScheme": true,
     "window.newWindowDimensions": "maximized",
     "window.restoreWindows": "all"
 }
