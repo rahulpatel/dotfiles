@@ -11,13 +11,4 @@ if [[ $(command -v brew) == "" ]]; then
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" | indent
 fi
 
-info '> brew update'
-brew update | indent
-
-info '> brew bundle'
-brew bundle --file="./homebrew/Brewfile" | indent
-
-info '> brew cleanup'
-brew cleanup | indent
-
 success '> brew'
