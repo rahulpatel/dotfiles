@@ -6,3 +6,7 @@ bind -n M-Down select-pane -D
 
 # Enable mouse control
 set -g mouse on
+
+# Fig Tmux Integration: Enabled
+source-file ~/.fig/tmux
+# End of Fig Tmux Integration
