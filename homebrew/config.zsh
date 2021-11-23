@@ -1,4 +1,4 @@
-export PATH="/usr/local/sbin:$PATH"
+eval "$(/opt/homebrew/bin/brew sheellenv)"
 
 # Add homebrew autocomplete to FPATH, compinit called in zsh/zshrc.symlink
 FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
