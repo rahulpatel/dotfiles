@@ -10,22 +10,29 @@ ZSH_CUSTOM=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}
 
 if ! [ -d "$HOME/.oh-my-zsh" ]; then
   info '> install oh-my-zsh'
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" | indent
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 fi
 
+# PLUGINS
 if ! [ -d "$ZSH_CUSTOM/plugins/zsh-autosuggestions" ]; then
   info '> install zsh-autosuggestions'
-  git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM}/plugins/zsh-autosuggestions | indent
+  git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM}/plugins/zsh-autosuggestions
 fi
 
 if ! [ -d "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting" ]; then
   info '> install zsh-syntax-highlighting'
-  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM}/plugins/zsh-syntax-highlighting | indent
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM}/plugins/zsh-syntax-highlighting
+fi
+
+# THEMES
+if ! [ -f "$ZSH_CUSTOM/themes/vercel.zsh-theme" ]; then
+  info '> install vercel theme'
+  curl https://raw.githubusercontent.com/zeit/zsh-theme/master/vercel.zsh-theme -Lo ${ZSH_CUSTOM}/themes/vercel.zsh-theme
 fi
 
 if ! [ -f "$ZSH_CUSTOM/themes/vercel.zsh-theme" ]; then
   info '> install vercel theme'
-  curl https://raw.githubusercontent.com/zeit/zsh-theme/master/vercel.zsh-theme -Lo ${ZSH_CUSTOM}/themes/vercel.zsh-theme | indent
+  git clone https://github.com/reobin/typewritten.git "$ZSH_CUSTOM/themes/typewritten"
 fi
 
 success '> zsh'

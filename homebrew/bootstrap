@@ -8,7 +8,19 @@ source "$DOTFILES_ROOT/script/utils"
 
 if [[ $(command -v brew) == "" ]]; then
   info '> install brew'
-  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" | indent
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  source "$DOTFILES_ROOT/homebrew/config.zsh"
+fi
+
+if [[ -x $(command -v brew) ]]; then
+  info '> brew update'
+  brew update
+
+  info '> brew bundle'
+  brew bundle --file="./homebrew/Brewfile"
+
+  info '> brew cleanup'
+  brew cleanup
 fi
 
 success '> brew'

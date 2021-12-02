@@ -6,9 +6,9 @@
 
 export ZSH=~/.oh-my-zsh
 export PROJECTS=~/Repos
-export DOTFILES_ROOT=/Volumes/Repositories/dotfiles/
+export DOTFILES_ROOT=/Volumes/Repositories/dotfiles
 
-ZSH_THEME="vercel"
+ZSH_THEME="typewritten/typewritten"
 
 # Just update
 DISABLE_UPDATE_PROMPT="true"
@@ -25,7 +25,6 @@ plugins=(
   zsh-syntax-highlighting
 )
 
-source $ZSH/oh-my-zsh.sh
 source $DOTFILES_ROOT/script/utils
 
 if [ -f "$HOME/.localrc" ]; then
@@ -36,17 +35,15 @@ for file in $(find_files 'config.zsh'); do
   source $file
 done
 
+for file in $(find_files 'completion.zsh'); do
+  source $file
+done
+
 for file in $(find_files 'alias.zsh'); do
   source $file
 done
 
-# Initialize autocomplete
-autoload -Uz compinit
-compinit
-
-for file in $(find_files 'completion.zsh'); do
-  source $file
-done
+source $ZSH/oh-my-zsh.sh
 
 #### FIG ENV VARIABLES ####
 # Please make sure this block is at the end of this file.

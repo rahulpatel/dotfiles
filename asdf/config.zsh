@@ -1,1 +1,1 @@
-source $(brew --prefix asdf)/asdf.sh
+source $HOME/.asdf/asdf.sh

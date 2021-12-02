@@ -6,9 +6,6 @@ brew "gpg" # for asdf nodejs
 brew "jq"
 brew "zsh"
 
-# This depends on coreutils, curl & git
-brew "asdf"
-
 tap "homebrew/cask"
 cask_args appdir: "/Applications"
 
@@ -25,6 +22,7 @@ cask "kap"
 cask "keepingyouawake"
 cask "quicklook-json"
 cask "slack"
+cask "raycast"
 cask "rectangle"
 cask "spotify"
 cask "visual-studio-code"

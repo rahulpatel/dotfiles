@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+set -e
+
+cd "$(dirname "$0")/.."
+DOTFILES_ROOT=$(pwd -P)
+source "$DOTFILES_ROOT/script/utils"
+
+run_post_bootstraps() {
+  local post_bootstrap_files=$(find_files 'post-bootstrap')
+
+  info '> post-bootstrap'
+  for file in $post_bootstrap_files; do
+    if ! sh "$file"; then
+      fail "$file"
+    fi
+  done
+  success '> post-bootstrap'
+}
+
+run_post_bootstraps

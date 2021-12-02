@@ -12,13 +12,13 @@ GITCONFIG_TEMPLATE_FILE="$GITCONFIG_BASE.template"
 
 if ! [ -f $GITCONFIG_SYMLINK_FILE ]; then
   user '> github author name'
-  read -p '           ' -e git_author_name
+  read -r -e git_author_name
 
   user '> github author email (<username>@users.noreply.github.com)'
-  read -p '           ' -e git_author_email
+  read -r -e git_author_email
 
   info '> generating gitconfig'
-  sed -e "s/{AUTHOR_NAME}/$git_author_name/g" -e "s/{AUTHOR_EMAIL}/$git_author_email/g" $GITCONFIG_TEMPLATE_FILE > $GITCONFIG_SYMLINK_FILE
+  sed -e "s/{AUTHOR_NAME}/$git_author_name/g" -e "s/{AUTHOR_EMAIL}/$git_author_email/g" $GITCONFIG_TEMPLATE_FILE >$GITCONFIG_SYMLINK_FILE
 
   success '> gitconfig'
 fi

@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
-find_files () {
-  find -H $DOTFILES_ROOT -maxdepth 2 -name "$1" -not -path '*script/*'
+find_files() {
+  find -H "$DOTFILES_ROOT" -maxdepth 2 -name "$1" -not -path '*script/*'
 }
 
-link_file () {
+link_file() {
   local src=$1
   local dst=$2
   local skip=false
@@ -12,24 +12,27 @@ link_file () {
   local backup=false
 
   if [ -f "$dst" -o -d "$dst" -o -L "$dst" ]; then
-    [[ "$(readlink $dst)" == "$dst" ]] && skip=true
+    [[ "$(readlink "$dst")" == "$dst" ]] && skip=true
 
     if [ "$skip" != "true" ]; then
       user "> $dst already exists, what would you like to do?\n\
            [s]kip\n\
            [o]verwrite\n\
            [b]ackup"
-      read -p '           ' -e action
+      read -r -e action
 
       case "$action" in
-        s)
-          skip=true;;
-        o)
-          overwrite=true;;
-        b)
-          backup=true;;
-        *)
-          ;;
+      s)
+        skip=true
+        ;;
+      o)
+        overwrite=true
+        ;;
+      b)
+        backup=true
+        ;;
+      *) ;;
+
       esac
     fi
   fi
@@ -57,23 +60,19 @@ link_file () {
   fi
 }
 
-indent () {
-  sed 's/^/           /'
+info() {
+  printf "\r  [ \e[1;34m..\e[0m ] \e[1;34m%s\e[0m\n" "$1"
 }
 
-info () {
-  printf "\r  [ \e[1;34m..\e[0m ] \e[1;34m$1\e[0m\n"
+user() {
+  printf "\r  [ \e[1;33m??\e[0m ] \e[1;33m%s\e[0m\n" "$1"
 }
 
-user () {
-  printf "\r  [ \e[1;33m??\e[0m ] \e[1;33m$1\e[0m\n"
+success() {
+  printf "\r\e[2K  [ \e[1;32mOK\e[0m ] \e[1;32m%s\e[0m\n" "$1"
 }
 
-success () {
-  printf "\r\e[2K  [ \e[1;32mOK\e[0m ] \e[1;32m$1\e[0m\n"
-}
-
-fail () {
-  printf "\r\e[2K  [\e[1;31mFAIL\e[0m] \e[1;31m$1\e[0m\n"
+fail() {
+  printf "\r\e[2K  [\e[1;31mFAIL\e[0m] \e[1;31m%s\e[0m\n" "$1"
   exit
 }

@@ -6,9 +6,12 @@ Run `xcode-select --install` then run the following...
 cd /tmp
 curl -LO https://github.com/rahulpatel/dotfiles/archive/master.zip
 unzip master.zip
-mv ./dotfiles-master ~/.dotfiles
-cd ~/.dotfiles
+cd ./dotfiles-master
+script/pre-bootstrap
 script/bootstrap
+
+# Script will inform you to open a new terminal tab and cd into ~/Repos/dotfiles
+script/post-bootstrap
 ```
 
 ## Themes

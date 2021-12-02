@@ -11,12 +11,12 @@ CODE_SYMLINK_NAME="Repos"
 
 if ! [[ -d "/Volumes/$CODE_VOLUME_NAME" ]]; then
   info '> create repositories volume'
-  diskutil apfs addVolume disk1 "Case-sensitive APFS" $CODE_VOLUME_NAME -passprompt | indent
+  diskutil apfs addVolume disk1 "Case-sensitive APFS" $CODE_VOLUME_NAME -passprompt
 fi
 
 if ! [ -L "$HOME/Repos" ]; then
   info "> symlink repositories volume to home directory"
-  ln -s  "/Volumes/$CODE_VOLUME_NAME" "$HOME/$CODE_SYMLINK_NAME"
+  ln -s "/Volumes/$CODE_VOLUME_NAME" "$HOME/$CODE_SYMLINK_NAME"
 fi
 
 # info '> set macos defaults'
