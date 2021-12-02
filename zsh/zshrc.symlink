@@ -25,24 +25,6 @@ plugins=(
   zsh-syntax-highlighting
 )
 
-source $DOTFILES_ROOT/script/utils
-
-if [ -f "$HOME/.localrc" ]; then
-  source $HOME/.localrc
-fi
-
-for file in $(find_files 'config.zsh'); do
-  source $file
-done
-
-for file in $(find_files 'completion.zsh'); do
-  source $file
-done
-
-for file in $(find_files 'alias.zsh'); do
-  source $file
-done
-
 source $ZSH/oh-my-zsh.sh
 
 #### FIG ENV VARIABLES ####
