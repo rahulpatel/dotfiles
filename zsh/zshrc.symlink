@@ -5,8 +5,6 @@
 #### END FIG ENV VARIABLES ####
 
 export ZSH=~/.oh-my-zsh
-export PROJECTS=~/Repos
-export DOTFILES_ROOT=/Volumes/Repositories/dotfiles
 
 ZSH_THEME="typewritten/typewritten"
 
