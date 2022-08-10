@@ -1,15 +1,7 @@
 [core]
   excludesfile = ~/.gitignore
-  editor = vi
+  editor = nano
   pager = diff-so-fancy | less --tabs=4 -RFX
-
-  # Make `git rebase` safer on macOS
-	# More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
-	trustctime = false
-
-  # Speed up commands involving untracked files such as `git status`.
-	# https://git-scm.com/docs/git-update-index#_untracked_cache
-	untrackedCache = true
 
 [color "diff"]
   meta = "yellow"
@@ -24,6 +16,9 @@
   oldHighlight = "red bold 52"
   newNormal = "green bold"
   newHighlight = "green bold 22"
+
+[init]
+	defaultBranch = main
 
 [fetch]
   prune = true
