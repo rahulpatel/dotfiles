@@ -14,12 +14,12 @@ if [ -f "$HOME/.asdf" ]; then
 fi
 
 if [ -x "$(command -v asdf)" ]; then
-  info '> asdf plugin add nodejs'
-  asdf plugin add nodejs | indent
-  bash -c '${ASDF_DATA_DIR:=$HOME/.asdf}/plugins/nodejs/bin/import-release-team-keyring'
+  plugins=$(awk <"$DOTFILES_ROOT/asdf/tool-versions.symlink" '{ print $1 }')
 
-  info '> asdf plugin add python'
-  asdf plugin add python | indent
+  for plugin in $plugins; do
+    info "> asdf plugin add $plugin"
+    asdf plugin add "$plugin" | indent
+  done
 
   info '> asdf install'
   cd ~ && asdf install
