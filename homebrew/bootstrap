@@ -6,13 +6,13 @@ cd "$(dirname "$0")/.."
 DOTFILES_ROOT=$(pwd -P)
 source "$DOTFILES_ROOT/script/utils"
 
-if [[ $(command -v brew) == "" ]]; then
+if ! [ -x "$(command -v brew)" ]; then
   info '> install brew'
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   source "$DOTFILES_ROOT/homebrew/config.zsh"
 fi
 
-if [[ -x $(command -v brew) ]]; then
+if [ -x "$(command -v brew)" ]; then
   info '> brew update'
   brew update
 

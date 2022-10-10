@@ -9,9 +9,19 @@ source "$DOTFILES_ROOT/script/utils"
 CODE_VOLUME_NAME="Repositories"
 CODE_SYMLINK_NAME="Repos"
 
-if ! [[ -d "/Volumes/$CODE_VOLUME_NAME" ]]; then
+if ! [ -d "/Volumes/$CODE_VOLUME_NAME" ]; then
   info '> create repositories volume'
-  diskutil apfs addVolume disk1 "Case-sensitive APFS" $CODE_VOLUME_NAME -passprompt
+
+  diskutil list
+
+  user '> which disk should the volume be created on?'
+  read -r -e disk_name
+
+  if [ "$disk_name" == "" ]; then
+    fail '> disk name must be provided'
+  fi
+
+  diskutil apfs addVolume "$disk_name" "Case-sensitive APFS" $CODE_VOLUME_NAME -passprompt
 fi
 
 if ! [ -L "$HOME/Repos" ]; then

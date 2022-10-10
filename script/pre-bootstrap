@@ -18,12 +18,13 @@ run_pre_bootstraps() {
   success '> pre-bootstrap'
 }
 
-mkdir -p $DOTFILES_ROOT/downloads
+mkdir -p "$DOTFILES_ROOT/downloads"
 
 run_pre_bootstraps
 
 if [[ -f "$HOME/Repos/dotfiles" ]]; then
   mv "$DOTFILES_ROOT" "$HOME/Repos"
+  cd "$HOME/Repos/dotfiles"
 fi
 
 cd "$HOME/Repos/dotfiles"

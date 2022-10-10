@@ -6,14 +6,14 @@ cd "$(dirname "$0")/.."
 DOTFILES_ROOT=$(pwd -P)
 source "$DOTFILES_ROOT/script/utils"
 
-if [[ -f "$HOME/.asdf" ]]; then
+if [ -f "$HOME/.asdf" ]; then
   info '> asdf clone'
-  git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.8.1
+  git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.10.2
   source "$DOTFILES_ROOT/asdf/config.zsh"
   success '> asdf cloned & loaded'
 fi
 
-if [[ -x $(command -v asdf) ]]; then
+if [ -x "$(command -v asdf)" ]; then
   info '> asdf plugin add nodejs'
   asdf plugin add nodejs | indent
   bash -c '${ASDF_DATA_DIR:=$HOME/.asdf}/plugins/nodejs/bin/import-release-team-keyring'
@@ -26,5 +26,5 @@ if [[ -x $(command -v asdf) ]]; then
 
   success '> asdf'
 else
-  fail '> asdf'
+  fail '> asdf not found'
 fi

@@ -1,20 +1,21 @@
-export ZSH=~/.oh-my-zsh
+source "$DOTFILES_ROOT/downloads/antigen.zsh"
 
-ZSH_THEME="vercel"
+# Load the oh-my-zsh's library.
+antigen use oh-my-zsh
 
-# Just update
-DISABLE_UPDATE_PROMPT="true"
+# Bundles from the default repo (robbyrussell's oh-my-zsh).
+antigen bundle git
+antigen bundle command-not-found
 
-# Update zsh every x days
-UPDATE_ZSH_DAYS=7
+# Auto suggestions bundle.
+antigen bundle zsh-users/zsh-autosuggestions
 
-# Don't check for untracked files in git repos
-DISABLE_UNTRACKED_FILES_DIRTY="true"
+# Syntax highlighting bundle.
+antigen bundle zsh-users/zsh-syntax-highlighting
 
-plugins=(
-  git
-  zsh-autosuggestions
-  zsh-syntax-highlighting
-)
+# Load the theme.
+# antigen theme vercel/zsh-theme
+antigen bundle reobin/typewritten@main
 
-source $ZSH/oh-my-zsh.sh
+# Tell Antigen that you're done.
+antigen apply
