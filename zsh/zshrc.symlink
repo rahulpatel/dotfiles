@@ -19,3 +19,7 @@ antigen bundle reobin/typewritten@main
 
 # Tell Antigen that you're done.
 antigen apply
+
+for file in $(find_files 'post-config.zsh'); do
+  source $file
+done
