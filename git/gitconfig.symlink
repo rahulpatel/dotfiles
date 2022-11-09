@@ -1,0 +1,28 @@
+[core]
+  excludesfile = ~/.gitignore
+  editor = nano
+
+[init]
+	defaultBranch = main
+
+[fetch]
+  prune = true
+
+[help]
+	autocorrect = 1
+
+[merge]
+	log = true
+
+[push]
+  default = simple
+
+[pull]
+  ff = only
+
+[apply]
+	whitespace = fix
+
+[user]
+  name = Rahul Patel
+  email = rahulpatel@users.noreply.github.com

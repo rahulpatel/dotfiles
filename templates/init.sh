@@ -19,7 +19,11 @@ fi
 cd "$(dirname "$0")"
 
 main() {
+    echo "ℹ️ <script name>"
+
     echo do awesome stuff
+
+    echo "✅ <script name>"
 }
 
 main "$@"

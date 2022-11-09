@@ -1,16 +1,35 @@
-source "$DOTFILES_ROOT/downloads/antigen.zsh"
+#!/usr/bin/env zsh
 
-# Load the oh-my-zsh's library.
+export PROJECTS_ROOT="$HOME/Repos"
+export DOTFILES_ROOT="$HOME/.dotfiles"
+
+if [[ -f "$HOME/.localrc" ]]; then
+  source "$HOME/.localrc"
+fi
+
+for file in $(bash "$DOTFILES_ROOT/lib/find.sh" "config.sh"); do
+  source "$file"
+done
+
+for file in $(bash "$DOTFILES_ROOT/lib/find.sh" "completion.sh"); do
+  source "$file"
+done
+
+for file in $(bash "$DOTFILES_ROOT/lib/find.sh" "alias.sh"); do
+  source "$file"
+done
+
+# oh-my-zsh config
+zstyle ':omz:update' mode auto
+
+# Load the oh-my-zsh library.
 antigen use oh-my-zsh
 
 # Bundles from the default repo (robbyrussell's oh-my-zsh).
 antigen bundle git
 antigen bundle command-not-found
 
-# Auto suggestions bundle.
 antigen bundle zsh-users/zsh-autosuggestions
-
-# Syntax highlighting bundle.
 antigen bundle zsh-users/zsh-syntax-highlighting
 
 # Load the theme.
@@ -19,7 +38,3 @@ antigen bundle reobin/typewritten@main
 
 # Tell Antigen that you're done.
 antigen apply
-
-for file in $(find_files 'post-config.zsh'); do
-  source $file
-done

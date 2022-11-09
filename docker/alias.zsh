@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 function docker-nuke() {
   docker kill $(docker ps -q)
   docker system prune -a

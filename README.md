@@ -1,41 +1,32 @@
 # Dotfiles
 
-Run `xcode-select --install` then run the following...
+## Getting Started
 
 ```bash
-cd /tmp
-curl -LO https://github.com/rahulpatel/dotfiles/archive/master.zip
-unzip master.zip
-cd ./dotfiles-master
-script/pre-bootstrap
-script/bootstrap
-
-# Script will inform you to open a new terminal tab and cd into ~/Repos/dotfiles
-script/post-bootstrap
+xcode-select --install
+git clone https://github.com/rahulpatel/dotfiles.git ~/.dotfiles
+cd ~/.dotfiles
+./init.sh
 ```
+## Scripts
 
-## Themes
-- Palenight
-  - [Code](https://marketplace.visualstudio.com/items?itemName=Equinusocio.vsc-material-theme)
-  - [iTerm](https://github.com/JonathanSpeek/palenight-iterm2)
-- Light/Night Owl
-  - [Code](https://marketplace.visualstudio.com/items?itemName=sdras.night-owl)
-  - [iTerm](https://github.com/nickcernis/iterm2-night-owl)
+### Adding a new `init` script
 
+1. Create a folder with the name of the tool
+2. Copy and paste `templates/init.sh` into the folder you created
+3. Write the required commands in the `main()` function of the script
+4. Add a call to the script to the root `/init.sh` script
 
-## Custom Functions
+### Adding a new `config`
 
-### c <repo>
-`cd` directly into `$PROJECTS/<repo>` if `repo` is provided, else it'll `cd` into `$PROJECTS`. This function has auto-complete.
+1. Create a folder with the name of the tool
+2. Copy and paste `templates/config.sh` into the folder you created
+3. Add the relevant configuration into the `config.sh` file
 
-### cgo <repo>
-`cd` directly into `$PROJECTS/go/src/github.com/rahulpatel`. This function has auto-complete.
+The newly created `config.sh` will be automatically loaded by `.zshrc`.
 
-### extract <file>
-Extract any archive without having to remember which command you need to run.
+### Adding a new `completion`
 
-### kill-port <port>
-Kill the process running on `<port>`.
-
-### show-port <port>
-Show the process running on `<port>`.
+1. Create a folder with the name of the tool
+2. Copy and paste `templates/completion.sh` into the folder you created
+3. Add the relevant completion commands into the `completion.sh` file

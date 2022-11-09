@@ -1,3 +1,14 @@
+[alias]
+  # Rebase workflow
+  mainbranch = "!git remote show origin | sed -n '/HEAD branch/s/.*: //p'"
+  sync = "!git pull origin $(git mainbranch) --rebase"
+  update = "!git pull origin $(git rev-parse --abbrev-ref HEAD) --rebase"
+  squash = "!git rebase -v -i $(git mainbranch)"
+  publish = push origin HEAD --force-with-lease  --force-if-includes
+
+[apply]
+	whitespace = fix
+
 [core]
   excludesfile = ~/.gitignore
   editor = nano
@@ -11,17 +22,11 @@
 [help]
 	autocorrect = 1
 
-[merge]
-	log = true
-
 [push]
-  default = simple
+  default = current
 
-[pull]
-  ff = only
-
-[apply]
-	whitespace = fix
+[remote]
+  pushDefault = origin
 
 [user]
   name = {AUTHOR_NAME}

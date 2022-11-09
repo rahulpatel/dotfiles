@@ -1,5 +1,2 @@
-gitconfig.symlink
-downloads/*
-!downloads/Monokai Pro (Filter Octagon).itermcolors
-fastlane/
-projects/
+downloads
+git/gitconfig.symlink
