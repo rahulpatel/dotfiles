@@ -28,7 +28,7 @@ symlink_files() {
         local destination=""
         destination="$HOME/.$(basename "${file%.*}")"
 
-        if [[ -L "$destination" ]]; then
+        if [[ -f "$destination" ]]; then
             rm "$destination"
         fi
 
@@ -48,6 +48,10 @@ main() {
     echo ""
 
     echo ""
+    symlink_files
+    echo ""
+
+    echo ""
     bash "$PWD/asdf/init.sh"
     echo ""
 
@@ -57,10 +61,6 @@ main() {
 
     echo ""
     bash "$PWD/git/init.sh"
-    echo ""
-
-    echo ""
-    symlink_files
     echo ""
 
     echo '✅ dotfiles'

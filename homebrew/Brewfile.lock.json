@@ -281,7 +281,7 @@
     },
     "tap": {
       "homebrew/cask": {
-        "revision": "e4db733ee0c6b915c2a99996973f7bd724f88863"
+        "revision": "1c6a8142ee477a6a4df728d18a3bc0b3ed06a57e"
       },
       "homebrew/cask-fonts": {
         "revision": "9d132bd26dbbabf161aa29511c2f2358815d4f98"
@@ -479,6 +479,14 @@
         "CLT": "14.0.0.0.1.1661618636",
         "Xcode": "14.1",
         "macOS": "12.6"
+      },
+      "ventura": {
+        "HOMEBREW_VERSION": "3.6.10",
+        "HOMEBREW_PREFIX": "/opt/homebrew",
+        "Homebrew/homebrew-core": "12cb55611f0884a68921be5a0badf29b2b0e3f48",
+        "CLT": "14.1.0.0.1.1666437224",
+        "Xcode": "14.1",
+        "macOS": "13.0.1"
       }
     }
   }

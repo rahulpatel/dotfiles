@@ -20,11 +20,11 @@ main() {
     required_plugins=$(awk <"$PWD/tool-versions.symlink" '{ print $1 }')
 
     local installed_plugins=""
-    installed_plugins=$(asdf plugin list)
+    installed_plugins=$(asdf plugin list || echo "")
 
     for plugin in $required_plugins; do
         local filtered_installed_plugin=""
-        filtered_installed_plugin=$(echo "$installed_plugins" | grep "$plugin")
+        filtered_installed_plugin=$(echo "$installed_plugins" | grep "$plugin" || echo "")
 
         if [[ "$plugin" != "$filtered_installed_plugin" ]]; then
             asdf plugin add "$plugin"
