@@ -21,6 +21,8 @@ for file in $(bash "$DOTFILES_ROOT/lib/find.sh" "alias.sh"); do
   source "$file"
 done
 
+source "$DOTFILES_ROOT/prompts/vercel.zsh"
+
 # oh-my-zsh config
 zstyle ':omz:update' mode auto
 
@@ -36,7 +38,7 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 
 # Load the theme.
 # antigen theme vercel/zsh-theme
-antigen bundle reobin/typewritten@main
+# antigen bundle reobin/typewritten@main
 
 # Tell Antigen that you're done.
 antigen apply
