@@ -19,21 +19,14 @@ fi
 cd "$(dirname "$0")"
 
 symlink_files() {
-    echo "> symlink files"
+    echo "ℹ️ symlink files"
 
     local files_to_symlink=""
     files_to_symlink=$(bash "$PWD/lib/find.sh" "*.symlink")
 
-    for file in $files_to_symlink; do
-        local destination=""
-        destination="$HOME/.$(basename "${file%.*}")"
+    bash "$PWD/lib/symlink.sh $files_to_symlink"
 
-        if [[ -f "$destination" ]]; then
-            rm "$destination"
-        fi
-
-        ln -s "$file" "$destination"
-    done
+    echo "✅ symlinked files"
 }
 
 main() {
@@ -48,6 +41,10 @@ main() {
     echo ""
 
     echo ""
+    bash "$PWD/git/init.sh"
+    echo ""
+
+    echo ""
     symlink_files
     echo ""
 
@@ -57,10 +54,6 @@ main() {
 
     echo ""
     bash "$PWD/zsh/init.sh"
-    echo ""
-
-    echo ""
-    bash "$PWD/git/init.sh"
     echo ""
 
     echo '✅ dotfiles'
