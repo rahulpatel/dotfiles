@@ -10,7 +10,7 @@ fi
 cd "$(dirname "$0")"
 
 main() {
-    echo "ℹ️ zsh"
+    echo "ℹ️  zsh"
 
     if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
         sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"

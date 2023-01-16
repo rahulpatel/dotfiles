@@ -10,7 +10,7 @@ fi
 cd "$(dirname "$0")"
 
 main() {
-    echo "ℹ️ macos"
+    echo "ℹ️  macos"
 
     local repo_volume_name="Repositories"
     local repo_symlink_name="Repos"

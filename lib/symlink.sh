@@ -10,18 +10,9 @@ fi
 cd "$(dirname "$0")"
 
 main() {
-    echo "> symlink files"
-
-    for file in "$@"; do
-        local destination=""
-        destination="$HOME/.$(basename "${file%.*}")"
-
-        if [[ -f "$destination" ]]; then
-            rm "$destination"
-        fi
-
-        ln -s "$file" "$destination"
-    done
+    local destination=""
+    destination="$HOME/.$(basename "${1%.*}")"
+    ln -sf "$1" "$destination"
 }
 
 main "$@"

@@ -19,18 +19,20 @@ fi
 cd "$(dirname "$0")"
 
 symlink_files() {
-    echo "ℹ️ symlink files"
+    echo "ℹ️  symlink files"
 
     local files_to_symlink=""
     files_to_symlink=$(bash "$PWD/lib/find.sh" "*.symlink")
 
-    bash "$PWD/lib/symlink.sh $files_to_symlink"
+    for file in $files_to_symlink; do
+        bash "$PWD/lib/symlink.sh" "$file"
+    done
 
     echo "✅ symlinked files"
 }
 
 main() {
-    echo 'ℹ️ dotfiles'
+    echo 'ℹ️  dotfiles'
 
     echo ""
     bash "$PWD/macos/init.sh"

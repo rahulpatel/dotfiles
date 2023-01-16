@@ -10,7 +10,7 @@ fi
 cd "$(dirname "$0")"
 
 main() {
-    echo "ℹ️ asdf"
+    echo "ℹ️  asdf"
 
     if [[ ! -x "$(command -v asdf)" ]]; then
         source "$PWD/config.sh"

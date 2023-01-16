@@ -10,7 +10,7 @@ fi
 cd "$(dirname "$0")"
 
 main() {
-    echo "ℹ️ homebrew"
+    echo "ℹ️  homebrew"
 
     if [[ ! -x "$(command -v brew)" ]]; then
         /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
