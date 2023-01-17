@@ -33,7 +33,7 @@ Temporary Items
 
 # It's better to unpack these files and commit the raw source because git has its own built in compression methods.
 *.7z
-*.jar
+# *.jar -- Disabled due to react-native
 *.rar
 *.zip
 *.gz
@@ -80,6 +80,8 @@ Temporary Items
 !.vscode/launch.json
 !.vscode/extensions.json
 *.code-workspace
+
+
 
 # Local History for Visual Studio Code
 .history/
