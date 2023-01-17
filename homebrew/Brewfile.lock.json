@@ -296,10 +296,10 @@
     },
     "tap": {
       "homebrew/cask": {
-        "revision": "ca0cc23ef244c939c609c8ab1c850c0013a5653f"
+        "revision": "88528ce0f3fa58c9ea000d8f8e4a53ad3900b447"
       },
       "homebrew/cask-fonts": {
-        "revision": "ea84fe986f222730527278fb6afa84c4809be411"
+        "revision": "b2677160f4d588bf68bb55ee71744913f2de59f2"
       }
     },
     "cask": {
@@ -358,7 +358,7 @@
         }
       },
       "font-jetbrains-mono": {
-        "version": "2.242",
+        "version": "2.304",
         "options": {
           "full_name": "font-jetbrains-mono",
           "args": {
@@ -516,10 +516,10 @@
       "ventura": {
         "HOMEBREW_VERSION": "3.6.18",
         "HOMEBREW_PREFIX": "/opt/homebrew",
-        "Homebrew/homebrew-core": "1f52c5549d0d7b407aeebfde6354f45a85a849de",
-        "CLT": "14.1.0.0.1.1666437224",
+        "Homebrew/homebrew-core": "eebdca9e02411f2ff601ddc9d382f6b6eb3463bb",
+        "CLT": "14.2.0.0.1.1668646533",
         "Xcode": "14.2",
-        "macOS": "13.0.1"
+        "macOS": "13.1"
       }
     }
   }
