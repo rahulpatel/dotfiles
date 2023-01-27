@@ -17,7 +17,7 @@ for file in $(bash "$DOTFILES_ROOT/lib/find.sh" "completion.sh"); do
   source "$file"
 done
 
-for file in $(bash "$DOTFILES_ROOT/lib/find.sh" "alias.sh"); do
+for file in $(bash "$DOTFILES_ROOT/lib/find.sh" "alias.zsh"); do
   source "$file"
 done
 

@@ -43,6 +43,10 @@ main() {
     echo ""
 
     echo ""
+    bash "$PWD/podman/init.sh"
+    echo ""
+
+    echo ""
     bash "$PWD/git/init.sh"
     echo ""
 
