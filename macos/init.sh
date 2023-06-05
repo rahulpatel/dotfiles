@@ -13,7 +13,7 @@ main() {
     echo "ℹ️  macos"
 
     local repo_volume_name="Repositories"
-    local repo_symlink_name="Repos"
+    local repo_symlink_name="Developer"
 
     local repo_volume_path="/Volumes/$repo_volume_name"
     local repo_symlink_path="$HOME/$repo_symlink_name"
@@ -35,6 +35,7 @@ main() {
     diskutil apfs addVolume "$disk_name" "Case-sensitive APFS" "$repo_volume_name" -passprompt
 
     if [[ ! -L "$repo_symlink_path" ]]; then
+        mkdir "$repo_symlink_path"
         ln -s "$repo_volume_path" "$repo_symlink_path"
     fi
 

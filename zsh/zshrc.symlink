@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-export PROJECTS_ROOT="$HOME/Repos"
+export PROJECTS_ROOT="$HOME/Developer"
 export DOTFILES_ROOT="$HOME/.dotfiles"
 
 if [[ -f "$HOME/.localrc" ]]; then
