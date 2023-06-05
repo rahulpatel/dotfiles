@@ -146,7 +146,7 @@ module.exports = {
         "hyper-pane",
         "hyper-tabs-enhanced",
         "hyper-search",
-        "hyper-alabaster"
+        "hyper-monokai-pro-octagon"
     ],
     // in development, you can create a directory under
     // `~/.hyper_plugins/local/` and include it here
