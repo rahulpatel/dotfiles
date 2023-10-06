@@ -36,8 +36,8 @@ antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-syntax-highlighting
 
 # Load the theme.
-antigen theme vercel/zsh-theme
-# antigen bundle reobin/typewritten@main
+# antigen theme vercel/zsh-theme
+antigen bundle reobin/typewritten@main
 
 # Tell Antigen that you're done.
 antigen apply

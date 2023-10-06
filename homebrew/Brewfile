@@ -1,28 +1,31 @@
 brew "antigen"
-brew "asdf"
 brew "coreutils"
 brew "curl"
 brew "diff-so-fancy"
+brew "docker"
 brew "git"
 brew "jq"
-brew "podman"
-brew "podman-compose"
+brew "pkgxdev/made/pkgx"
+brew "watchman"
 brew "zsh"
 
-tap "homebrew/cask"
-tap "homebrew/cask-fonts"
+tap "homebrew/cask-versions"
 
 cask_args appdir: "/Applications"
 
 cask "1password"
+<<<<<<< Updated upstream
 cask "arc"
+=======
+cask "android-studio"
+cask "brave-browser"
+cask "docker"
+>>>>>>> Stashed changes
 cask "figma"
 cask "font-fira-code"
 cask "font-jetbrains-mono"
 cask "hyper"
-cask "iterm2"
 cask "kap"
-cask "podman-desktop"
 cask "postman"
 cask "private-internet-access"
 cask "quicklook-json"
@@ -31,3 +34,6 @@ cask "slack"
 cask "spotify"
 cask "visual-studio-code"
 cask "zoom"
+
+# JVM for react-native
+cask "zulu11"

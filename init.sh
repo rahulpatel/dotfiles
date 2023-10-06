@@ -43,7 +43,7 @@ main() {
     echo ""
 
     echo ""
-    bash "$PWD/podman/init.sh"
+    bash "$PWD/pkgx/init.sh"
     echo ""
 
     echo ""
@@ -52,10 +52,6 @@ main() {
 
     echo ""
     symlink_files
-    echo ""
-
-    echo ""
-    bash "$PWD/asdf/init.sh"
     echo ""
 
     echo ""

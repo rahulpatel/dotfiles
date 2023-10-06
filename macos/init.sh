@@ -12,6 +12,7 @@ cd "$(dirname "$0")"
 main() {
     echo "ℹ️  macos"
 
+<<<<<<< Updated upstream
     local code_folder_path="$HOME/Developer"
 
     if [[ -d "$code_folder_path" ]]; then
@@ -49,6 +50,15 @@ main() {
     #     mkdir "$repo_symlink_path"
     #     ln -s "$repo_volume_path" "$repo_symlink_path"
     # fi
+=======
+    local repos_folder_path="$HOME/Developer"
+
+    if [[ -d "$repos_folder_path" ]]; then
+        echo "> path \"$repos_folder_path\" already exists"
+    fi
+
+    mkdir "$repos_folder_path"
+>>>>>>> Stashed changes
 
     echo "✅ macos"
 }

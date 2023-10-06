@@ -1,10 +1,9 @@
 #!/usr/bin/env zsh
 
-function docker-nuke() {
+function docker_nuke() {
   docker kill $(docker ps -q)
   docker system prune -a
 }
 
-alias docker="podman"
-alias docker-nuke="docker-nuke"
+alias docker-nuke="docker_nuke"
 alias docker-space="docker system df"
