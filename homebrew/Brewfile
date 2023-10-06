@@ -14,13 +14,9 @@ tap "homebrew/cask-versions"
 cask_args appdir: "/Applications"
 
 cask "1password"
-<<<<<<< Updated upstream
 cask "arc"
-=======
 cask "android-studio"
-cask "brave-browser"
 cask "docker"
->>>>>>> Stashed changes
 cask "figma"
 cask "font-fira-code"
 cask "font-jetbrains-mono"
