@@ -26,7 +26,7 @@ generate_ssh_key() {
     local ssh_config_file="$HOME/.ssh/config"
     if [[ ! -f "$ssh_config_file" ]]; then
         {
-            echo "Host *.github.com"
+            echo "Host github.com"
             echo "  AddKeysToAgent yes"
             echo "  IdentityFile ~/.ssh/github"
         } >>"$ssh_config_file"
