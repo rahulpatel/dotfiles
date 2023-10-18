@@ -14,11 +14,9 @@ main() {
 
     local repos_folder_path="$HOME/Developer"
 
-    if [[ -d "$repos_folder_path" ]]; then
-        echo "> path \"$repos_folder_path\" already exists"
+    if [[ ! -d "$repos_folder_path" ]]; then
+	    mkdir "$repos_folder_path"
     fi
-
-    mkdir "$repos_folder_path"
 
     echo "✅ macos"
 }

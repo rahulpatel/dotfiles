@@ -16,8 +16,6 @@ main() {
     echo "❌ pkgx command not found"
   fi
 
-  eval "$(pkgx integrate)"
-
   pkgx install node
   pkgx install bun
   pkgx install ruby

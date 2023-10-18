@@ -51,11 +51,11 @@ main() {
     echo ""
 
     echo ""
-    symlink_files
+    bash "$PWD/zsh/init.sh"
     echo ""
 
     echo ""
-    bash "$PWD/zsh/init.sh"
+    symlink_files
     echo ""
 
     echo '✅ dotfiles'
