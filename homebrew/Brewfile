@@ -15,7 +15,7 @@ tap "homebrew/cask-versions"
 
 cask_args appdir: "/Applications"
 
-cask "1password"
+cask "1password-beta"
 cask "arc"
 cask "android-studio"
 cask "docker"
