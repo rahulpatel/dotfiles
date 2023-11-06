@@ -40,10 +40,12 @@ main() {
 
     echo ""
     bash "$PWD/homebrew/init.sh"
+    source "$PWD/homebrew/config.sh"
     echo ""
 
     echo ""
     bash "$PWD/pkgx/init.sh"
+    source "$PWD/pkgx/config.sh"
     echo ""
 
     echo ""
@@ -51,11 +53,11 @@ main() {
     echo ""
 
     echo ""
-    bash "$PWD/zsh/init.sh"
+    symlink_files
     echo ""
 
     echo ""
-    symlink_files
+    bash "$PWD/zsh/init.sh"
     echo ""
 
     echo '✅ dotfiles'
