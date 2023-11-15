@@ -17,8 +17,7 @@ main() {
   fi
 
   pkgx install node
-  pkgx install bun
-  pkgx install ruby
+  pkgx install npm
 
   echo "✅ pkgx"
 }
