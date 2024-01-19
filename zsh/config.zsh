@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-# export EDITOR='code'
+export EDITOR=nvim
 
 # Better history (https://coderwall.com/p/jpj_6q/zsh-better-history-searching-with-arrow-keys)
 # autoload -U up-line-or-beginning-search
