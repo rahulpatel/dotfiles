@@ -1,12 +1,21 @@
+# start window and pane indexes at 1
+set -g base-index 1
+set -g pane-base-index 0
+
+# fill window number gaps
+set -g renumber-windows on
+
+# only show the time on the right in the status bar
+set -g status-right '%H:%M'
+
+# extend the session name length
+set -g status-left-length 32
+
 # switch panes using Alt-arrow without prefix
-bind -n M-Left select-pane -L
-bind -n M-Right select-pane -R
-bind -n M-Up select-pane -U
-bind -n M-Down select-pane -D
+# bind -n M-Left select-pane -L
+# bind -n M-Right select-pane -R
+# bind -n M-Up select-pane -U
+# bind -n M-Down select-pane -D
 
 # Enable mouse control
 set -g mouse on
-
-# Fig Tmux Integration: Enabled
-source-file ~/.fig/tmux
-# End of Fig Tmux Integration
