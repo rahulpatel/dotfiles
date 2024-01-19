@@ -21,6 +21,9 @@ for file in $(bash "$DOTFILES_ROOT/lib/find.sh" "alias.zsh"); do
   source "$file"
 done
 
+# bind ctrl+f to auto run function/c
+bindkey -s ^f "c\n"
+
 # oh-my-zsh config
 zstyle ':omz:update' mode auto
 
@@ -37,8 +40,8 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 
 # Load the theme.
 # antigen theme vercel/zsh-theme
-# antigen theme gozilla
-antigen bundle reobin/typewritten@main
+antigen theme gozilla
+# antigen bundle reobin/typewritten@main
 
 # Tell Antigen that you're done.
 antigen apply
