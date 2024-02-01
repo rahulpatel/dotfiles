@@ -42,6 +42,11 @@ generate_ssh_key() {
 main() {
     echo "ℹ️  git"
 
+    if [[ -f "./gitconfig.symlink" ]]; then
+        echo "✅ git"
+        return
+    fi
+
     echo '> github author name'
     read -r -e git_author_name
 
