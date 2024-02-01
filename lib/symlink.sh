@@ -19,7 +19,9 @@ main() {
         destination="$HOME/.$(basename "${1%.*}")"
     fi
 
+    rm "$destination"
     ln -sf "$1" "$destination"
+    echo ">> Linked $1 to $destination"
 }
 
 main "$@"
