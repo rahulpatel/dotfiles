@@ -15,11 +15,15 @@ main() {
  
     if [[ $file_path =~ ^config ]]; then
         destination="$HOME/.${file_path/.symlink}"
+	#mkdir -p $destination
     else
         destination="$HOME/.$(basename "${1%.*}")"
     fi
 
-    rm "$destination"
+    if [[ -z "$destination" ]]; then
+	rm "$destination"
+    fi
+
     ln -sf "$1" "$destination"
     echo ">> Linked $1 to $destination"
 }
