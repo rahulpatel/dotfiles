@@ -43,10 +43,10 @@ main() {
     source "$PWD/homebrew/config.sh"
     echo ""
 
-    echo ""
-    bash "$PWD/pkgx/init.sh"
-    source "$PWD/pkgx/config.sh"
-    echo ""
+    #echo ""
+    #bash "$PWD/pkgx/init.sh"
+    #source "$PWD/pkgx/config.sh"
+    #echo ""
 
     echo ""
     bash "$PWD/git/init.sh"
