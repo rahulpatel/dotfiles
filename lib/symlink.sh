@@ -10,8 +10,15 @@ fi
 cd "$(dirname "$0")"
 
 main() {
+    local file_path=$(echo ${1/$DOTFILES_ROOT\/})
     local destination=""
-    destination="$HOME/.$(basename "${1%.*}")"
+ 
+    if [[ $file_path =~ ^config ]]; then
+        destination="$HOME/.${file_path/.symlink}"
+    else
+        destination="$HOME/.$(basename "${1%.*}")"
+    fi
+
     ln -sf "$1" "$destination"
 }
 
