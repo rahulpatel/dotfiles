@@ -18,7 +18,7 @@ main() {
     fi
 
     brew update
-    brew bundle --file="$PWD/Brewfile"
+    brew bundle --file="$PWD/Brewfile" --no-lock --cleanup
     brew cleanup
 
     echo "✅ homebrew"
