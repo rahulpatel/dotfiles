@@ -11,11 +11,9 @@ set -g status-right '%H:%M'
 # extend the session name length
 set -g status-left-length 32
 
-# switch panes using Alt-arrow without prefix
-# bind -n M-Left select-pane -L
-# bind -n M-Right select-pane -R
-# bind -n M-Up select-pane -U
-# bind -n M-Down select-pane -D
-
 # Enable mouse control
 set -g mouse on
+
+# nvim optimal options
+set-option -sg escape-time 10
+set-option -g focus-events on
