@@ -14,13 +14,13 @@ main() {
     local destination=""
  
     if [[ $file_path =~ ^config ]]; then
+        mkdir -p "$HOME/.config"
         destination="$HOME/.${file_path/.symlink}"
-	#mkdir -p $destination
     else
         destination="$HOME/.$(basename "${1%.*}")"
     fi
 
-    if [[ -z "$destination" ]]; then
+    if [[ -a "$destination" ]]; then
 	rm "$destination"
     fi
 
