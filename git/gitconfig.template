@@ -1,29 +1,23 @@
-[alias]
-  # Rebase workflow
-  mainbranch = "!git remote show origin | sed -n '/HEAD branch/s/.*: //p'"
-  sync = "!git pull origin $(git mainbranch) --rebase"
-  update = "!git pull origin $(git rev-parse --abbrev-ref HEAD) --rebase"
-  squash = "!git rebase -v -i $(git mainbranch)"
-  publish = push origin HEAD --force-with-lease  --force-if-includes
-
 [apply]
-	whitespace = fix
+  whitespace = fix
 
 [core]
   excludesfile = ~/.gitignore
-  editor = nvim
 
 [init]
-	defaultBranch = main
+  defaultBranch = main
 
 [fetch]
   prune = true
 
 [help]
-	autocorrect = 1
+  autocorrect = 1
 
 [push]
   default = current
+
+[rerere]
+  enabled = true
 
 [remote]
   pushDefault = origin
