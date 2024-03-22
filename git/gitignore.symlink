@@ -67,7 +67,6 @@ Temporary Items
 
 # Diff: https://github.com/github/gitignore/blob/master/Global/Diff.gitignore
 
-*.patch
 *.diff
 
 
