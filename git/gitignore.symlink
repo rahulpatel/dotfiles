@@ -84,3 +84,6 @@ Temporary Items
 
 # Local History for Visual Studio Code
 .history/
+
+# Git worktree folder
+worktrees/
