@@ -48,8 +48,8 @@ vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 -- Keep previous search highlighted
 vim.opt.hlsearch = true
 
--- Always show 8 lines above and below current line
-vim.opt.scrolloff = 8
+-- Keep cursor cenetered
+vim.opt.scrolloff = 999
 
 -- True colour support
 vim.opt.termguicolors = true

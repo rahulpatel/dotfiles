@@ -18,8 +18,5 @@ return {
 
     -- Comment code
     require('mini.comment').setup()
-
-    -- Auto trim trailing space
-    require('mini.trailspace').setup()
   end,
 }
