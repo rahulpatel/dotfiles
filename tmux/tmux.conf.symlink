@@ -1,3 +1,6 @@
+# set vi keymaps
+set -g mode-keys vi
+
 # start window and pane indexes at 1
 set -g base-index 1
 set -g pane-base-index 0
@@ -17,3 +20,4 @@ set -g mouse on
 # nvim optimal options
 set-option -sg escape-time 10
 set-option -g focus-events on
+
