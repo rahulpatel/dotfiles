@@ -57,6 +57,9 @@ vim.opt.termguicolors = true
 -- Do not show mode as it is in the status line
 vim.opt.showmode = false
 
+-- Show guide at 80 columns
+vim.opt.colorcolumn = '80'
+
 -- [[ Keymaps ]]
 
 -- Clear search highlights on pressing <Esc> in normal mode
