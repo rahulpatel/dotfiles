@@ -15,8 +15,11 @@ main() {
     local repos_folder_path="$HOME/Developer"
 
     if [[ ! -d "$repos_folder_path" ]]; then
-	    mkdir "$repos_folder_path"
+        mkdir "$repos_folder_path"
     fi
+
+    # Set system defaults
+    source "./defaults.sh"
 
     echo "✅ macos"
 }
