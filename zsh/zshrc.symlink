@@ -39,10 +39,12 @@ antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-syntax-highlighting
 
 # Load the theme.
-antigen theme robbyrussell
+antigen theme refined
+# antigen theme robbyrussell
 # antigen theme vercel/zsh-theme
 # antigen theme gozilla
 # antigen bundle reobin/typewritten@main
+# antigen theme spaceship-prompt/spaceship-prompt
 
 # Tell Antigen that you're done.
 antigen apply
