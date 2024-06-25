@@ -3,21 +3,35 @@ set -g mode-keys vi
 
 # start window and pane indexes at 1
 set -g base-index 1
-set -g pane-base-index 0
+setw -g pane-base-index 0
 
 # fill window number gaps
 set -g renumber-windows on
 
-# only show the time on the right in the status bar
-set -g status-right '%H:%M'
-
-# extend the session name length
-set -g status-left-length 32
+# move status bar to top
+set-option -g status-position top
 
 # Enable mouse control
 set -g mouse on
 
-# nvim optimal options
-set-option -sg escape-time 10
-set-option -g focus-events on
+# plugins
+set -g @plugin 'tmux-plugins/tmux-sensible'
+set -g @plugin 'catppuccin/tmux'
+set -g @plugin 'tmux-plugins/tpm'
 
+# catppuccin
+set -g @catppuccin_flavour "frappe"
+set -g @catppuccin_window_right_separator "█"
+set -g @catppuccin_window_number_position "right"
+set -g @catppuccin_window_middle_separator " | "
+set -g @catppuccin_window_current_text "#W"
+set -g @catppuccin_window_default_fill "none"
+set -g @catppuccin_window_current_fill "all"
+set -g @catppuccin_status_modules_left "session"
+set -g @catppuccin_status_modules_right "date_time"
+set -g @catppuccin_status_left_separator "█"
+set -g @catppuccin_status_right_separator "█"
+set -g @catppuccin_status_fill "all"
+set -g @catppuccin_date_time_text "%Y-%m-%d %H:%M"
+
+run '~/.tmux/plugins/tpm/tpm'
