@@ -21,7 +21,7 @@ main() {
     fi
 
     if [[ -a "$destination" ]]; then
-	rm "$destination"
+	rm -r "$destination"
     fi
 
     ln -sf "$1" "$destination"
