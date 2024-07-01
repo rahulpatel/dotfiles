@@ -16,8 +16,6 @@ main() {
         sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --keep-zshrc
     fi
 
-    omz reload
-
     echo "✅ zsh"
 }
 

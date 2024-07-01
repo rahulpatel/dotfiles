@@ -14,11 +14,11 @@ main() {
 
     if [[ ! -x "$(command -v brew)" ]]; then
         /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-        source "$PWD/config.sh"
+        source "$PWD/homebrew/config.sh"
     fi
 
     brew update
-    brew bundle --file="$PWD/Brewfile" --no-lock --cleanup
+    brew bundle --file="$PWD/homebrew/Brewfile" --no-lock --cleanup
     brew cleanup
 
     echo "✅ homebrew"

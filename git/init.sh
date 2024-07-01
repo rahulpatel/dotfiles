@@ -10,7 +10,7 @@ fi
 cd "$(dirname "$0")"
 
 generate_gitconfig() {
-    sed -e "s/{AUTHOR_NAME}/$1/g" -e "s/{AUTHOR_EMAIL}/$2/g" "$PWD/gitconfig.template" >"$PWD/gitconfig.symlink"
+    sed -e "s/{AUTHOR_NAME}/$1/g" -e "s/{AUTHOR_EMAIL}/$2/g" "$PWD/git/gitconfig.template" >"$PWD/git/gitconfig.symlink"
 }
 
 generate_ssh_key() {
