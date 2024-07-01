@@ -41,7 +41,6 @@ return {
       options = {
         globalstatus = true,
         icons_enabled = true,
-        theme = 'dracula-nvim',
         component_separators = { left = '', right = '' },
         section_separators = { left = '', right = '' },
         disabled_filetypes = { 'alpha', 'dashboard' },
