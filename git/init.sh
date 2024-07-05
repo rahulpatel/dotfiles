@@ -42,7 +42,7 @@ generate_ssh_key() {
 main() {
     echo "ℹ️  git"
 
-    if [[ -f "./gitconfig.symlink" ]]; then
+    if [[ -f "$PWD/git/gitconfig.symlink" ]]; then
         echo "✅ git"
         return
     fi

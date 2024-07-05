@@ -1,4 +1,5 @@
 tap "pkgxdev/made"
+tap "nikitabobko/tap"
 
 brew "antigen"
 brew "aria2"
@@ -26,6 +27,7 @@ tap "homebrew/cask-versions"
 cask_args appdir: "/Applications"
 
 cask "1password-beta"
+cask "aerospace"
 cask "arc"
 cask "android-studio"
 cask "docker"
