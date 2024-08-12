@@ -1,0 +1,13 @@
+# prompt
+sindresorhus/pure
+
+# framework
+getantidote/use-omz
+
+# plugins
+zdharma-continuum/fast-syntax-highlighting kind:defer
+
+# these have to be at the end
+zsh-users/zsh-autosuggestions
+zsh-users/zsh-history-substring-search
+
