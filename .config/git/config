@@ -1,0 +1,11 @@
+[apply]
+  whitespace = fix
+
+[init]
+  defaultBranch = main
+
+[push]
+  default = current
+
+[rerere]
+  enabled = true
