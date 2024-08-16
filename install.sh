@@ -10,12 +10,15 @@ fi
 cd "$(dirname "$0")"
 
 main() {
-    xcode-select --install
-
     local CONFIGDIR="$PWD/.config"
 
+    echo "setup macos"
     /bin/bash "$CONFIGDIR/macos/install.sh"
+
+    echo "setup zsh"
     /bin/bash "$CONFIGDIR/zsh/install.sh"
+
+    echo "setup homebrew"
     /bin/bash "$CONFIGDIR/homebrew/install.sh"
 
     # activate homebrew in this session
@@ -23,7 +26,8 @@ main() {
 
     local install_files=$(find "$CONFIGDIR" -name "install.sh" ! -path "*macos*" ! -path "*homebrew*" ! -path "*zsh*")
     for file in $install_files; do
-       /bin/bash "$file"
+        echo "setup $file"
+        /bin/bash "$file"
     done
 }
 

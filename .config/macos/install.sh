@@ -12,7 +12,7 @@ cd "$(dirname "$0")"
 main() {
     mkdir -p "$HOME/Developer"
 
-    source "$PWD/defaults.sh"
+    /bin/bash "$PWD/defaults.sh"
 }
 
 main "$@"
