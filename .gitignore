@@ -1,3 +1,4 @@
 .DS_STORE
 .config/zsh/antidote
+.config/zsh/plugins.zsh
 lazy-lock.json
