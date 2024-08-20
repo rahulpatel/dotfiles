@@ -1,0 +1,9 @@
+blinking-cursor = true
+theme = 'rose-pine-moon'
+
+[window]
+mode = "Maximized"
+
+[fonts]
+size = 15
+family = "FiraCode Nerd Font Mono"
