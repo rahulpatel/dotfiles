@@ -1,4 +1,3 @@
-tap "pkgxdev/made"
 tap "nikitabobko/tap"
 
 brew "antigen"
@@ -13,7 +12,6 @@ brew "fzf"
 brew "git"
 brew "jq"
 brew "nvim"
-brew "pkgxdev/made/pkgx"
 brew "reattach-to-user-namespace"
 brew "ripgrep"
 brew "stow"

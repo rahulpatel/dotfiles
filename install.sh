@@ -31,6 +31,9 @@ main() {
     done
 
     stow -v .
+
+    echo ""
+    echo "Restart the machine"
 }
 
 main "$@"

@@ -3,3 +3,4 @@
 .config/zsh/plugins.zsh
 .config/zsh/.zsh_history
 .config/homebrew/lazy-lock.json
+.config/tmux/plugins

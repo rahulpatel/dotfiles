@@ -7,3 +7,23 @@ mode = "Maximized"
 [fonts]
 size = 15
 family = "FiraCode Nerd Font Mono"
+
+[fonts.regular]
+family = "FiraCode Nerd Font Mono"
+style = "normal"
+weight = 400
+
+[fonts.bold]
+family = "FiraCode Nerd Font Mono"
+style = "normal"
+weight = 800
+
+[fonts.italic]
+family = "FiraCode Nerd Font Mono"
+style = "italic"
+weight = 400
+
+[fonts.bold-italic]
+family = "FiraCode Nerd Font Mono"
+style = "italic"
+weight = 800
