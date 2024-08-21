@@ -1,4 +1,8 @@
+# Figure out why this keybind doesn't work
 bindkey -s '^f' 'code\n'
+
+# Machine specific env vars
+source "$HOME/.localrc"
 
 # Exports
 export XDG_CONFIG_HOME="$HOME/.config"
