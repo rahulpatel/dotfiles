@@ -1,4 +1,5 @@
 .DS_STORE
 .config/zsh/antidote
 .config/zsh/plugins.zsh
-lazy-lock.json
+.config/zsh/.zsh_history
+.config/homebrew/lazy-lock.json

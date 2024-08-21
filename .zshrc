@@ -1,9 +1,21 @@
-export ZDOTDIR="$HOME/.config/zsh"
+# Exports
+export XDG_CONFIG_HOME="$HOME/.config"
+export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
+export DOTFILES_DIR="$HOME/.dotfiles"
+export PROJECTS_DIR="$HOME/Developer"
 
+# Antidote
 source "$ZDOTDIR/antidote/antidote.zsh"
-source "$HOME/.config/homebrew/config.sh"
-source "$HOME/.config/pkgx/config.sh"
-source "$HOME/.config/golang/config.sh"
-source "$HOME/.config/android/config.sh"
-
 antidote load "$ZDOTDIR/plugins.txt"
+
+# Library configurations
+source "$XDG_CONFIG_HOME/homebrew/config.sh"
+source "$XDG_CONFIG_HOME/pkgx/config.sh"
+source "$XDG_CONFIG_HOME/golang/config.sh"
+source "$XDG_CONFIG_HOME/android/config.sh"
+
+# Find a faster way to do this
+# for file in $(find "$DOTFILES_DIR/.config" -name "config.sh" ! -path "*homebrew*"); do
+# echo $file
+#     source $file
+# done
