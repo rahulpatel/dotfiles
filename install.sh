@@ -29,6 +29,8 @@ main() {
         echo "setup $file"
         /bin/bash "$file"
     done
+
+    stow -v .
 }
 
 main "$@"

@@ -9,3 +9,6 @@
 
 [rerere]
   enabled = true
+[user]
+	name = Rahul Patel
+	email = rahulpatel@users.noreply.github.com
