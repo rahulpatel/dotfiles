@@ -15,8 +15,7 @@ main() {
     echo "setup macos"
     /bin/bash "$CONFIGDIR/macos/install.sh"
 
-    echo "setup zsh"
-    /bin/bash "$CONFIGDIR/zsh/install.sh"
+    stow -v .
 
     echo "setup homebrew"
     /bin/bash "$CONFIGDIR/homebrew/install.sh"
@@ -29,8 +28,6 @@ main() {
         echo "setup $file"
         /bin/bash "$file"
     done
-
-    stow -v .
 
     echo ""
     echo "Restart the machine"

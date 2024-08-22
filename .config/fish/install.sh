@@ -10,7 +10,7 @@ fi
 cd "$(dirname "$0")"
 
 main() {
-    local fish_path=$(brew --prefix fish)
+    local fish_path=/opt/homebrew/bin/fish
     echo "$fish_path" | sudo tee -a /etc/shells
     chsh -s "$fish_path"
 }
