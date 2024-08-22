@@ -1,4 +1,7 @@
 .DS_STORE
+.config/fish/completions
+.config/fish/conf.d
+.config/fish/fish_variables
 .config/zsh/antidote
 .config/zsh/plugins.zsh
 .config/zsh/.zsh_history
