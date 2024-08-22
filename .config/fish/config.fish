@@ -11,7 +11,8 @@ set -Ux DOTFILES_DIR $HOME/.dotfiles
 set -Ux CODE_DIR $HOME/Developer
 
 # configs
-source "$HOME/.config/homebrew/config.sh"
-source "$HOME/.config/asdf/config.fish"
-source "$HOME/.config/android/config.fish"
-source "$HOME/.config/golang/config.fish"
+source $HOME/.config/homebrew/config.sh
+source $HOME/.config/asdf/config.fish
+source $HOME/.config/android/config.fish
+source $HOME/.config/golang/config.fish
+
