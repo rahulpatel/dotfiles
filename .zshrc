@@ -1,5 +1,7 @@
 # Machine specific env vars
-source "$HOME/.profile"
+if [[ -f "$HOME/.profile" ]]; then
+    source "$HOME/.profile"
+fi
 
 # Exports
 export XDG_CONFIG_HOME="$HOME/.config"
