@@ -15,13 +15,14 @@ main() {
     echo "setup macos"
     /bin/bash "$CONFIGDIR/macos/install.sh"
 
-    stow -v .
 
     echo "setup homebrew"
     /bin/bash "$CONFIGDIR/homebrew/install.sh"
 
     # activate homebrew in this session
     source "$PWD/.config/homebrew/config.sh"
+
+    stow -v .
 
     local install_files=$(find "$CONFIGDIR" -name "install.sh" ! -path "*macos*" ! -path "*homebrew*" ! -path "*zsh*")
     for file in $install_files; do
