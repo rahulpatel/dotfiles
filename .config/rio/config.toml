@@ -1,8 +1,5 @@
 blinking-cursor = true
-theme = 'rose-pine-moon'
-
-[window]
-mode = "Maximized"
+theme = 'catppuccin-frappe'
 
 [fonts]
 size = 15
@@ -27,3 +24,7 @@ weight = 400
 family = "FiraCode Nerd Font Mono"
 style = "italic"
 weight = 800
+
+[navigation]
+mode = "NativeTab"
+
