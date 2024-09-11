@@ -11,9 +11,13 @@ function code
 
     set name (basename $selected | tr . _)
 
+    if test -z (pgrep tmux) || not tmux has-session -t $name 2>/dev/null
+        tmux new-session -ds $name -c $selected
+    end
+
     if test -z $TMUX
-        tmux attach-session -t $name 2>/dev/null || tmux new-session -s $name -c $selected
+        tmux attach-session -t $name
     else
-        tmux switch-client -t $name 2>/dev/null || tmux new-session -s $name -c $selected
+        tmux switch-client -t $name
     end
 end
