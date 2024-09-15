@@ -1,0 +1,122 @@
+# You can use it to add commands that run after login to macOS user session.
+# 'start-at-login' needs to be 'true' for 'after-login-command' to work
+# Available commands: https://nikitabobko.github.io/AeroSpace/commands
+after-login-command = []
+
+# You can use it to add commands that run after AeroSpace startup.
+# 'after-startup-command' is run after 'after-login-command'
+# Available commands : https://nikitabobko.github.io/AeroSpace/commands
+after-startup-command = []
+
+# Start AeroSpace at login
+start-at-login = true
+
+accordion-padding = 8
+
+[gaps]
+inner.horizontal = 8
+inner.vertical =   8
+outer.left =       8
+outer.bottom =     8
+outer.top =        8
+outer.right =      8
+
+[mode.main.binding]
+alt-space = ['mode move']
+
+[mode.move.binding]
+space = ['mode main']
+esc = ['mode main']
+backtick = ['reload-config', 'mode main']
+
+#
+# Layout
+#
+a = ['layout accordion']
+t = ['layout tiles']
+
+#
+# Navigation
+#
+
+h = ['focus left']
+j = ['focus down']
+k = ['focus up']
+l = ['focus right']
+
+1 = 'workspace 1'
+2 = 'workspace 2'
+3 = 'workspace 3'
+4 = 'workspace 4'
+5 = 'workspace 5'
+6 = 'workspace 6'
+7 = 'workspace 7'
+8 = 'workspace 8'
+9 = 'workspace 9'
+
+tab = 'workspace-back-and-forth'
+
+#
+# Moving
+#
+
+shift-h = ['move left']
+shift-j = ['move down']
+shift-k = ['move up']
+shift-l = ['move right']
+
+alt-h = 'join-with left'
+alt-j = 'join-with down'
+alt-k = 'join-with up'
+alt-l = 'join-with right'
+
+shift-1 = 'move-node-to-workspace 1'
+shift-2 = 'move-node-to-workspace 2'
+shift-3 = 'move-node-to-workspace 3'
+shift-4 = 'move-node-to-workspace 4'
+shift-5 = 'move-node-to-workspace 5'
+shift-6 = 'move-node-to-workspace 6'
+shift-7 = 'move-node-to-workspace 7'
+shift-8 = 'move-node-to-workspace 8'
+shift-9 = 'move-node-to-workspace 9'
+
+#
+# Resizing
+#
+
+m = ['fullscreen']
+minus = 'resize smart -64'
+equal = 'resize smart +64'
+shift-minus = 'resize smart -128'
+shift-equal = 'resize smart +128'
+
+#
+# Other
+#
+
+r = ['flatten-workspace-tree']
+
+#
+# App Placements
+#
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'Ghostty|iTerm|Zed|Xcode|Simulator'
+run = ['layout tiling', 'move-node-to-workspace 1']
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'Arc|Chrome|Zen'
+run = ['layout tiling', 'move-node-to-workspace 2']
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'Slack|Teams|Zoom'
+run = ['layout tiling', 'move-node-to-workspace 3']
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'Obsidian'
+run = ['layout tiling', 'move-node-to-workspace 4']
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'Spotify|Finder'
+run = ['layout tiling', 'move-node-to-workspace 5']
+

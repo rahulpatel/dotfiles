@@ -1,4 +1,7 @@
-downloads
-git/gitconfig.symlink
-lazy-lock.json
-Brewfile.lock.json
+.DS_STORE
+.config/fish/completions
+.config/fish/conf.d
+.config/fish/fish_variables
+.config/fish/themes
+.config/nvim/lazy-lock.json
+.config/tmux/plugins

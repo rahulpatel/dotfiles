@@ -1,0 +1,17 @@
+# vim: syntax=toml
+
+auto-update = download
+
+font-family = Fira Code
+font-size = 15
+
+mouse-hide-while-typing = true
+
+quit-after-last-window-closed = true
+
+theme = catppuccin-frappe
+
+title = Ghostty 👻
+
+window-padding-balance = true
+
