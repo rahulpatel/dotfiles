@@ -113,10 +113,10 @@ if.app-name-regex-substring = 'Slack|Teams|Zoom'
 run = ['layout tiling', 'move-node-to-workspace 3']
 
 [[on-window-detected]]
-if.app-name-regex-substring = 'Spotify'
+if.app-name-regex-substring = 'Obsidian'
 run = ['layout tiling', 'move-node-to-workspace 4']
 
 [[on-window-detected]]
-if.app-name-regex-substring = 'Finder'
+if.app-name-regex-substring = 'Spotify|Finder'
 run = ['layout tiling', 'move-node-to-workspace 5']
 
