@@ -2,8 +2,8 @@
 
 auto-update = download
 
-font-family = Monaco
-font-size = 13
+font-family = Fira Code
+font-size = 15
 
 mouse-hide-while-typing = true
 
