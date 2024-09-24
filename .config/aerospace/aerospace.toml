@@ -11,18 +11,25 @@ after-startup-command = []
 # Start AeroSpace at login
 start-at-login = true
 
-accordion-padding = 8
+accordion-padding = 0
 
 [gaps]
 inner.horizontal = 8
-inner.vertical =   8
-outer.left =       8
-outer.bottom =     8
-outer.top =        8
-outer.right =      8
+inner.vertical = 8
+outer.left = 8
+outer.bottom = 8
+outer.top = 8
+outer.right = 8
 
 [mode.main.binding]
 alt-space = ['mode move']
+
+#
+# Disable annoying MacOS shortcuts
+#
+cmd-h = []       # Disable "hide application"
+cmd-alt-h = []   # Disable "hide others"
+cmd-shift-m = [] # Disable "open terminal"
 
 [mode.move.binding]
 space = ['mode main']
@@ -85,8 +92,8 @@ shift-9 = 'move-node-to-workspace 9'
 #
 
 m = ['fullscreen']
-minus = 'resize smart -64'
-equal = 'resize smart +64'
+minus = 'resize smart -8'
+equal = 'resize smart +8'
 shift-minus = 'resize smart -128'
 shift-equal = 'resize smart +128'
 
@@ -113,10 +120,9 @@ if.app-name-regex-substring = 'Slack|Teams|Zoom'
 run = ['layout tiling', 'move-node-to-workspace 3']
 
 [[on-window-detected]]
-if.app-name-regex-substring = 'Obsidian'
+if.app-name-regex-substring = 'Obsidian|Figma'
 run = ['layout tiling', 'move-node-to-workspace 4']
 
 [[on-window-detected]]
 if.app-name-regex-substring = 'Spotify|Finder'
 run = ['layout tiling', 'move-node-to-workspace 5']
-
