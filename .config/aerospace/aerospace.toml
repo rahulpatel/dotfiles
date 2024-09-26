@@ -14,12 +14,12 @@ start-at-login = true
 accordion-padding = 0
 
 [gaps]
-inner.horizontal = 8
-inner.vertical = 8
-outer.left = 8
-outer.bottom = 8
-outer.top = 8
-outer.right = 8
+inner.horizontal = 10
+inner.vertical = 10
+outer.left = 10
+outer.bottom = 10
+outer.top = 10
+outer.right = 10
 
 [mode.main.binding]
 alt-space = ['mode move']
@@ -92,10 +92,10 @@ shift-9 = 'move-node-to-workspace 9'
 #
 
 m = ['fullscreen']
-minus = 'resize smart -8'
-equal = 'resize smart +8'
-shift-minus = 'resize smart -128'
-shift-equal = 'resize smart +128'
+minus = 'resize smart -10'
+equal = 'resize smart +10'
+shift-minus = 'resize smart -50'
+shift-equal = 'resize smart +50'
 
 #
 # Other
