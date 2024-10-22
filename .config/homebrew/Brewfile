@@ -20,6 +20,7 @@ brew "tmux"
 brew "tree-sitter"
 brew "watchman"
 brew "xcodes"
+brew "yq"
 brew "zsh"
 
 tap "homebrew/cask-fonts"
