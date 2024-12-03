@@ -17,7 +17,6 @@ main() {
 
   brew update
   brew bundle --file="$PWD/Brewfile" --no-lock
-  HOMEBREW_NO_AUTO_UPDATE=1 HOMEBREW_NO_INSTALL_FROM_API=1 brew install --cask "$PWD/casks/ghostty.rb"
 }
 
 main "$@"
