@@ -11,5 +11,13 @@ function code
 
     set name (basename $selected | tr . _)
 
-    tmux new-session -As $name -c $selected
+    if not tmux has-session -t $name 2>/dev/null
+        tmux new-session -d -s $name -c $selected
+    end
+
+    if test -z $TMUX
+        tmux attach-session -t $name
+    else
+        tmux switch-client -t $name
+    end
 end
