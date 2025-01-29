@@ -22,7 +22,6 @@ outer.top = 10
 outer.right = 10
 
 [mode.main.binding]
-alt-space = ['mode move']
 
 #
 # Disable annoying MacOS shortcuts
@@ -31,77 +30,137 @@ cmd-h = []       # Disable "hide application"
 cmd-alt-h = []   # Disable "hide others"
 cmd-shift-m = [] # Disable "open terminal"
 
-[mode.move.binding]
-space = ['mode main']
-esc = ['mode main']
-backtick = ['reload-config', 'mode main']
+# i3 wraps focus by default
+alt-j = 'focus --boundaries-action wrap-around-the-workspace left'
+alt-k = 'focus --boundaries-action wrap-around-the-workspace down'
+alt-l = 'focus --boundaries-action wrap-around-the-workspace up'
+alt-semicolon = 'focus --boundaries-action wrap-around-the-workspace right'
 
+alt-shift-j = 'move left'
+alt-shift-k = 'move down'
+alt-shift-l = 'move up'
+alt-shift-semicolon = 'move right'
+
+# Consider using 'join-with' command as a 'split' replacement if you want to enable normalizations
+alt-h = 'join-with right'
+alt-v = 'join-with down'
+
+alt-f = 'fullscreen'
+
+alt-s = 'layout v_accordion'               # 'layout stacking' in i3
+alt-w = 'layout h_accordion'               # 'layout tabbed' in i3
+alt-e = 'layout tiles horizontal vertical' # 'layout toggle split' in i3
+
+alt-shift-space = 'layout floating tiling' # 'floating toggle' in i3
+
+alt-1 = 'workspace 1'
+alt-2 = 'workspace 2'
+alt-3 = 'workspace 3'
+alt-4 = 'workspace 4'
+alt-5 = 'workspace 5'
+alt-6 = 'workspace 6'
+alt-7 = 'workspace 7'
+alt-8 = 'workspace 8'
+alt-9 = 'workspace 9'
+alt-0 = 'workspace 10'
+
+alt-shift-1 = 'move-node-to-workspace 1'
+alt-shift-2 = 'move-node-to-workspace 2'
+alt-shift-3 = 'move-node-to-workspace 3'
+alt-shift-4 = 'move-node-to-workspace 4'
+alt-shift-5 = 'move-node-to-workspace 5'
+alt-shift-6 = 'move-node-to-workspace 6'
+alt-shift-7 = 'move-node-to-workspace 7'
+alt-shift-8 = 'move-node-to-workspace 8'
+alt-shift-9 = 'move-node-to-workspace 9'
+alt-shift-0 = 'move-node-to-workspace 10'
+
+alt-shift-c = 'reload-config'
+
+alt-r = 'mode resize'
+
+[mode.resize.binding]
+h = 'resize width -50'
+j = 'resize height +50'
+k = 'resize height -50'
+l = 'resize width +50'
+enter = 'mode main'
+esc = 'mode main'
+
+# alt-space = ['mode move']
+
+
+# [mode.move.binding]
+# space = ['mode main']
+# esc = ['mode main']
+# backtick = ['reload-config', 'mode main']
 #
-# Layout
+# #
+# # Layout
+# #
+# a = ['layout accordion']
+# t = ['layout tiles']
 #
-a = ['layout accordion']
-t = ['layout tiles']
-
+# #
+# # Navigation
+# #
 #
-# Navigation
+# h = ['focus left']
+# j = ['focus down']
+# k = ['focus up']
+# l = ['focus right']
 #
-
-h = ['focus left']
-j = ['focus down']
-k = ['focus up']
-l = ['focus right']
-
-1 = 'workspace 1'
-2 = 'workspace 2'
-3 = 'workspace 3'
-4 = 'workspace 4'
-5 = 'workspace 5'
-6 = 'workspace 6'
-7 = 'workspace 7'
-8 = 'workspace 8'
-9 = 'workspace 9'
-
-tab = 'workspace-back-and-forth'
-
+# 1 = 'workspace 1'
+# 2 = 'workspace 2'
+# 3 = 'workspace 3'
+# 4 = 'workspace 4'
+# 5 = 'workspace 5'
+# 6 = 'workspace 6'
+# 7 = 'workspace 7'
+# 8 = 'workspace 8'
+# 9 = 'workspace 9'
 #
-# Moving
+# tab = 'workspace-back-and-forth'
 #
-
-shift-h = ['move left']
-shift-j = ['move down']
-shift-k = ['move up']
-shift-l = ['move right']
-
-alt-h = 'join-with left'
-alt-j = 'join-with down'
-alt-k = 'join-with up'
-alt-l = 'join-with right'
-
-shift-1 = 'move-node-to-workspace 1'
-shift-2 = 'move-node-to-workspace 2'
-shift-3 = 'move-node-to-workspace 3'
-shift-4 = 'move-node-to-workspace 4'
-shift-5 = 'move-node-to-workspace 5'
-shift-6 = 'move-node-to-workspace 6'
-shift-7 = 'move-node-to-workspace 7'
-shift-8 = 'move-node-to-workspace 8'
-shift-9 = 'move-node-to-workspace 9'
-
+# #
+# # Moving
+# #
 #
-# Resizing
+# shift-h = ['move left']
+# shift-j = ['move down']
+# shift-k = ['move up']
+# shift-l = ['move right']
 #
-
-m = ['fullscreen']
-minus = 'resize smart -10'
-equal = 'resize smart +10'
-shift-minus = 'resize smart -50'
-shift-equal = 'resize smart +50'
-
+# alt-h = 'join-with left'
+# alt-j = 'join-with down'
+# alt-k = 'join-with up'
+# alt-l = 'join-with right'
 #
-# Other
+# shift-1 = 'move-node-to-workspace 1'
+# shift-2 = 'move-node-to-workspace 2'
+# shift-3 = 'move-node-to-workspace 3'
+# shift-4 = 'move-node-to-workspace 4'
+# shift-5 = 'move-node-to-workspace 5'
+# shift-6 = 'move-node-to-workspace 6'
+# shift-7 = 'move-node-to-workspace 7'
+# shift-8 = 'move-node-to-workspace 8'
+# shift-9 = 'move-node-to-workspace 9'
 #
-
-r = ['flatten-workspace-tree']
+# #
+# # Resizing
+# #
+#
+# m = ['fullscreen']
+# minus = 'resize smart -10'
+# equal = 'resize smart +10'
+# shift-minus = 'resize smart -50'
+# shift-equal = 'resize smart +50'
+#
+# #
+# # Other
+# #
+#
+# r = ['flatten-workspace-tree']
 
 #
 # App Placements
