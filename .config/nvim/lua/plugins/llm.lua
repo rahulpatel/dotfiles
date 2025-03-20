@@ -1,12 +1,19 @@
-return {}
--- return {
---   {
---     "huggingface/llm.nvim",
---     opts = {
---       backend = "ollama",
---       model = "deepseek-r1:14b",
---       tls_skip_verify_insecure = true,
---       url = "http://localhost:11434",
---     },
---   },
--- }
+return {
+  -- "huggingface/llm.nvim",
+  -- opts = {
+  --   backend = "ollama",
+  --   model = "starcoder2:15b",
+  --   url = "http://192.168.1.201:11434", -- llm-ls uses "/api/generate"
+  --   tokens_to_clear = { "<|endoftext|>" },
+  --   fim = {
+  --     enabled = true,
+  --     prefix = "<fim_prefix>",
+  --     middle = "<fim_middle>",
+  --     suffix = "<fim_suffix>",
+  --   },
+  --   context_window = 8192,
+  --   lsp = {
+  --     bin_path = vim.api.nvim_call_function("stdpath", { "data" }) .. "/mason/bin/llm-ls",
+  --   },
+  -- },
+}
