@@ -1,14 +1,32 @@
-[apply]
-  whitespace = fix
-
+[branch]
+        sort = -committerdate
+[commit]
+        verbose = true
+[credential]
+	      helper = 
+	      helper = /usr/local/share/gcm-core/git-credential-manager
+[diff]
+        algorithm = histogram
+        colorMoved = plain
+        mnemonicPrefix = true
+        renames = true
 [init]
-  defaultBranch = main
-
+        defaultBranch = main
+[pull]
+        rebase = true
 [push]
-  default = current
-
+        default = simple
+        autoSetupRemote = true
+        followTags = true
+[rebase]
+        autoSquash = true
+        autoStash = true
+        updateRefs = true
 [rerere]
-  enabled = true
+        enabled = true
+        autoupdate = true
+[tag]
+        sort = version:refname
 [user]
-	name = Rahul Patel
-	email = rahulpatel@users.noreply.github.com
+        name = Rahul Patel
+        email = rahulpatel@users.noreply.github.com
