@@ -1,0 +1,2 @@
+-- TODO:
+-- Provide a switcher for Safari profiles
