@@ -6,8 +6,9 @@ cursor-invert-fg-bg = true
 
 cursor-style-blink = true
 
-font-family = Fira Code
-font-style = Light
+# font-family = Fira Code
+font-family = Berkeley Mono
+font-style = Light Condensed
 font-size = 16
 
 mouse-hide-while-typing = true

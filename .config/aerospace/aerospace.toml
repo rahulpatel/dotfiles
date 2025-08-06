@@ -14,12 +14,12 @@ start-at-login = true
 accordion-padding = 0
 
 [gaps]
-inner.horizontal = 10
-inner.vertical = 10
-outer.left = 10
-outer.bottom = 10
-outer.top = 10
-outer.right = 10
+inner.horizontal = 0
+inner.vertical = 0
+outer.left = 0
+outer.bottom = 0
+outer.top = 0
+outer.right = 0
 
 [mode.main.binding]
 
@@ -83,88 +83,8 @@ l = 'resize width +50'
 enter = 'mode main'
 esc = 'mode main'
 
-# alt-space = ['mode move']
-
-
-# [mode.move.binding]
-# space = ['mode main']
-# esc = ['mode main']
-# backtick = ['reload-config', 'mode main']
-#
-# #
-# # Layout
-# #
-# a = ['layout accordion']
-# t = ['layout tiles']
-#
-# #
-# # Navigation
-# #
-#
-# h = ['focus left']
-# j = ['focus down']
-# k = ['focus up']
-# l = ['focus right']
-#
-# 1 = 'workspace 1'
-# 2 = 'workspace 2'
-# 3 = 'workspace 3'
-# 4 = 'workspace 4'
-# 5 = 'workspace 5'
-# 6 = 'workspace 6'
-# 7 = 'workspace 7'
-# 8 = 'workspace 8'
-# 9 = 'workspace 9'
-#
-# tab = 'workspace-back-and-forth'
-#
-# #
-# # Moving
-# #
-#
-# shift-h = ['move left']
-# shift-j = ['move down']
-# shift-k = ['move up']
-# shift-l = ['move right']
-#
-# alt-h = 'join-with left'
-# alt-j = 'join-with down'
-# alt-k = 'join-with up'
-# alt-l = 'join-with right'
-#
-# shift-1 = 'move-node-to-workspace 1'
-# shift-2 = 'move-node-to-workspace 2'
-# shift-3 = 'move-node-to-workspace 3'
-# shift-4 = 'move-node-to-workspace 4'
-# shift-5 = 'move-node-to-workspace 5'
-# shift-6 = 'move-node-to-workspace 6'
-# shift-7 = 'move-node-to-workspace 7'
-# shift-8 = 'move-node-to-workspace 8'
-# shift-9 = 'move-node-to-workspace 9'
-#
-# #
-# # Resizing
-# #
-#
-# m = ['fullscreen']
-# minus = 'resize smart -10'
-# equal = 'resize smart +10'
-# shift-minus = 'resize smart -50'
-# shift-equal = 'resize smart +50'
-#
-# #
-# # Other
-# #
-#
-# r = ['flatten-workspace-tree']
-
-#
-# App Placements
-#
-
-
 [[on-window-detected]]
-if.app-name-regex-substring = 'Ghostty|iTerm|Zed'
+if.app-name-regex-substring = 'Ghostty|Terminal'
 run = ['layout tiling', 'move-node-to-workspace T']
 
 [[on-window-detected]]
@@ -172,11 +92,11 @@ if.app-name-regex-substring = 'Xcode'
 run = ['layout tiling', 'move-node-to-workspace E']
 
 [[on-window-detected]]
-if.app-name-regex-substring = 'Simulator|Podman'
+if.app-name-regex-substring = 'Simulator|Podman|Zed'
 run = ['layout tiling', 'move-node-to-workspace D']
 
 [[on-window-detected]]
-if.app-name-regex-substring = 'Arc|Chrome|Zen'
+if.app-name-regex-substring = 'Arc|Chrome|Zen|Safari'
 run = ['layout tiling', 'move-node-to-workspace B']
 
 [[on-window-detected]]
