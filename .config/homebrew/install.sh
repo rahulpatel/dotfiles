@@ -16,7 +16,13 @@ main() {
   fi
 
   brew update
-  brew bundle --file="$PWD/Brewfile" --no-lock
+  brew bundle --file="$PWD/brewfiles/Brewfile"
+
+  if [[ "${DOTFILES_PROFILE:-}" && -f "$PWD/brewfiles/Brewfile.$DOTFILES_PROFILE" ]]; then
+    brew bundle --file="$PWD/brewfiles/Brewfile.$DOTFILES_PROFILE"
+  fi
+
+  brew upgrade
 }
 
 main "$@"

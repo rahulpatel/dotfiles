@@ -1,0 +1,6 @@
+cask "1password"
+cask "docker"
+cask "obsidian"
+cask "private-internet-access"
+cask "tailscale"
+
