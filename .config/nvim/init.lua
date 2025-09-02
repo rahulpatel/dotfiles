@@ -31,6 +31,7 @@ vim.g.maplocalleader = " "
 
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 vim.keymap.set("n", "<leader>xq", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
+vim.keymap.set("n", "<leader>bd", "<cmd>bd<CR>", { desc = "[B]uffer [D]elete" })
 vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
 vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
 vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
@@ -51,7 +52,7 @@ vim.pack.add({
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main" },
 	{ src = "https://github.com/neovim/nvim-lspconfig" },
 	{ src = "https://github.com/mason-org/mason.nvim" },
-	{ src = "https://github.com/echasnovski/mini.pick" },
+	{ src = "https://github.com/folke/snacks.nvim" },
 	{ src = "https://github.com/echasnovski/mini.surround" },
 	{ src = "https://github.com/echasnovski/mini.move" },
 	{ src = "https://github.com/echasnovski/mini.clue" },
@@ -77,11 +78,35 @@ require("mason").setup()
 
 vim.lsp.enable({ "luals", "vtsls" })
 
-require("mini.pick").setup()
-vim.keymap.set("n", "<leader>ff", ":Pick files<CR>", { desc = "[F]ind [F]iles" })
-vim.keymap.set("n", "<leader>fh", ":Pick help<CR>", { desc = "[F]ind [H]elp" })
-vim.keymap.set("n", "<leader>fg", ":Pick grep_live<CR>", { desc = "[F]ind [G]rep" })
-vim.keymap.set("n", "<leader>fr", ":Pick resume<CR>", { desc = "[F]ind [R]esume" })
+require('snacks').setup({
+    bigfile = { enabled = true },
+    dashboard = { enabled = false },
+    explorer = { enabled = false },
+    indent = { enabled = true },
+    input = { enabled = false },
+    notifier = { enabled = false },
+    picker = {
+      enabled = true,
+      source = {
+        files = {
+          hidden = true
+        }
+      }
+    },
+    quickfile = { enabled = true },
+    scope = { enabled = true },
+    scroll = { enabled = true },
+    statuscolumn = { enabled = true },
+    words = { enabled = true },
+})
+vim.keymap.set("n", "<leader><leader>", function() Snacks.picker.smart({ hidden = true }) end, { desc = "Smart Find Files" })
+vim.keymap.set("n", "<leader>ff", function() Snacks.picker.git_files() end, { desc = "[F]ind git [f]iles" })
+vim.keymap.set("n", "<leader>fF", function() Snacks.picker.files({ hidden = true }) end, { desc = "[F]ind all [F]iles" })
+vim.keymap.set("n", "<leader>sg", function() Snacks.picker.grep() end, { desc = "[S]earch [G]rep" })
+vim.keymap.set("n", "<leader>sr", function() Snacks.picker.resume() end, { desc = "[S]earch [R]esume" })
+vim.keymap.set({"n", "x"}, "<leader>sw", function() Snacks.picker.grep_word() end, { desc = "[S]earch [W]ord" })
+
+
 
 require("mini.surround").setup()
 require("mini.move").setup()
