@@ -30,3 +30,5 @@
 [user]
         name = Rahul Patel
         email = rahulpatel@users.noreply.github.com
+[credential "https://dev.azure.com"]
+	useHttpPath = true
