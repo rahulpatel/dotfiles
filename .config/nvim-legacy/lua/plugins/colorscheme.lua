@@ -56,9 +56,22 @@ return {
     -- },
   },
   {
+    "rose-pine/neovim",
+    name = "rose-pine",
+  },
+  {
+    "folke/tokyonight.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {},
+  },
+  {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "catppuccin-frappe",
+      colorscheme = "tokyonight-night",
+      styles = {
+        italic = false,
+      },
     },
   },
 }

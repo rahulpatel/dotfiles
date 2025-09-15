@@ -20,6 +20,7 @@ brew "zsh"
 
 cask "nikitabobko/tap/aerospace"
 cask "arc"
+cask "battery"
 cask "figma"
 cask "font-fira-code"
 cask "ghostty"

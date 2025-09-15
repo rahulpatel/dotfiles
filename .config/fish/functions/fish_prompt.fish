@@ -1,24 +1,26 @@
 function fish_prompt
     set -l cwd (prompt_pwd)
 
+    set_color $fish_palette_fg
     echo -n "$cwd "
 
     # Show git branch and dirty state
     set -l git_branch (command git symbolic-ref HEAD 2> /dev/null | sed -e 's|^refs/heads/||')
     set -l git_dirty (command git status -s --ignore-submodules=dirty 2> /dev/null)
+
     if test -n "$git_branch"
         echo -n "("
         if test -n "$git_dirty"
-            set_color e5c890
+            set_color $fish_palette_red
             echo -n "$git_branch"
         else
-            set_color a6d189
+            set_color $fish_palette_green
             echo -n "$git_branch"
         end
-        set_color normal
+        set_color $fish_palette_fg
         echo -n ") "
     end
 
-    set_color normal
+    set_color $fish_palette_fg
     echo -n '→ '
 end

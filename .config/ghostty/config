@@ -6,16 +6,21 @@ cursor-invert-fg-bg = true
 
 cursor-style-blink = true
 
-# font-family = Fira Code
-font-family = Berkeley Mono
-font-style = Light Condensed
-font-size = 16
+adjust-cell-width = "-10%"
+font-family = Fira Code
+# font-style = Light
+# font-family = Berkeley Mono
+# font-style = Light Condensed
+font-size = 14
 
 mouse-hide-while-typing = true
 
 quit-after-last-window-closed = true
 
-theme = catppuccin-frappe
+# theme = catppuccin-frappe
+# theme = rose-pine
+# theme = tokyonight
+theme = alabaster
 
 title = Ghostty 👻
 
