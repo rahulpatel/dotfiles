@@ -20,7 +20,7 @@ quit-after-last-window-closed = true
 # theme = catppuccin-frappe
 # theme = rose-pine
 # theme = tokyonight
-theme = alabaster
+theme = alabaster-dark
 
 title = Ghostty 👻
 
