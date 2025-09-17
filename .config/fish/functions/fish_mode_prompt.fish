@@ -3,16 +3,16 @@ function fish_mode_prompt
         switch $fish_bind_mode
             case default
                 # normal
-                set_color $fish_palette_blue
+                set_color $theme_blue
                 echo -n n
             case insert
-                set_color $fish_palette_green
+                set_color $theme_green
                 echo -n i
             case visual
-                set_color $fish_palette_magenta
+                set_color $theme_magenta
                 echo -n v
             case replace_one
-                set_color $fish_palette_red
+                set_color $theme_red
                 echo -n r
         end
         set_color normal
