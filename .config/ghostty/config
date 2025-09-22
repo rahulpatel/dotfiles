@@ -8,7 +8,7 @@ cursor-style-blink = true
 
 adjust-cell-width = "-10%"
 font-family = Fira Code
-# font-style = Light
+font-style = Light
 # font-family = Berkeley Mono
 # font-style = Light Condensed
 font-size = 14
