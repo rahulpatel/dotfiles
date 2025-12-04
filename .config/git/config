@@ -1,32 +1,41 @@
 [branch]
-        sort = -committerdate
+  sort = -committerdate    # Sort branches by most recent commit first
+
 [commit]
-        verbose = true
+  verbose = true           # Include diff comment in commit message template
+
+[column]
+  ui = auto                # Show columns in `git status`
+
 [credential]
-	      helper = 
-	      helper = /usr/local/share/gcm-core/git-credential-manager
+  helper =
+  helper = /usr/local/share/gcm-core/git-credential-manager
+
 [diff]
-        algorithm = histogram
-        colorMoved = plain
-        mnemonicPrefix = true
-        renames = true
+  algorithm = histogram    # Clearer diffs on moved/edited lines
+  colorMoved = plain       # Highlight moved blocks in diffs
+  mnemonicPrefix = true    # More intuitive refs in diff output
+
 [init]
-        defaultBranch = main
+  defaultBranch = main
+
 [pull]
-        rebase = true
+  rebase = true            # Use rebase instead of merge when pulling
+
 [push]
-        default = simple
-        autoSetupRemote = true
-        followTags = true
+  autoSetupRemote = true   # Automatically set upstream branch on push
+
 [rebase]
-        autoSquash = true
-        autoStash = true
-        updateRefs = true
+  autoStash = true         # Automatically stash before rebasing
+  updateRefs = true        # Update local refs after rebasing
+
 [rerere]
-        enabled = true
-        autoupdate = true
+  enabled = true           # Record and reuse conflict resolutions
+  autoupdate = true        # Apply stored conflict resolutions automatically
+
 [tag]
-        sort = version:refname
+  sort = -version:refname  # Sort version numbers as you would expect
+
 [user]
-        name = Rahul Patel
-        email = rahul.patel2@virginmediao2.co.uk
+  name = Rahul Patel
+  email = rahulpatel@users.noreply.github.com
