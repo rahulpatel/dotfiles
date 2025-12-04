@@ -16,10 +16,10 @@ accordion-padding = 0
 [gaps]
 inner.horizontal = 0
 inner.vertical = 0
-outer.left = 0
-outer.bottom = 0
-outer.top = 0
-outer.right = 0
+outer.left = 10
+outer.bottom = 10
+outer.top = 10
+outer.right = 10
 
 [mode.main.binding]
 
@@ -47,8 +47,8 @@ alt-v = 'join-with down'
 
 alt-f = 'fullscreen'
 
-alt-s = 'layout v_accordion' # 'layout stacking' in i3
-alt-w = 'layout h_accordion' # 'layout tabbed' in i3
+alt-s = 'layout v_accordion'               # 'layout stacking' in i3
+alt-w = 'layout h_accordion'               # 'layout tabbed' in i3
 alt-x = 'layout tiles horizontal vertical' # 'layout toggle split' in i3
 
 alt-shift-space = 'layout floating tiling' # 'floating toggle' in i3
