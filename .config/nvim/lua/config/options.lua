@@ -3,3 +3,6 @@
 -- Add any additional options here
 
 vim.opt.scrolloff = 999
+
+-- Avoid biome from conflicting with prettier
+vim.g.lazyvim_prettier_needs_config = true
