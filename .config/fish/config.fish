@@ -3,7 +3,7 @@ set fish_greeting ""
 
 # vi key bingings
 set -g fish_key_bindings fish_vi_key_bindings
-bind -M insert ctrl-c cancel-commandline repaint
+bind ctrl-c cancel-commandline repaint
 
 # machine specific vars
 if test -f $HOME/.profile.fish
