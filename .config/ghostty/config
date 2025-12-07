@@ -8,7 +8,7 @@ cursor-style-blink = true
 
 adjust-cell-width = "-8%"
 font-family = Fira Code
-font-size = 15
+font-size = 14
 
 mouse-hide-while-typing = true
 
