@@ -15,6 +15,13 @@ function code
 
     if not tmux has-session -t $name 2>/dev/null
         tmux new-session -d -s $name -c $selected
+
+        tmux send-keys -t $name:1 'nvim .' C-m
+        tmux new-window -t $name:2 -c $selected
+        tmux new-window -t $name:3 -c $selected
+        tmux new-window -t $name:4 -c $selected
+
+        tmux select-window -t $name:1
     end
 
     if test -z $TMUX
