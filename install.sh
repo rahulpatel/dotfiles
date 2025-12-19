@@ -22,7 +22,8 @@ main() {
     # activate homebrew in this session
     source "$PWD/.config/homebrew/config.sh"
 
-    stow -v .
+    mkdir -p "$HOME/.config"
+    stow -t "$HOME" -v .
 
     local install_files=$(find "$CONFIGDIR" -name "install.sh" ! -path "*macos*" ! -path "*homebrew*" ! -path "*zsh*")
     for file in $install_files; do

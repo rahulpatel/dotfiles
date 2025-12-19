@@ -1,3 +1,6 @@
+^install\.sh$
+^config\.sh$
+
 .git
 .gitignore
 install.sh
