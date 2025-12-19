@@ -1,5 +1,6 @@
 [tools]
-node = "22"
+node = "lts"
+bun = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = ["node"]
