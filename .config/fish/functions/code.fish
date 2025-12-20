@@ -5,7 +5,7 @@ function code
 
     set -l query (string replace '/' '' $argv)
 
-    set selected (find $HOME $CODE_DIR -mindepth 1 -maxdepth 1 -type d | fzf --select-1 --query $query)
+    set selected (find $HOME $CODE_DIR -mindepth 1 -maxdepth 2 -type d | fzf --select-1 --query $query)
 
     if test -z $selected
         return 0
