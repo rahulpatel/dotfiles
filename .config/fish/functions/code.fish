@@ -8,7 +8,7 @@ function code
     set -l selected (
         begin
             find "$HOME" -mindepth 1 -maxdepth 1 -type d
-            find "$CODE_DIR" -mindepth 1 -maxdepth 2 -type d
+            find "$CODE_DIR" -mindepth 1 -maxdepth 1 -type d
         end | fzf --select-1 --query "$query"
     )
 
