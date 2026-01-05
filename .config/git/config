@@ -39,3 +39,8 @@
 [user]
   name = Rahul Patel
   email = rahulpatel@users.noreply.github.com
+
+; [includeIf "hasconfig:remote.*.url:**<URL HERE>**"]
+; [user]
+;   name = Rahul Patel
+;   email = <EMAIL>
