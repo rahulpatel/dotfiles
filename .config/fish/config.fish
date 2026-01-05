@@ -18,3 +18,6 @@ set -Ux CODE_DIR $HOME/Developer
 # configs
 source $HOME/.config/homebrew/config.sh
 source $HOME/.config/android/config.fish
+
+fish_config theme choose "Catppuccin Mocha"
+starship init fish | source

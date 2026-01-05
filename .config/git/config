@@ -40,7 +40,7 @@
   name = Rahul Patel
   email = rahulpatel@users.noreply.github.com
 
-; [includeIf "hasconfig:remote.*.url:**<URL HERE>**"]
-; [user]
-;   name = Rahul Patel
-;   email = <EMAIL>
+[includeIf "hasconfig:remote.*.url:**virginmediaO2**"]
+[user]
+  name = Rahul Patel
+  email = rahul.patel2@virginmediao2.co.uk
