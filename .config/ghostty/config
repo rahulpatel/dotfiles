@@ -20,3 +20,4 @@ title = Ghostty 👻
 
 window-padding-balance = true
 
+# config-file = "vim.ghostty"
