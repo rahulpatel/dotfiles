@@ -4,3 +4,7 @@ bun = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = ["node"]
+experimental = true
+
+[hooks]
+enter = "mise i -q"
