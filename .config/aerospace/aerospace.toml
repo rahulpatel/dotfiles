@@ -88,15 +88,15 @@ if.app-name-regex-substring = 'Ghostty|Terminal'
 run = ['layout tiling', 'move-node-to-workspace T']
 
 [[on-window-detected]]
-if.app-name-regex-substring = 'Xcode'
+if.app-name-regex-substring = '<placeholder>'
 run = ['layout tiling', 'move-node-to-workspace E']
 
 [[on-window-detected]]
-if.app-name-regex-substring = 'Simulator|Podman|Zed'
+if.app-name-regex-substring = 'Simulator|Podman|Zed|Xcode'
 run = ['layout tiling', 'move-node-to-workspace D']
 
 [[on-window-detected]]
-if.app-name-regex-substring = 'Arc|Chrome|Zen|Safari'
+if.app-name-regex-substring = 'Arc|Chrome|Zen|Safari|Helium'
 run = ['layout tiling', 'move-node-to-workspace B']
 
 [[on-window-detected]]
@@ -104,9 +104,13 @@ if.app-name-regex-substring = 'Slack|Teams|Zoom'
 run = ['layout tiling', 'move-node-to-workspace C']
 
 [[on-window-detected]]
-if.app-name-regex-substring = 'Obsidian|Notes'
+if.app-name-regex-substring = 'Obsidian|Notes|Reminders'
 run = ['layout tiling', 'move-node-to-workspace N']
 
 [[on-window-detected]]
 if.app-name-regex-substring = 'Spotify|Finder'
 run = ['layout tiling', 'move-node-to-workspace 1']
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'Bruno'
+run = ['layout tiling', 'move-node-to-workspace 2']

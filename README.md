@@ -9,3 +9,5 @@ git clone https://github.com/rahulpatel/dotfiles ~/.dotfiles
 cd ~/.dotfiles
 ./install.sh
 ```
+
+- Add Helium Profile Keyboard Shortcuts via Keyboard Shortcuts (System Settings > Keyboard > Keyboard Shortcuts... > Apps Shortcuts)
