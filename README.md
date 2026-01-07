@@ -10,4 +10,5 @@ cd ~/.dotfiles
 ./install.sh
 ```
 
+- Run `fisher update`
 - Add Helium Profile Keyboard Shortcuts via Keyboard Shortcuts (System Settings > Keyboard > Keyboard Shortcuts... > Apps Shortcuts)

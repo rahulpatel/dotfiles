@@ -15,8 +15,6 @@ main() {
     echo "$fish_path" | sudo tee -a /etc/shells
     chsh -s "$fish_path"
   fi
-
-  fisher update
 }
 
 main "$@"
