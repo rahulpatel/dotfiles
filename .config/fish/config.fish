@@ -21,3 +21,7 @@ source $HOME/.config/android/config.fish
 
 fish_config theme choose "Catppuccin Mocha"
 starship init fish | source
+
+# aliases
+alias vim="nvim"
+alias oc="opencode"
