@@ -67,18 +67,7 @@ return {
       color_overrides = {},
       custom_highlights = {},
       default_integrations = true,
-      auto_integrations = false,
-      integrations = {
-        cmp = true,
-        gitsigns = true,
-        nvimtree = true,
-        notify = false,
-        mini = {
-          enabled = true,
-          indentscope_color = "",
-        },
-        -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
-      },
+      auto_integrations = true,
     })
 
     require("nvim-treesitter.configs").setup({
