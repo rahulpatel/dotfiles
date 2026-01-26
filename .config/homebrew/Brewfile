@@ -1,3 +1,5 @@
+tap "anomalyco/tap"
+
 brew "aria2"
 brew "coreutils"
 brew "curl"
@@ -37,7 +39,7 @@ cask "private-internet-access"
 cask "raycast"
 cask "slack"
 cask "spotify"
-cask "tailscale"
+cask "tailscale-app"
 cask "zed"
 cask "zoom"
 
