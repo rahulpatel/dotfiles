@@ -1,12 +1,9 @@
 .DS_STORE
 
-.config/codex/auth.json
-.config/codex/history.jsonl
-.config/codex/log/
-.config/codex/models_cache.json
-.config/codex/sessions/
+.config/codex/
 .config/codex/skills/.system/
-.config/codex/version.json
+!.config/codex/config.*
+!.config/codex/skills
 
 .config/fish/completions
 .config/fish/conf.d
