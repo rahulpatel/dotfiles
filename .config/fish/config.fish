@@ -18,6 +18,7 @@ set -Ux CODE_DIR $HOME/Developer
 # configs
 source $HOME/.config/homebrew/config.sh
 source $HOME/.config/android/config.fish
+source $HOME/.config/codex/config.fish
 
 fish_config theme choose "Catppuccin Mocha"
 starship init fish | source
@@ -25,3 +26,4 @@ starship init fish | source
 # aliases
 alias vim="nvim"
 alias oc="opencode"
+alias cx="codex"
