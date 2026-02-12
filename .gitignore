@@ -1,15 +1,16 @@
 .DS_STORE
 
-.config/codex/
-.config/codex/skills/.system/
-!.config/codex/config.*
-!.config/codex/skills
-
 .config/fish/completions
 .config/fish/conf.d
 .config/fish/fish_variables
 .config/fish/themes
 
 .config/nvim/lazy-lock.json
+
+.config/opencode/*
+!.config/opencode/skills/
+!.config/opencode/AGENTS.md
+!.config/opencode/opencode.jsonc
+!.config/opencode/ocx.jsonc
 
 .config/tmux/plugins
