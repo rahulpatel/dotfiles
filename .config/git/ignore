@@ -1,17 +1,16 @@
 # macOS: https://github.com/github/gitignore/blob/master/Global/macOS.gitignore
 
-# General
+## General
 .DS_Store
+__MACOSX/
 .AppleDouble
 .LSOverride
+Icon[]
 
-# Icon must end with two \r
-Icon\r\r
-
-# Thumbnails
+## Thumbnails
 ._*
 
-# Files that might appear in the root of a volume
+## Files that might appear in the root of a volume
 .DocumentRevisions-V100
 .fseventsd
 .Spotlight-V100
@@ -20,7 +19,7 @@ Icon\r\r
 .VolumeIcon.icns
 .com.apple.timemachine.donotpresent
 
-# Directories potentially created on remote AFP share
+## Directories potentially created on remote AFP share
 .AppleDB
 .AppleDesktop
 Network Trash Folder
@@ -28,12 +27,11 @@ Temporary Items
 .apdisk
 
 
-
 # Archives: https://github.com/github/gitignore/master/Global/Archives.gitignore
 
-# It's better to unpack these files and commit the raw source because git has its own built in compression methods.
+## It's better to unpack these files and commit the raw source because git has its own built in compression methods.
 *.7z
-# *.jar -- Disabled due to react-native
+## *.jar -- Disabled due to react-native
 *.rar
 *.zip
 *.gz
@@ -47,11 +45,11 @@ Temporary Items
 *.cab
 *.xar
 
-# Packing-only formats
+## Packing-only formats
 *.iso
 *.tar
 
-# Package management formats
+## Package management formats
 *.dmg
 *.xpi
 *.gem
@@ -64,26 +62,24 @@ Temporary Items
 *.txz
 
 
-
 # Diff: https://github.com/github/gitignore/blob/master/Global/Diff.gitignore
 
 *.diff
 
 
-
-# VSCode: https://github.com/github/gitignore/blob/master/Global/VisualStudioCode.gitignore
-
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-*.code-workspace
+# Mise: https://github.com/github/gitignore/blob/main/Global/mise.gitignore
+.mise.*.local.toml
+.mise.local.toml
+mise.*.local.toml
+mise.local.toml
+.mise/*.local.toml
+mise/*.local.toml
 
 
+# Oh-my-opencode: https://github.com/code-yeongyu/oh-my-opencode
+.sisyphus
 
-# Local History for Visual Studio Code
-.history/
 
-# Git worktree folder
-worktrees/
+# Personal AI workflow
+AGENTS.md
+PLAN.md
