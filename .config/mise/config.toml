@@ -1,5 +1,5 @@
 [tools]
-node = "lts"
+node = { version = "lts", postinstall = "corepack enable" }
 bun = "latest"
 
 [settings]

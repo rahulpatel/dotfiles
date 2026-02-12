@@ -11,14 +11,15 @@ if test -f $HOME/.profile.fish
 end
 
 # exports
+set -Ux EDITOR vim
 set -Ux XDG_CONFIG_HOME $HOME/.config
 set -Ux DOTFILES_DIR $HOME/.dotfiles
 set -Ux CODE_DIR $HOME/Developer
 
 # configs
 source $HOME/.config/homebrew/config.sh
+source $HOME/.config/mise/config.fish
 source $HOME/.config/android/config.fish
-source $HOME/.config/codex/config.fish
 
 fish_config theme choose "Catppuccin Mocha"
 starship init fish | source
