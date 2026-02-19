@@ -1,6 +1,6 @@
 # vim: syntax=toml
 
-adjust-cell-width = "-8%"
+# adjust-cell-width = "-8%"
 
 auto-update = "download"
 auto-update-channel = "tip"

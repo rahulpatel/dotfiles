@@ -2,6 +2,8 @@
 -- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
 -- Add any additional options here
 
+vim.opt.autoread = true
+vim.opt.updatetime = 1000 -- affects CursorHold frequency (ms)
 vim.opt.scrolloff = 999
 
 -- Avoid biome from conflicting with prettier
