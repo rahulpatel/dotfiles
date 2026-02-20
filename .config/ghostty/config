@@ -11,7 +11,7 @@ cursor-invert-fg-bg = true
 cursor-style-blink = true
 
 font-family = "Fira Code"
-font-size = 14
+font-size = 13
 font-thicken = true
 
 keybind = cmd+k=clear_screen
