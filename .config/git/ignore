@@ -83,3 +83,4 @@ mise/*.local.toml
 # Personal AI workflow
 AGENTS.md
 PLAN.md
+.bmad-output
