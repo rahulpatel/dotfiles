@@ -3,9 +3,8 @@
 # adjust-cell-width = "-8%"
 
 auto-update = "download"
-auto-update-channel = "tip"
 
-config-file = "vim.ghostty"
+# config-file = "vim.ghostty"
 
 cursor-invert-fg-bg = true
 cursor-style-blink = true
