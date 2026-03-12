@@ -20,6 +20,7 @@ brew "stow"
 brew "tmux"
 brew "tree-sitter"
 brew "whalebrew"
+brew "worktrunk"
 brew "xcodes"
 brew "zsh"
 
