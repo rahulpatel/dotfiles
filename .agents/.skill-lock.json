@@ -1,0 +1,17 @@
+{
+  "version": 3,
+  "skills": {
+    "improve-codebase-architecture": {
+      "source": "mattpocock/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/mattpocock/skills.git",
+      "skillPath": "improve-codebase-architecture/SKILL.md",
+      "skillFolderHash": "78b2029cbf4a74fa798c97ea27bc02bdeb2e3237",
+      "installedAt": "2026-03-21T21:24:18.591Z",
+      "updatedAt": "2026-03-22T17:34:52.712Z"
+    }
+  },
+  "dismissed": {
+    "findSkillsPrompt": true
+  }
+}
