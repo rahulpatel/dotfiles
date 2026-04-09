@@ -15,7 +15,7 @@ font-thicken = true
 
 keybind = cmd+k=clear_screen
 
-macos-titlebar-style = "hidden"
+macos-titlebar-style = "tabs"
 
 mouse-hide-while-typing = true
 
