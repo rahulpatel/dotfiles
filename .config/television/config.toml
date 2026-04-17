@@ -1,0 +1,6 @@
+[ui]
+  orientation = "landscape"
+  theme = "catppuccin-mocha-yellow.toml"
+
+[previewers.file]
+  theme = "Catppuccin Mocha"

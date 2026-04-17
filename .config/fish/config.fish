@@ -26,5 +26,6 @@ starship init fish | source
 
 # aliases
 alias vim="nvim"
+alias nn="env NVIM_APPNAME=nvim-next nvim"
 alias oc="opencode"
 alias cx="codex"
