@@ -1,3 +1,0 @@
-- Be extremely concise in your response
-- Prefer lists over sentences and paragraphs where possible
-  - Keep each point as short as possible
