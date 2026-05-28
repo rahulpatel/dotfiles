@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+# install - top-level orchestrator. Sources each phase script in order.
+#
+# Phases run sequentially:
+#   preflight  -> environment checks, prerequisites, profile resolution
+#   packaging  -> brew bundle for base + active profile
+#   config     -> stow dotfiles, apply macOS defaults, language runtimes
+#   post       -> killall affected processes, print summary
+#
+# Scripts within a phase are run in shell-glob order. By convention they are
+# independent: if two scripts depend on ordering, split them across phases.
+#
+# Usage:
+#   ./install                       # uses persisted PROFILE from .profile
+#   PROFILE=work ./install          # selects/persists profile
+
+set -euo pipefail
+
+DOTFILES="$(cd "$(dirname "$0")" && pwd)"
+export DOTFILES
+
+# shellcheck source=phases/lib.sh
+source "$DOTFILES/phases/lib.sh"
+
+# Resolve profile up front so phases (and the sudo prompt) don't run if no
+# profile is selected. Precedence: PROFILE env var > persisted .profile > fail.
+if [ -n "${PROFILE:-}" ]; then
+    echo "$PROFILE" > "$PROFILE_FILE"
+elif [ -f "$PROFILE_FILE" ]; then
+    PROFILE="$(cat "$PROFILE_FILE")"
+else
+    die "No profile selected. Run with PROFILE=<name> ./install (e.g. PROFILE=personal)."
+fi
+export PROFILE
+[ -d "$DOTFILES/profiles/$PROFILE" ] || \
+    die "Profile '$PROFILE' not found at $DOTFILES/profiles/$PROFILE"
+log "Active profile: $PROFILE"
+
+PHASES=(preflight packaging config post)
+
+for phase in "${PHASES[@]}"; do
+    log "==> $phase"
+    phase_dir="$DOTFILES/phases/$phase"
+    [ -d "$phase_dir" ] || continue
+    for script in "$phase_dir"/*.sh; do
+        [ -f "$script" ] || continue
+        log "  -> $(basename "$script" .sh)"
+        # shellcheck source=/dev/null
+        source "$script"
+    done
+done

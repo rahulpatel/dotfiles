@@ -1,0 +1,6 @@
+# Brewfile - additional packages installed only on the work profile.
+
+# Casks
+cask "git-credential-manager"
+cask "slack"
+cask "zoom"

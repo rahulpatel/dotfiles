@@ -1,0 +1,8 @@
+# Active profile selection (machine-local)
+.profile
+
+# Local override files (out-of-band secrets/sensitive config)
+*.local
+
+# macOS noise
+.DS_Store

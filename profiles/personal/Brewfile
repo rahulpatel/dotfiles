@@ -1,0 +1,5 @@
+# Brewfile - additional packages installed only on the personal profile.
+
+# Casks
+cask "private-internet-access"
+cask "tailscale-app"
