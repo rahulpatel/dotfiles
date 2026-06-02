@@ -15,16 +15,34 @@ configure() {
     backup_dir="$BACKUP_ROOT/$backup_ts"
 
     # Ensure shared parent dirs exist as real dirs so stow descends rather
-    # than symlinking the whole thing.
+    # than symlinking the whole thing. $HOME/.config must stay a real dir so
+    # multiple tools (and both profiles) can coexist under it; stow then folds
+    # each per-tool subdir (e.g. .config/nvim) into a single symlink pointing
+    # at the package dir. If a tool writes runtime state into its config dir
+    # (e.g. tmux/TPM plugins under .config/tmux/plugins), pre-create that
+    # specific dir here so stow descends into it instead of folding.
     mkdir -p "$HOME/.config"
 
+    # Back up any conflicting non-symlink targets across all profiles first.
     local profile
     for profile in base "$PROFILE"; do
-        _stow_profile "$profile" "$backup_dir"
+        _backup_conflicts "$profile" "$backup_dir"
+    done
+
+    # Unstow first so existing per-file symlinks (legacy --no-folding layout)
+    # are removed. Then prune the empty per-tool dirs they leave behind so
+    # the subsequent stow pass can fold each subdir into a single symlink.
+    for profile in base "$PROFILE"; do
+        _unstow_profile "$profile"
+    done
+    _prune_empty_config_dirs
+
+    for profile in base "$PROFILE"; do
+        _stow_profile "$profile"
     done
 }
 
-_stow_profile() {
+_backup_conflicts() {
     local profile="$1"
     local backup_dir="$2"
     local src="$DOTFILES/profiles/$profile"
@@ -43,11 +61,30 @@ _stow_profile() {
             mv "$target" "$backup_dir/$rel"
         fi
     done < <(find "$src" -type f -print0)
+}
 
+_unstow_profile() {
+    local profile="$1"
+    [ -d "$DOTFILES/profiles/$profile" ] || return 0
+    # Ignore failures: a never-stowed profile has nothing to delete.
+    stow --dir="$DOTFILES/profiles" --target="$HOME" --delete "$profile" 2>/dev/null || true
+}
+
+# Remove empty per-tool dirs under $HOME/.config left behind by the legacy
+# --no-folding layout. Only touches dirs whose entire subtree is empty, so
+# user-owned dirs with real files (e.g. nvim's lazy-lock.json, tmux/plugins)
+# are preserved -- they'll just remain unfolded.
+_prune_empty_config_dirs() {
+    [ -d "$HOME/.config" ] || return 0
+    find "$HOME/.config" -mindepth 1 -depth -type d -empty -delete 2>/dev/null || true
+}
+
+_stow_profile() {
+    local profile="$1"
+    [ -d "$DOTFILES/profiles/$profile" ] || return 0
     log "stow: profiles/$profile"
-    # --no-folding: never collapse a target dir into a symlink to the package
-    # dir. Keeps stowed config dirs as real dirs so tools can safely write
-    # runtime state inside them (e.g. tmux plugins, mise installs) without
-    # writing into the dotfiles repo.
-    stow --no-folding --dir="$DOTFILES/profiles" --target="$HOME" --restow "$profile"
+    # Default folding: stow collapses a target dir into a single symlink to
+    # the package dir when nothing else lives there. Pre-created real dirs
+    # (e.g. $HOME/.config) and dirs containing runtime state stay descended.
+    stow --dir="$DOTFILES/profiles" --target="$HOME" --stow "$profile"
 }
