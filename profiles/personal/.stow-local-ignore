@@ -1,0 +1,4 @@
+# Files in the profile directory that are NOT stowed into $HOME.
+# These are profile metadata consumed by the install pipeline, not dotfiles.
+^/Brewfile$
+^/macos\.sh$

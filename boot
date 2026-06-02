@@ -36,7 +36,7 @@ else
 fi
 
 # --- Hand off to installer -------------------------------------------------
-# Homebrew installation happens in phases/preflight/homebrew.sh so the logic
-# lives in one place and direct ./install runs are also self-healing.
+# Homebrew installation lives in modules/homebrew.sh so the logic stays in
+# one place and direct ./install runs are also self-healing.
 log "Handing off to $DOTFILES_DIR/install"
 exec "$DOTFILES_DIR/install" "$@"

@@ -1,10 +1,8 @@
 #!/usr/bin/env bash
-# phases/lib.sh - shared helpers. Sourced by the orchestrator before any phase
-# runs. Phase scripts can rely on these helpers and on strict mode being set.
-#
-# Do not run this file directly.
+# modules/_lib.sh - shared helpers. Files starting with _ are skipped by the
+# orchestrator and not treated as modules.
 
-# Strict mode. Inherited by sourced phase scripts.
+# Strict mode. Inherited by sourced module files.
 set -euo pipefail
 IFS=$'\n\t'
 

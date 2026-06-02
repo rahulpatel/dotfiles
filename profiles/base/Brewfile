@@ -4,20 +4,19 @@
 # Taps
 # tap "homebrew/bundle"
 
-# Required by the install pipeline
-brew "stow"
-brew "mise"
-
-# CLI essentials
+# Brews
 brew "gh"
+brew "mise"
 brew "neovim"
-cask "podman"
+brew "podman"
+brew "stow"
 brew "xcodes"
 
 # Casks
 cask "1password"
 cask "nikitabobko/tap/aerospace"
 cask "figma"
+cask "font-fira-code"
 cask "ghostty"
 cask "helium-browser"
 cask "kap"
@@ -25,6 +24,3 @@ cask "obsidian"
 cask "raycast"
 cask "spotify"
 cask "zed"
-
-# Fonts
-cask "font-fira-code"

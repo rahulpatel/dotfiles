@@ -33,36 +33,50 @@ PROFILE=personal ./install   # or: PROFILE=work
 Subsequent runs read the persisted profile. Override anytime by setting the
 env var again.
 
-Each profile under `profiles/<name>/` contributes a `Brewfile`, a stowable
-`dotfiles/` tree mirroring `$HOME`, and a `macos.sh`. The `base` profile is
-applied on every machine; the active profile is applied on top.
+Each profile under `profiles/<name>/` IS a stow package. It mirrors `$HOME`
+directly, plus a few profile-metadata files (`Brewfile`, `macos.sh`) that
+the install pipeline reads but which are excluded from stowing via
+`.stow-local-ignore`. The `base` profile is applied on every machine; the
+active profile is applied on top.
 
 ## Structure
 
 ```
 .
 ├── boot                # curl|bash entry for fresh machines
-├── install             # orchestrator: runs each phase in order
-├── phases/
-│   ├── lib.sh          # shared: strict mode, logging
-│   ├── preflight/      # sudo, xcode CLT, homebrew
-│   ├── packaging/      # brew bundle base + active profile
-│   ├── config/         # stow, macos defaults, mise runtimes
-│   └── post/           # killall, summary
+├── install             # orchestrator: phases × modules
+├── modules/
+│   ├── _lib.sh         # shared helpers (skipped by orchestrator)
+│   ├── sudo.sh         # prepare()
+│   ├── xcode.sh        # prepare()
+│   ├── homebrew.sh     # prepare() + install()
+│   ├── macos.sh        # configure()
+│   ├── mise.sh         # configure()
+│   ├── stow.sh         # configure()
+│   ├── killall.sh      # finish()
+│   └── summary.sh      # finish()
 └── profiles/
-    ├── base/           # applied on every machine
-    │   ├── Brewfile
-    │   ├── dotfiles/   # mirrors $HOME; XDG-friendly
-    │   │   └── .config/
-    │   │       └── git/
-    │   └── macos.sh
+    ├── base/                  # applied on every machine
+    │   ├── Brewfile           # \
+    │   ├── macos.sh           # / profile metadata (not stowed)
+    │   ├── .stow-local-ignore # tells stow which files above to skip
+    │   ├── .config/           # everything else is stowed into $HOME
+    │   │   ├── git/
+    │   │   └── zsh/
+    │   └── .zshenv
     ├── work/
     └── personal/
 ```
 
-Phases run in the order declared in `install`. Scripts within a phase are
-sourced in alphabetical order and should be order-independent — if two
-scripts depend on each other, split them across phases.
+Each file in `modules/` is one step of the install pipeline. It defines
+whichever of `preflight()`, `packaging()`, `config()`, `post()` apply — most
+modules have just one. The orchestrator iterates phases in declared order
+and, within each phase, runs every module's matching function in alphabetical
+order. Scripts within a phase are independent: if two need to be ordered,
+move one to a different phase.
+
+To add or modify a tool, edit one file in `modules/`. No need to know which
+phase it belongs to — the function name says it.
 
 ## Secrets
 
@@ -84,9 +98,13 @@ identity even when made from a work machine.
 ## Adding a tool
 
 1. Add it to the appropriate `Brewfile` (base, or a specific profile).
-2. If it has dotfiles, drop them in the matching profile's `dotfiles/` tree
-   mirroring `$HOME` — e.g. `profiles/base/dotfiles/.config/<tool>/`.
-3. Re-run `./install`.
+2. If it has dotfiles, drop them into the matching profile mirroring `$HOME`
+   — e.g. `profiles/base/.config/<tool>/`.
+3. If it needs shell init, drop a script under the matching profile's
+   `.config/zsh/`: `env.d/<tool>.sh` for env vars / PATH (runs in every
+   subshell), or `conf.d/<tool>.sh` for interactive setup like
+   `eval $(tool init)`.
+4. Re-run `./install`.
 
 Stow folds at the directory level: a new `.config/<tool>/` directory in the
 repo becomes a single `~/.config/<tool>` symlink. Apps that later write into
