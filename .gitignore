@@ -6,3 +6,6 @@
 
 # macOS noise
 .DS_Store
+
+# zsh compinit cache
+.zcompdump*

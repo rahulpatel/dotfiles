@@ -5,12 +5,18 @@
 # tap "homebrew/bundle"
 
 # Brews
+brew "bat"
+brew "eza"
+brew "fzf"
 brew "gh"
 brew "mise"
 brew "neovim"
 brew "podman"
 brew "stow"
 brew "xcodes"
+brew "zoxide"
+brew "zsh-autosuggestions"
+brew "zsh-syntax-highlighting"
 
 # Casks
 cask "1password"
