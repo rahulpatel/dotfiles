@@ -2,7 +2,7 @@
 # boot - first-time bootstrap for a fresh macOS machine.
 #
 # Usage (from a fresh machine):
-#   curl -fsSL https://raw.githubusercontent.com/<you>/dotfiles/main/boot | bash
+#   curl -fsSL https://raw.githubusercontent.com/<you>/dotfiles/v2/boot | bash
 #
 # Installs prerequisites (Xcode Command Line Tools, Homebrew), clones the
 # dotfiles repo to ~/.dotfiles, then hands off to ./install.
@@ -10,6 +10,7 @@
 set -euo pipefail
 
 DOTFILES_REPO="${DOTFILES_REPO:-https://github.com/rahulpatel/dotfiles.git}"
+DOTFILES_BRANCH="${DOTFILES_BRANCH:-v2}"
 DOTFILES_DIR="${DOTFILES_DIR:-$HOME/.dotfiles}"
 
 log() { printf '\033[1;34m[boot]\033[0m %s\n' "$*"; }
@@ -31,8 +32,8 @@ fi
 
 # --- Clone repo ------------------------------------------------------------
 if [ ! -d "$DOTFILES_DIR/.git" ]; then
-  log "Cloning $DOTFILES_REPO -> $DOTFILES_DIR"
-  git clone "$DOTFILES_REPO" "$DOTFILES_DIR"
+  log "Cloning $DOTFILES_REPO ($DOTFILES_BRANCH) -> $DOTFILES_DIR"
+  git clone --branch "$DOTFILES_BRANCH" "$DOTFILES_REPO" "$DOTFILES_DIR"
 else
   log "Repo already present at $DOTFILES_DIR; pulling latest"
   git -C "$DOTFILES_DIR" pull --ff-only

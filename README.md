@@ -6,7 +6,7 @@ and macOS defaults — all in one command, idempotently.
 ## Bootstrap a fresh machine
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/rahulpatel/dotfiles/main/boot | bash
+curl -fsSL https://raw.githubusercontent.com/rahulpatel/dotfiles/v2/boot | bash
 ```
 
 The `boot` script installs Xcode Command Line Tools, installs Homebrew, clones
