@@ -44,7 +44,6 @@ MODULES=(
     stow        # symlink profile dotfiles into $HOME
     macos       # apply macOS defaults
     mise        # install language runtimes
-    tmux        # install tpm + plugins
     killall     # restart Dock/Finder/etc.
     summary     # print completion message
 )
