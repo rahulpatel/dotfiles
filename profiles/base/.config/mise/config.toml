@@ -1,0 +1,11 @@
+[hooks]
+enter = "mise i -q"
+
+[settings]
+color_theme = "catppuccin"
+
+[tools]
+"aube" = "latest"
+"node" = "latest"
+"npm:@earendil-works/pi-coding-agent" = "latest"
+
