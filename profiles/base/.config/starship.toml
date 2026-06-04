@@ -21,9 +21,9 @@ style = "italic subtext0"
 [git_status]
 format     = '[$all_status]($style)'
 style      = "subtext0"
-ahead      = "⇡ "
-diverged   = "⇕⇡⇣ "
-behind     = "⇣ "
+ahead      = "⇡${count} "
+diverged   = "⇕⇡${ahead_count}⇣${behind_count} "
+behind     = "⇣${count} "
 conflicted = " "
 up_to_date = " "
 untracked  = "? "
