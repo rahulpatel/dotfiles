@@ -7,8 +7,12 @@ function code
 
     set -l selected (
         begin
-            find "$HOME" -mindepth 1 -maxdepth 1 -type d
-            find "$CODE_DIR" -mindepth 1 -maxdepth 1 -type d
+            find (dirname "$DOTFILES_DIR") -mindepth 1 -maxdepth 1 -type d -name (basename "$DOTFILES_DIR")'*'
+            find "$HOME/.config" -maxdepth 0 -type d
+
+            if test -d "$CODE_DIR"
+                find "$CODE_DIR" -mindepth 1 -maxdepth 1 -type d
+            end
         end | fzf --select-1 --query "$query"
     )
 
