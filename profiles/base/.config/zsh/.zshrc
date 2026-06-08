@@ -14,6 +14,7 @@ ZSH_CONF_D=(
     functions             # custom zsh functions from $ZDOTDIR/fns
     starship              # prompt
     tools                 # fzf, zoxide, eza aliases
+    aliases               # shell aliases
     plugins               # zsh-autosuggestions
     syntax-highlighting   # MUST be last
 )
