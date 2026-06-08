@@ -1,0 +1,32 @@
+# Taps
+# tap "homebrew/bundle"
+
+# Brews
+brew "bat"
+brew "eza"
+brew "fish"
+brew "fzf"
+brew "gh"
+brew "lazygit"
+brew "mise"
+brew "neovim"
+brew "podman"
+brew "starship"
+brew "stow"
+brew "tmux"
+brew "wget"
+brew "xcodes"
+brew "zoxide"
+
+# Casks
+cask "1password"
+cask "nikitabobko/tap/aerospace"
+cask "figma"
+cask "font-fira-code"
+cask "ghostty"
+cask "helium-browser"
+cask "kap"
+cask "obsidian"
+cask "raycast"
+cask "spotify"
+cask "zed"

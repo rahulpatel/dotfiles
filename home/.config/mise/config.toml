@@ -1,0 +1,11 @@
+[hooks]
+enter = "mise i -q"
+
+[settings]
+color_theme = "catppuccin"
+experimental = true
+
+[tools]
+"node" = "latest"
+"npm:opencode-ai" = { version = "latest", npm_args = "--ignore-scripts=false" }
+

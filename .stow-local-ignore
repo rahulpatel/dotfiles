@@ -1,9 +1,0 @@
-^install\.sh$
-^config\.sh$
-
-.git
-.gitignore
-install.sh
-LICENSE
-README.md
-TODO.md
