@@ -6,14 +6,11 @@
 
 # Brews
 brew "bat"
-brew "convert"
 brew "eza"
 brew "fzf"
 brew "gh"
 brew "lazygit"
-brew "magick"
 brew "mise"
-brew "mmdc"
 brew "neovim"
 brew "podman"
 brew "starship"
