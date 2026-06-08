@@ -6,7 +6,6 @@ color_theme = "catppuccin"
 experimental = true
 
 [tools]
-"aube" = "latest"
 "node" = "latest"
-"npm:@earendil-works/pi-coding-agent" = "latest"
+"npm:opencode-ai" = { version = "latest", npm_args = "--ignore-scripts=false" }
 
