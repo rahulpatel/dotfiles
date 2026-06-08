@@ -11,6 +11,7 @@ ZSH_CONF_D=(
     options               # AUTO_CD, EXTENDED_GLOB, etc.
     completion            # compinit + zstyle UX
     mise                  # runtime version manager
+    functions             # custom zsh functions from $ZDOTDIR/fns
     starship              # prompt
     tools                 # fzf, zoxide, eza aliases
     plugins               # zsh-autosuggestions

@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+# List git repositories for the Television code channel.
+# Output format: repo-name<TAB>absolute-path
+
+set -euo pipefail
+
+emit_repo() {
+    local repo="$1"
+    local name
+    name="$(basename "$repo")"
+    printf '%s\t%s\n' "$name" "$repo"
+}
+
+scan_children() {
+    local root="$1"
+    local depth="$2"
+
+    [ -d "$root" ] || return 0
+
+    local entry base
+    for entry in "$root"/* "$root"/.[!.]* "$root"/..?*; do
+        [ -d "$entry" ] || continue
+
+        base="$(basename "$entry")"
+        case "$base" in
+            .|..|.git|Developer|Library|Applications|Desktop|Documents|Downloads|Movies|Music|Pictures|Public|node_modules|vendor|target|dist|build|.cache|.local|.Trash)
+                continue
+                ;;
+        esac
+
+        if [ -e "$entry/.git" ]; then
+            emit_repo "$entry"
+            continue
+        fi
+
+        if [ "$depth" -gt 0 ]; then
+            scan_children "$entry" "$((depth - 1))"
+        fi
+    done
+}
+
+# Immediate children of ~ (e.g. ~/.dotfiles.v2), excluding ~/Developer because
+# it is scanned recursively below.
+scan_children "$HOME" 0
+
+# Repositories are commonly nested under ~/Developer (org/project, etc.).
+scan_children "$HOME/Developer" 5

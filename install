@@ -42,6 +42,7 @@ MODULES=(
     sudo        # cache sudo credentials + keepalive
     homebrew    # install brew, then `brew bundle`
     stow        # symlink profile dotfiles into $HOME
+    television  # update television channel prototypes
     macos       # apply macOS defaults
     mise        # install language runtimes
     killall     # restart Dock/Finder/etc.

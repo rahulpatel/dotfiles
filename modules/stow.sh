@@ -15,12 +15,13 @@ configure() {
     backup_dir="$BACKUP_ROOT/$backup_ts"
 
     # Ensure shared parent dirs exist as real dirs so stow descends rather
-    # than symlinking the whole thing. $HOME/.config must stay a real dir so
-    # multiple tools (and both profiles) can coexist under it; stow then folds
+    # than symlinking the whole thing. $HOME/.config and $HOME/.local/bin must
+    # stay real dirs so multiple tools/profiles can coexist; stow then folds
     # each per-tool subdir (e.g. .config/nvim) into a single symlink pointing
     # at the package dir. If a tool writes runtime state into its config dir
-    # (e.g. tmux/TPM plugins under .config/tmux/plugins), pre-create that
-    # specific dir here so stow descends into it instead of folding.
+    # (e.g. tmux/TPM plugins or television's downloaded channel prototypes),
+    # pre-create that specific dir after unstowing so stow descends into it
+    # instead of folding.
     mkdir -p "$HOME/.config"
 
     # Unstow first so existing stow-managed symlinks (both per-file legacy
@@ -34,6 +35,7 @@ configure() {
         _unstow_profile "$profile"
     done
     _prune_empty_config_dirs
+    mkdir -p "$HOME/.config/television/cable" "$HOME/.local/bin"
 
     # Now back up any remaining non-symlink conflicts across all profiles.
     for profile in base "$PROFILE"; do

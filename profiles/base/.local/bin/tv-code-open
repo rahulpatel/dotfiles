@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+# Open (or attach to) a tmux workspace for a repository.
+
+set -euo pipefail
+
+repo="${1:-}"
+if [ -z "$repo" ]; then
+    printf 'usage: %s <repo-path>\n' "$(basename "$0")" >&2
+    exit 64
+fi
+
+if [ ! -d "$repo" ]; then
+    printf 'repo does not exist: %s\n' "$repo" >&2
+    exit 66
+fi
+
+repo="$(cd "$repo" && pwd -P)"
+repo_name="$(basename "$repo")"
+
+# Keep normal repo names unchanged, but make unusual names safe for tmux target
+# syntax and shell display.
+session="$(printf '%s' "$repo_name" | tr -c '[:alnum:]_.-' '_')"
+
+attach_or_switch() {
+    if [ -n "${TMUX:-}" ]; then
+        tmux switch-client -t "$session"
+    else
+        tmux attach-session -t "$session"
+    fi
+}
+
+if tmux has-session -t "$session" 2>/dev/null; then
+    attach_or_switch
+    exit 0
+fi
+
+# Window 1: editor workspace. Left pane runs nvim in the repo, right pane runs pi.
+tmux new-session -d -s "$session" -c "$repo" -n editor 'nvim .'
+tmux split-window -h -t "$session:editor" -c "$repo" 'zsh -ic pi'
+tmux select-layout -t "$session:editor" even-horizontal >/dev/null
+
+# Window 2: plain zsh in the repo.
+tmux new-window -d -t "$session:" -c "$repo" -n zsh 'zsh'
+
+tmux select-window -t "$session:editor"
+attach_or_switch

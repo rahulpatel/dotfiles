@@ -1,0 +1,21 @@
+[metadata]
+name = "code"
+requirements = ["git", "tmux", "nvim", "pi", "zsh"]
+description = "Pick a repo from ~/ or ~/Developer and open its tmux workspace."
+
+[source]
+command = "~/.local/bin/tv-code-source"
+display = "{split:\t:0}  {split:\t:1}"
+output = "{split:\t:1}"
+
+[preview]
+command = "cd '{split:\t:1}' && printf '%s\n\n' '{split:\t:1}' && git status --short --branch && printf '\n' && git log -n 30 --pretty=medium --all --graph --color"
+
+[keybindings]
+enter = "actions:open"
+
+[actions.open]
+description = "Open the selected repo in a tmux workspace"
+command = "~/.local/bin/tv-code-open '{split:\t:1}'"
+shell = "bash"
+mode = "execute"
