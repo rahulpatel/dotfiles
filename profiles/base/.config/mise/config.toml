@@ -3,6 +3,7 @@ enter = "mise i -q"
 
 [settings]
 color_theme = "catppuccin"
+experimental = true
 
 [tools]
 "aube" = "latest"
