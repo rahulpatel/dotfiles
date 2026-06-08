@@ -113,6 +113,11 @@ stow_home() {
   stow --dir "$DOTFILES_DIR" --target "$HOME" --restow --no-folding home
 }
 
+unstow_home() {
+  log "Unstowing home files"
+  stow --dir "$DOTFILES_DIR" --target "$HOME" --delete --no-folding home
+}
+
 set_default_shell_to_fish() {
   local fish_path current_shell
 
@@ -135,9 +140,8 @@ set_default_shell_to_fish() {
   chsh -s "$fish_path"
 }
 
-unstow_home() {
-  log "Unstowing home files"
-  stow --dir "$DOTFILES_DIR" --target "$HOME" --delete --no-folding home
+create_developer_dir() {
+  mkdir -p "$HOME/Developer"
 }
 
 install_packages() {
@@ -159,6 +163,7 @@ cmd_install() {
   set_default_shell_to_fish
   stow_home
   save_profile "$profile"
+  create_developer_dir
   log "Installed profile '$profile'."
 }
 
@@ -205,12 +210,30 @@ cmd_doctor() {
     ok=0
   fi
 
-  [ "$(uname -s)" = "Darwin" ] || { warn "Not running macOS."; ok=0; }
-  xcode-select -p >/dev/null 2>&1 || { warn "Xcode Command Line Tools are missing."; ok=0; }
-  command_exists brew || { warn "Homebrew is missing."; ok=0; }
-  command_exists stow || { warn "GNU Stow is missing."; ok=0; }
-  [ -f "$(profile_path base)" ] || { warn "Missing packages/base."; ok=0; }
-  [ -z "$profile" ] || [ -f "$(profile_path "$profile")" ] || { warn "Missing packages/$profile."; ok=0; }
+  [ "$(uname -s)" = "Darwin" ] || {
+    warn "Not running macOS."
+    ok=0
+  }
+  xcode-select -p >/dev/null 2>&1 || {
+    warn "Xcode Command Line Tools are missing."
+    ok=0
+  }
+  command_exists brew || {
+    warn "Homebrew is missing."
+    ok=0
+  }
+  command_exists stow || {
+    warn "GNU Stow is missing."
+    ok=0
+  }
+  [ -f "$(profile_path base)" ] || {
+    warn "Missing packages/base."
+    ok=0
+  }
+  [ -z "$profile" ] || [ -f "$(profile_path "$profile")" ] || {
+    warn "Missing packages/$profile."
+    ok=0
+  }
 
   if command_exists stow; then
     stow --dir "$DOTFILES_DIR" --target "$HOME" --restow --no-folding --simulate home >/dev/null || {
@@ -244,13 +267,16 @@ main() {
   shift || true
 
   case "$command" in
-    install) cmd_install "$@" ;;
-    update) cmd_update "$@" ;;
-    uninstall) cmd_uninstall "$@" ;;
-    doctor) cmd_doctor "$@" ;;
-    profiles) cmd_profiles ;;
-    help|--help|-h) usage ;;
-    *) usage >&2; die "Unknown command: $command" ;;
+  install) cmd_install "$@" ;;
+  update) cmd_update "$@" ;;
+  uninstall) cmd_uninstall "$@" ;;
+  doctor) cmd_doctor "$@" ;;
+  profiles) cmd_profiles ;;
+  help | --help | -h) usage ;;
+  *)
+    usage >&2
+    die "Unknown command: $command"
+    ;;
   esac
 }
 
