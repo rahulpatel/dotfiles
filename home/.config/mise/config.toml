@@ -7,5 +7,5 @@ experimental = true
 
 [tools]
 "node" = "latest"
-"npm:opencode-ai" = { version = "latest", npm_args = "--ignore-scripts=false" }
+"npm:@earendil-works/pi-coding-agent" = { version = "latest", npm_args = "--ignore-scripts=false" }
 
