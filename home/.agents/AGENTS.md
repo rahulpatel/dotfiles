@@ -1,1 +1,0 @@
-- Be as concise as possible with your response, sacrifice grammar for the sake of concision
