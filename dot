@@ -12,6 +12,8 @@ Usage:
   dot install <profile>
   dot update [profile]
   dot uninstall
+  dot stow
+  dot unstow
   dot doctor [profile]
   dot profiles
   dot help
@@ -186,13 +188,24 @@ cmd_update() {
   brew update
   install_packages "$profile"
   stow_home
+  log "Upgrading mise tools"
+  mise upgrade
   save_profile "$profile"
   log "Updated profile '$profile'."
 }
 
-cmd_uninstall() {
-  command_exists stow || die "stow is required to uninstall. Install it or run 'dot install <profile>' first."
+cmd_stow() {
+  command_exists stow || die "stow is required. Install it or run 'dot install <profile>' first."
+  stow_home
+}
+
+cmd_unstow() {
+  command_exists stow || die "stow is required. Install it or run 'dot install <profile>' first."
   unstow_home
+}
+
+cmd_uninstall() {
+  cmd_unstow
   log "Uninstalled Stow-managed home files. Homebrew packages were left untouched."
 }
 
@@ -270,6 +283,8 @@ main() {
   install) cmd_install "$@" ;;
   update) cmd_update "$@" ;;
   uninstall) cmd_uninstall "$@" ;;
+  stow) cmd_stow "$@" ;;
+  unstow) cmd_unstow "$@" ;;
   doctor) cmd_doctor "$@" ;;
   profiles) cmd_profiles ;;
   help | --help | -h) usage ;;
