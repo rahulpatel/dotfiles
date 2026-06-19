@@ -1,0 +1,23 @@
+{
+  "lastChangelogVersion": "0.79.7",
+  "theme": "dark",
+  "defaultProvider": "openai-codex",
+  "defaultModel": "gpt-5.5",
+  "defaultThinkingLevel": "high",
+  "terminal": {
+    "showTerminalProgress": true
+  },
+  "followUpMode": "all",
+  "steeringMode": "all",
+  "transport": "auto",
+  "quietStartup": false,
+  "enableInstallTelemetry": false,
+  "defaultProjectTrust": "always",
+  "doubleEscapeAction": "tree",
+  "treeFilterMode": "default",
+  "packages": [
+    "npm:pi-web-access",
+    "npm:pi-mcp-adapter",
+    "git:github.com/DietrichGebert/ponytail"
+  ]
+}
