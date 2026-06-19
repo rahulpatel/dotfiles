@@ -18,6 +18,7 @@
   "packages": [
     "npm:pi-web-access",
     "npm:pi-mcp-adapter",
-    "git:github.com/DietrichGebert/ponytail"
+    "git:github.com/DietrichGebert/ponytail",
+    "npm:@plannotator/pi-extension"
   ]
 }
