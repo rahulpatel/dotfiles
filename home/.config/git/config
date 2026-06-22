@@ -7,6 +7,9 @@
 [column]
   ui = auto                # Show columns in `git status`
 
+[core]
+  pager = hunk pager
+
 [diff]
   algorithm = histogram    # Clearer diffs on moved/edited lines
   colorMoved = plain       # Highlight moved blocks in diffs

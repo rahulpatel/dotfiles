@@ -8,4 +8,5 @@ experimental = true
 [tools]
 "node" = "latest"
 "npm:@earendil-works/pi-coding-agent" = { version = "latest", npm_args = "--ignore-scripts=false" }
+"npm:hunkdiff" = { version = "latest" }
 
