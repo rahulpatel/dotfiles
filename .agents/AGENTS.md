@@ -1,0 +1,1 @@
+- Be concise; sacrifice grammar if needed.
