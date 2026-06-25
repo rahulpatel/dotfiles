@@ -1,0 +1,2 @@
+- Be concise; sacrifice grammar if needed.
+- Don't use jargon and speak coherently. State it more simply, like one human talking to another.

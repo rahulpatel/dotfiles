@@ -5,7 +5,8 @@
       "args": [
         "-y",
         "chrome-devtools-mcp@latest"
-      ]
+      ],
+      "directTools": true
     }
   }
 }
