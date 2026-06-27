@@ -81,6 +81,55 @@
       "skillFolderHash": "41c681470ff44c81209f7b56a4c3b6ed4eb9a615fe9457e2592d2d47f505fd86",
       "installedAt": "2026-06-25T20:42:27.258Z",
       "updatedAt": "2026-06-25T20:42:27.258Z"
+    },
+    "teach": {
+      "source": "mattpocock/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/mattpocock/skills.git",
+      "skillPath": "skills/productivity/teach/SKILL.md",
+      "skillFolderHash": "3b6a4245e2aaeacb308ba6175ab3e7f2e43b0c47",
+      "pluginName": "mattpocock-skills",
+      "installedAt": "2026-06-27T07:41:32.810Z",
+      "updatedAt": "2026-06-27T07:41:32.810Z"
+    },
+    "handoff": {
+      "source": "mattpocock/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/mattpocock/skills.git",
+      "skillPath": "skills/productivity/handoff/SKILL.md",
+      "skillFolderHash": "aa82ffd61d7a3bda110060b4e24ec782b983cb8d",
+      "pluginName": "mattpocock-skills",
+      "installedAt": "2026-06-27T07:41:32.812Z",
+      "updatedAt": "2026-06-27T07:41:32.812Z"
+    },
+    "prototype": {
+      "source": "mattpocock/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/mattpocock/skills.git",
+      "skillPath": "skills/engineering/prototype/SKILL.md",
+      "skillFolderHash": "7ee08d81624de91a6dd8c61a438a32c50d570185",
+      "pluginName": "mattpocock-skills",
+      "installedAt": "2026-06-27T07:41:32.813Z",
+      "updatedAt": "2026-06-27T07:41:32.813Z"
+    },
+    "writing-great-skills": {
+      "source": "mattpocock/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/mattpocock/skills.git",
+      "skillPath": "skills/productivity/writing-great-skills/SKILL.md",
+      "skillFolderHash": "0875ef784dfdf0a3860f1cdc3937c2796b0314a5",
+      "pluginName": "mattpocock-skills",
+      "installedAt": "2026-06-27T07:41:32.814Z",
+      "updatedAt": "2026-06-27T07:41:32.814Z"
+    },
+    "shadcn": {
+      "source": "shadcn/ui",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/shadcn/ui.git",
+      "skillPath": "skills/shadcn/SKILL.md",
+      "skillFolderHash": "53547268e4c90c0dd7981e098e1ea4a89393575a",
+      "installedAt": "2026-06-27T07:43:05.999Z",
+      "updatedAt": "2026-06-27T07:43:05.999Z"
     }
   },
   "dismissed": {
