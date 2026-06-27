@@ -146,6 +146,32 @@ create_developer_dir() {
   mkdir -p "$HOME/Developer"
 }
 
+ensure_mise_tools() {
+  command_exists mise || die "mise is required. Install it or run 'dot install <profile>' first."
+  log "Installing mise tools"
+  mise install
+}
+
+sync_skills() {
+  local lock_file="$HOME/.agents/.skill-lock.json"
+  local temp_lock="$HOME/skills-lock.json"
+
+  [ -f "$lock_file" ] || {
+    warn "Skipping skills because $lock_file is missing."
+    return
+  }
+
+  [ ! -e "$temp_lock" ] || die "$temp_lock already exists. Move it before running dot."
+
+  log "Installing/updating skills"
+  (
+    trap 'rm -f "$temp_lock"' EXIT
+    cp "$lock_file" "$temp_lock"
+    cd "$HOME"
+    mise exec -- npx skills experimental_install
+  )
+}
+
 install_packages() {
   local profile="$1"
 
@@ -164,6 +190,8 @@ cmd_install() {
   install_packages "$profile"
   set_default_shell_to_fish
   stow_home
+  ensure_mise_tools
+  sync_skills
   save_profile "$profile"
   create_developer_dir
   log "Installed profile '$profile'."
@@ -188,8 +216,8 @@ cmd_update() {
   brew update
   install_packages "$profile"
   stow_home
-  log "Upgrading mise tools"
-  mise upgrade
+  ensure_mise_tools
+  sync_skills
   save_profile "$profile"
   log "Updated profile '$profile'."
 }
