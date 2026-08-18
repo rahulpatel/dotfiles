@@ -112,12 +112,12 @@ brew_bundle() {
 
 stow_home() {
   log "Stowing home files"
-  stow --dir "$DOTFILES_DIR" --target "$HOME" --restow --no-folding home
+  stow --dir "$DOTFILES_DIR" --target "$HOME" --restow home
 }
 
 unstow_home() {
   log "Unstowing home files"
-  stow --dir "$DOTFILES_DIR" --target "$HOME" --delete --no-folding home
+  stow --dir "$DOTFILES_DIR" --target "$HOME" --delete home
 }
 
 set_default_shell_to_fish() {
@@ -285,7 +285,7 @@ cmd_doctor() {
   }
 
   if command_exists stow; then
-    stow --dir "$DOTFILES_DIR" --target "$HOME" --restow --no-folding --simulate home >/dev/null || {
+    stow --dir "$DOTFILES_DIR" --target "$HOME" --restow --simulate home >/dev/null || {
       warn "Stow reported conflicts. Run the command above without --simulate for details."
       ok=0
     }
