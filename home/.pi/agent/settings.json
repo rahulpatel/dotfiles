@@ -1,9 +1,9 @@
 {
-  "lastChangelogVersion": "0.80.2",
+  "lastChangelogVersion": "0.84.2",
   "theme": "dark",
   "defaultProvider": "openai-codex",
-  "defaultModel": "gpt-5.5",
-  "defaultThinkingLevel": "high",
+  "defaultModel": "gpt-5.6-sol",
+  "defaultThinkingLevel": "medium",
   "terminal": {
     "showTerminalProgress": true
   },
@@ -18,7 +18,7 @@
   "packages": [
     "npm:pi-web-access",
     "npm:pi-mcp-adapter",
-    "git:github.com/DietrichGebert/ponytail",
     "npm:@plannotator/pi-extension"
-  ]
+  ],
+  "tuiMode": "regular"
 }
