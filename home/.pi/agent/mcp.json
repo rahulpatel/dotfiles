@@ -1,10 +1,16 @@
 {
-  "mcpServers": {
+  "mcp": {
+    "toolMode": "proxy",
+    "startup": "lazy",
+    "executor": {
+      "type": "remote",
+      "url": "https://executor-cloudflare.rahulage.workers.dev/mcp"
+    },
     "open-computer-use": {
-      "command": "open-computer-use",
-      "args": [
-        "mcp"
-      ]
+      "type": "local",
+      "command": ["open-computer-use", "mcp"],
+      "enabled": true,
+      "timeout": 60000
     }
   }
 }

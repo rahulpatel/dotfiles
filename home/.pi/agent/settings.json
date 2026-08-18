@@ -16,9 +16,9 @@
   "doubleEscapeAction": "tree",
   "treeFilterMode": "default",
   "packages": [
-    "npm:pi-web-access",
-    "npm:pi-mcp-adapter",
-    "npm:@plannotator/pi-extension"
+    "npm:@plannotator/pi-extension",
+    "git:github.com/dmmulroy/pi-mcp",
+    "git:github.com/dmmulroy/pi-web-tools"
   ],
   "tuiMode": "regular"
 }
