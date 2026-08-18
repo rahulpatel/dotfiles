@@ -5,6 +5,7 @@
 brew "bat"
 brew "eza"
 brew "fish"
+brew "fd"
 brew "fzf"
 brew "gh"
 brew "herdr"
