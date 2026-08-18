@@ -152,6 +152,12 @@ ensure_mise_tools() {
   mise install
 }
 
+ensure_herdr_integrations() {
+  command_exists herdr || die "herdr is required. Install it or run 'dot install <profile>' first."
+  log "Installing/updating Herdr's Pi integration"
+  herdr integration install pi
+}
+
 sync_skills() {
   local lock_file="$HOME/.agents/.skill-lock.json"
   local temp_lock="$HOME/skills-lock.json"
@@ -191,6 +197,7 @@ cmd_install() {
   set_default_shell_to_fish
   stow_home
   ensure_mise_tools
+  ensure_herdr_integrations
   sync_skills
   save_profile "$profile"
   create_developer_dir
@@ -217,6 +224,7 @@ cmd_update() {
   install_packages "$profile"
   stow_home
   ensure_mise_tools
+  ensure_herdr_integrations
   sync_skills
   save_profile "$profile"
   log "Updated profile '$profile'."

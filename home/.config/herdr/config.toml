@@ -1,0 +1,9 @@
+onboarding = false
+
+[theme]
+name = "catppuccin"
+
+[ui]
+pane_borders = true
+pane_gaps = true
+accent = "#f5c2e7"

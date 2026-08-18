@@ -20,20 +20,40 @@ function code
         return 0
     end
 
-    set name (basename $selected | tr . _)
+    set -l name (basename $selected)
+    set -l server_running (herdr status server --json 2>/dev/null | jq -r '.running')
 
-    if not tmux has-session -t $name 2>/dev/null
-        tmux new-session -d -s $name -c $selected
+    # Start the headless server first so a restored session cannot ignore the
+    # selected project when the client attaches.
+    if test "$server_running" != true
+        command nohup herdr server >/dev/null 2>&1 </dev/null &
+        disown $last_pid
 
-        tmux send-keys -t $name:1 'nvim .' C-m
-        tmux new-window -t $name:2 -c $selected
+        for attempt in (seq 1 50)
+            set server_running (herdr status server --json 2>/dev/null | jq -r '.running')
+            test "$server_running" = true; and break
+            sleep 0.1
+        end
 
-        tmux select-window -t $name:1
+        if test "$server_running" != true
+            echo "code: failed to start the Herdr server" >&2
+            return 1
+        end
     end
 
-    if test -z $TMUX
-        tmux attach-session -t $name
+    set -l workspace_id (
+        herdr workspace list \
+            | jq -r --arg label "$name" '.result.workspaces[] | select(.label == $label) | .workspace_id' \
+            | head -n 1
+    )
+
+    if test -n "$workspace_id"
+        herdr workspace focus $workspace_id >/dev/null
     else
-        tmux switch-client -t $name
+        herdr workspace create --cwd $selected --label $name --focus >/dev/null
+    end
+
+    if not set -q HERDR_ENV
+        command herdr
     end
 end
