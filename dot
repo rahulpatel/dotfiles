@@ -12,6 +12,7 @@ Usage:
   dot install <profile>
   dot update [profile]
   dot uninstall
+  dot macos
   dot stow
   dot unstow
   dot doctor [profile]
@@ -185,6 +186,16 @@ install_packages() {
   brew_bundle "$(profile_path "$profile")"
 }
 
+configure_macos() {
+  log "Applying macOS preferences"
+  "$DOTFILES_DIR/macos"
+}
+
+cmd_macos() {
+  ensure_macos
+  configure_macos
+}
+
 cmd_install() {
   local profile
   profile="${1:-}"
@@ -194,6 +205,7 @@ cmd_install() {
   ensure_xcode_tools
   ensure_homebrew
   install_packages "$profile"
+  configure_macos
   set_default_shell_to_fish
   stow_home
   ensure_mise_tools
@@ -222,6 +234,7 @@ cmd_update() {
   log "Updating Homebrew"
   brew update
   install_packages "$profile"
+  configure_macos
   stow_home
   ensure_mise_tools
   ensure_herdr_integrations
@@ -319,6 +332,7 @@ main() {
   install) cmd_install "$@" ;;
   update) cmd_update "$@" ;;
   uninstall) cmd_uninstall "$@" ;;
+  macos) cmd_macos "$@" ;;
   stow) cmd_stow "$@" ;;
   unstow) cmd_unstow "$@" ;;
   doctor) cmd_doctor "$@" ;;

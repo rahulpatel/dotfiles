@@ -1,0 +1,113 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+log() { printf '\033[1;34m[macos]\033[0m %s\n' "$*"; }
+warn() { printf '\033[1;33m[macos]\033[0m %s\n' "$*" >&2; }
+
+[ "$(uname -s)" = "Darwin" ] || {
+  printf 'This script only supports macOS.\n' >&2
+  exit 1
+}
+
+log "Configuring Dock"
+defaults write com.apple.dock autohide -bool true
+defaults write com.apple.dock magnification -bool true
+defaults write com.apple.dock tilesize -float 44
+defaults write com.apple.dock largesize -float 30
+defaults write com.apple.dock show-recents -bool false
+defaults write com.apple.dock minimize-to-application -bool true
+defaults write com.apple.dock wvous-br-corner -int 14
+
+# Keep this list in the same order as the Dock.
+for app in "/Applications/Helium.app" "/Applications/Ghostty.app"; do
+  [ -d "$app" ] || warn "Dock app is not installed yet: $app"
+done
+defaults write com.apple.dock persistent-apps -array \
+  '{"tile-data" = {"file-data" = {"_CFURLString" = "file:///Applications/Helium.app/"; "_CFURLStringType" = 15;};}; "tile-type" = "file-tile";}' \
+  '{"tile-data" = {"file-data" = {"_CFURLString" = "file:///Applications/Ghostty.app/"; "_CFURLStringType" = 15;};}; "tile-type" = "file-tile";}'
+defaults write com.apple.dock persistent-others -array
+
+log "Configuring Finder"
+defaults write com.apple.finder NewWindowTarget -string "PfHm"
+defaults write com.apple.finder FXPreferredViewStyle -string "clmv"
+defaults write com.apple.finder FXPreferredGroupBy -string "Kind"
+defaults write com.apple.finder ShowHardDrivesOnDesktop -bool true
+defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool true
+defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
+defaults write com.apple.finder ShowMountedServersOnDesktop -bool true
+defaults write com.apple.finder ShowRecentTags -bool false
+defaults write com.apple.finder _FXSortFoldersFirst -bool true
+defaults write com.apple.finder _FXSortFoldersFirstOnDesktop -bool true
+defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+defaults write com.apple.finder ShowPathbar -bool true
+defaults write com.apple.finder ShowStatusBar -bool true
+
+log "Configuring keyboard"
+defaults write NSGlobalDomain InitialKeyRepeat -int 15
+defaults write NSGlobalDomain KeyRepeat -int 2
+defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool true
+defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool true
+
+# Map Caps Lock to Escape immediately and persist it for the built-in keyboard.
+caps_lock=30064771129
+escape=30064771113
+mapping="{\"UserKeyMapping\":[{\"HIDKeyboardModifierMappingSrc\":$caps_lock,\"HIDKeyboardModifierMappingDst\":$escape}]}"
+hidutil property --set "$mapping" >/dev/null
+
+vendor_id="$(ioreg -r -c AppleHIDKeyboardEventDriverV2 -l 2>/dev/null | awk -F'= ' '/"VendorID" =/{print $2; exit}')"
+product_id="$(ioreg -r -c AppleHIDKeyboardEventDriverV2 -l 2>/dev/null | awk -F'= ' '/"ProductID" =/{print $2; exit}')"
+if [[ "$vendor_id" =~ ^[0-9]+$ && "$product_id" =~ ^[0-9]+$ ]]; then
+  modifier_key="com.apple.keyboard.modifiermapping.${vendor_id}-${product_id}-0"
+  defaults -currentHost write NSGlobalDomain "$modifier_key" -array \
+    "{ HIDKeyboardModifierMappingSrc = $caps_lock; HIDKeyboardModifierMappingDst = $escape; }"
+else
+  warn "Could not persist the Caps Lock mapping for the built-in keyboard."
+fi
+
+log "Configuring trackpad"
+defaults write NSGlobalDomain com.apple.trackpad.forceClick -bool true
+defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
+defaults write com.apple.AppleMultitouchTrackpad TrackpadRightClick -bool true
+defaults write com.apple.AppleMultitouchTrackpad TrackpadCornerSecondaryClick -int 0
+defaults write com.apple.AppleMultitouchTrackpad TrackpadScroll -bool true
+defaults write com.apple.AppleMultitouchTrackpad TrackpadHorizScroll -bool true
+defaults write com.apple.AppleMultitouchTrackpad TrackpadMomentumScroll -bool true
+defaults write com.apple.AppleMultitouchTrackpad TrackpadPinch -bool true
+defaults write com.apple.AppleMultitouchTrackpad TrackpadRotate -bool true
+defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerDrag -bool false
+defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerTapGesture -int 0
+defaults write com.apple.AppleMultitouchTrackpad TrackpadTwoFingerDoubleTapGesture -int 1
+defaults write com.apple.AppleMultitouchTrackpad TrackpadTwoFingerFromRightEdgeSwipeGesture -int 3
+defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerHorizSwipeGesture -int 2
+defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerVertSwipeGesture -int 2
+defaults write com.apple.AppleMultitouchTrackpad TrackpadFourFingerHorizSwipeGesture -int 2
+defaults write com.apple.AppleMultitouchTrackpad TrackpadFourFingerVertSwipeGesture -int 2
+defaults write com.apple.AppleMultitouchTrackpad TrackpadFourFingerPinchGesture -int 2
+defaults write com.apple.AppleMultitouchTrackpad TrackpadFiveFingerPinchGesture -int 2
+defaults write com.apple.AppleMultitouchTrackpad USBMouseStopsTrackpad -bool false
+
+# Keep Bluetooth trackpads consistent with the built-in trackpad.
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRightClick -bool true
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerDrag -bool false
+
+defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+defaults -currentHost write NSGlobalDomain com.apple.trackpad.enableSecondaryClick -bool true
+
+log "Configuring screenshots"
+screenshot_dir="$HOME/Screenshots"
+mkdir -p "$screenshot_dir"
+defaults write com.apple.screencapture location -string "$screenshot_dir"
+defaults write com.apple.screencapture type -string "png"
+defaults write com.apple.screencapture disable-shadow -bool false
+defaults write com.apple.screencapture show-thumbnail -bool true
+
+# Resolution, arrangement, and brightness are intentionally left to macOS.
+# They are display-specific; the current defaults use Retina scaling,
+# automatic brightness, and no mirroring.
+log "Leaving hardware-specific display settings managed by macOS"
+
+killall Dock 2>/dev/null || true
+killall Finder 2>/dev/null || true
+killall SystemUIServer 2>/dev/null || true
+log "macOS configuration complete"
