@@ -21,7 +21,7 @@ brew "zoxide"
 
 # Casks
 cask "1password"
-cask "nikitabobko/tap/aerospace"
+cask "nikitabobko/tap/aerospace", trusted: true
 cask "figma"
 cask "font-fira-code"
 cask "ghostty"
