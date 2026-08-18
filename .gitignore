@@ -1,2 +1,21 @@
 *.local
 *.work
+
+home/.config/raycast
+
+# Machine-local credentials and session data
+home/.config/herdr/*.log
+home/.config/herdr/session.json
+home/.pi/agent/*auth.json
+home/.pi/agent/sessions/
+
+# Generated and machine-local application state
+home/.config/fish/fish_variables
+home/.config/herdr/.plugins.lock
+home/.config/nvim/lazy-lock.json
+home/.config/nvim/lazyvim.json
+home/.pi/agent/bin/
+home/.pi/agent/git/
+home/.pi/agent/npm/
+home/.pi/agent/models-store.json
+home/.pi/agent/extensions/herdr-agent-state.ts
