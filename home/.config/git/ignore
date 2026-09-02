@@ -31,7 +31,7 @@ tags
 .cache/
 
 # --- Agent reference repositories -----------------------------------------
-# vrepo uses git subtree, which can add these files even though they are
+# `git vendor` uses git subtree, which can add these files even though they are
 # globally ignored. Editors and search tools can use the same convention.
 repos/
 

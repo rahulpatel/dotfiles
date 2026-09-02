@@ -1,22 +1,3 @@
-[alias]
-  # Vendor source repositories as squashed subtrees under repos/. The URL and
-  # ref are saved in this repository's local Git config for one-argument pulls.
-  # Usage: git vendor add|update|list
-  vendor = "!f() { command=\"${1:-help}\"; if test $# -gt 0; then shift; fi; case \"$command\" in add) git vendor-add \"$@\";; update|pull) if test \"${1:-}\" = all; then shift; git vendor-update-all \"$@\"; else git vendor-update \"$@\"; fi;; list|ls) git vendor-list \"$@\";; help|--help|-h) printf '%s\\n' 'usage: git vendor add <name> <url> [ref]' '       git vendor update <name> [url] [ref]' '       git vendor update all' '       git vendor list';; *) echo \"git vendor: unknown command '$command'\" >&2; echo \"run 'git vendor help' for usage\" >&2; return 2;; esac; }; f"
-
-  # Implementation aliases dispatched by `git vendor`.
-  vendor-add = "!f() { name=\"$1\"; url=\"$2\"; ref=\"${3:-main}\"; case \"$name\" in \"\"|\".\"|\"..\"|*[!A-Za-z0-9._-]*) echo 'usage: git vendor-add <name> <url> [ref]' >&2; return 2;; esac; if test -z \"$url\"; then echo 'usage: git vendor-add <name> <url> [ref]' >&2; return 2; fi; prefix=\"repos/$name\"; git subtree add --prefix=\"$prefix\" \"$url\" \"$ref\" --squash || return; git config --local \"vendor.$name.url\" \"$url\" && git config --local \"vendor.$name.ref\" \"$ref\" && git config --local \"vendor.$name.prefix\" \"$prefix\"; }; f"
-
-  # Usage: git vendor-update <name>
-  # Supplying [url] [ref] also registers or changes the saved upstream.
-  vendor-update = "!f() { name=\"$1\"; case \"$name\" in \"\"|\".\"|\"..\"|*[!A-Za-z0-9._-]*) echo 'usage: git vendor-update <name> [url] [ref]' >&2; return 2;; esac; url=\"$2\"; if test -z \"$url\"; then url=$(git config --local --get \"vendor.$name.url\") || { echo \"vendor '$name' is not registered; use: git vendor-update $name <url> [ref]\" >&2; return 2; }; fi; ref=\"$3\"; if test -z \"$ref\"; then ref=$(git config --local --get \"vendor.$name.ref\") || ref=main; fi; prefix=$(git config --local --get \"vendor.$name.prefix\") || prefix=\"repos/$name\"; git subtree pull --prefix=\"$prefix\" \"$url\" \"$ref\" --squash || return; git config --local \"vendor.$name.url\" \"$url\" && git config --local \"vendor.$name.ref\" \"$ref\" && git config --local \"vendor.$name.prefix\" \"$prefix\"; }; f"
-
-  # Update every vendor registered in the current repository.
-  vendor-update-all = "!f() { keys=$(git config --local --name-only --get-regexp '^vendor\\..*\\.url$') || { echo 'No vendors registered.'; return; }; for key in $keys; do name=${key#vendor.}; name=${name%.url}; echo \"Updating $name...\"; git vendor-update \"$name\" || return; done; }; f"
-
-  # Show the vendors registered in the current repository.
-  vendor-list = "!f() { keys=$(git config --local --name-only --get-regexp '^vendor\\..*\\.url$') || { echo 'No vendors registered.'; return; }; for key in $keys; do name=${key#vendor.}; name=${name%.url}; url=$(git config --local --get \"$key\"); ref=$(git config --local --get \"vendor.$name.ref\") || ref=main; prefix=$(git config --local --get \"vendor.$name.prefix\") || prefix=\"repos/$name\"; printf '%s\\t%s\\t%s\\t%s\\n' \"$name\" \"$ref\" \"$prefix\" \"$url\"; done; }; f"
-
 [branch]
   sort = -committerdate    # Sort branches by most recent commit first
 
