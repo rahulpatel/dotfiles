@@ -14,6 +14,7 @@ home/.config/fish/fish_variables
 home/.config/herdr/.plugins.lock
 home/.config/nvim/lazy-lock.json
 home/.config/nvim/lazyvim.json
+home/.config/vite-plus/
 home/.pi/agent/bin/
 home/.pi/agent/git/
 home/.pi/agent/npm/

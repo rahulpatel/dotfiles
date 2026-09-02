@@ -153,6 +153,43 @@ ensure_mise_tools() {
   mise install
 }
 
+vite_plus_bin() {
+  if command_exists vp; then
+    command -v vp
+  elif [ -x "$HOME/.local/share/vite-plus/bin/vp" ]; then
+    printf '%s\n' "$HOME/.local/share/vite-plus/bin/vp"
+  else
+    return 1
+  fi
+}
+
+run_vite_plus() {
+  env -u VP_HOME -u VP_BIN_DIR -u VP_DATA_DIR -u VP_CACHE_DIR "$@"
+}
+
+ensure_vite_plus() {
+  local update="${1:-false}"
+  local vp_bin
+
+  if vp_bin="$(vite_plus_bin)"; then
+    if [ "$update" = "true" ]; then
+      log "Updating Vite+"
+      run_vite_plus "$vp_bin" upgrade
+      vp_bin="$(vite_plus_bin)"
+    else
+      log "Vite+ is already installed"
+    fi
+  else
+    log "Installing Vite+"
+    curl -fsSL https://vite.plus | env -u VP_HOME -u VP_BIN_DIR -u VP_DATA_DIR -u VP_CACHE_DIR VP_NODE_MANAGER=yes bash
+    vp_bin="$(vite_plus_bin)" || die "Vite+ installed, but vp is not available."
+  fi
+
+  log "Configuring Vite+ to use mise-managed runtimes"
+  run_vite_plus "$vp_bin" env setup --refresh
+  run_vite_plus "$vp_bin" env off
+}
+
 ensure_herdr_integrations() {
   command_exists herdr || die "herdr is required. Install it or run 'dot install <profile>' first."
   log "Installing/updating Herdr's Pi integration"
@@ -209,6 +246,7 @@ cmd_install() {
   set_default_shell_to_fish
   stow_home
   ensure_mise_tools
+  ensure_vite_plus
   ensure_herdr_integrations
   sync_skills
   save_profile "$profile"
@@ -237,6 +275,7 @@ cmd_update() {
   configure_macos
   stow_home
   ensure_mise_tools
+  ensure_vite_plus true
   ensure_herdr_integrations
   sync_skills
   save_profile "$profile"
@@ -288,6 +327,22 @@ cmd_doctor() {
     warn "GNU Stow is missing."
     ok=0
   }
+  command_exists mise || {
+    warn "mise is missing."
+    ok=0
+  }
+
+  local vp_bin
+  if vp_bin="$(vite_plus_bin)"; then
+    PATH="$(dirname "$vp_bin"):$PATH" run_vite_plus "$vp_bin" env doctor >/dev/null || {
+      warn "Vite+ environment setup is unhealthy."
+      ok=0
+    }
+  else
+    warn "Vite+ is missing."
+    ok=0
+  fi
+
   [ -f "$(profile_path base)" ] || {
     warn "Missing packages/base."
     ok=0
