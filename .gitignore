@@ -2,8 +2,6 @@
 !home/.local/
 *.work
 
-home/.config/raycast
-
 # Machine-local credentials and session data
 home/.config/herdr/*.log
 home/.config/herdr/session.json
