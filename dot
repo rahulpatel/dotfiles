@@ -225,7 +225,7 @@ install_packages() {
 
 configure_macos() {
   log "Applying macOS preferences"
-  "$DOTFILES_DIR/macos"
+  "$DOTFILES_DIR/macos" "$@"
 }
 
 cmd_macos() {
@@ -272,7 +272,7 @@ cmd_update() {
   log "Updating Homebrew"
   brew update
   install_packages "$profile"
-  configure_macos
+  configure_macos --preserve-dock-tiles
   stow_home
   ensure_mise_tools
   ensure_vite_plus true

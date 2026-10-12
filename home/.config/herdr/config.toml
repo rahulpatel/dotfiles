@@ -7,3 +7,11 @@ name = "catppuccin"
 pane_borders = true
 pane_gaps = true
 accent = "#f5c2e7"
+status_indicators = "symbols"
+
+show_agent_labels_on_pane_borders = false
+[ui.sound]
+enabled = false
+
+[ui.toast]
+delivery = "terminal"

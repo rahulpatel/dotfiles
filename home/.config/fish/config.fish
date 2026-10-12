@@ -7,6 +7,6 @@ set -gx EDITOR nvim
 # Set neovim as the program to open manpages
 set -gx MANPAGER 'nvim +Man!'
 
-fish_add_path ~/.dotfiles.v3
+fish_add_path $HOME/.local/bin
 
 fish_config theme choose catppuccin-mocha

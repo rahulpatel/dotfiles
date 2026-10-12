@@ -3,7 +3,6 @@
 
 [commit]
   verbose = true           # Include diff comment in commit message template
-  gpgsign = true
 
 [column]
   ui = auto                # Show columns in `git status`
@@ -36,13 +35,6 @@
 [user]
   name = Rahul Patel
   email = rahulpatel@users.noreply.github.com
-	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAT8stLs9K2zQnCRpr5PZ59ZSpWtpCBnvGXCDtlzelPb
-
-[gpg]
-	format = ssh
-
-[gpg "ssh"]
-	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
 
 # Machine-local overrides (not committed). Restored out-of-band per machine.
 # Put work routing and identity here so employer details never enter the repo:

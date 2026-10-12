@@ -1,4 +1,5 @@
 *.local
+!home/.local/
 *.work
 
 home/.config/raycast
@@ -6,12 +7,20 @@ home/.config/raycast
 # Machine-local credentials and session data
 home/.config/herdr/*.log
 home/.config/herdr/session.json
+home/.config/gh/
+home/.config/opencode/service.json
 home/.pi/agent/*auth.json
 home/.pi/agent/sessions/
+home/.pi/agent/trust.json
 
 # Generated and machine-local application state
+home/.config/containers/
 home/.config/fish/fish_variables
 home/.config/herdr/.plugins.lock
+home/.config/herdr/plugins/
+home/.config/herdr/plugins.json
+home/.config/herdr/release-notes.json
+home/.local/bin/python3.12
 home/.config/nvim/lazy-lock.json
 home/.config/nvim/lazyvim.json
 home/.config/vite-plus/

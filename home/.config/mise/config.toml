@@ -6,7 +6,9 @@ color_theme = "catppuccin"
 experimental = true
 
 [tools]
-"node" = "latest"
+"bun" = "latest"
+"node" = "lts"
 "npm:@earendil-works/pi-coding-agent" = { version = "latest", npm_args = "--ignore-scripts=false" }
+"npm:@opencode/cli" = { version = "latest", allow_builds = ["@opencode/cli"] }
 "npm:open-computer-use" = "latest"
 
