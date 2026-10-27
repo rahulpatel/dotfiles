@@ -1,11 +1,13 @@
 {
   "mcpServers": {
     "executor": {
-      "url": "https://v2.executor.sh/mcp"
+      "url": "https://mcp.executor.sh/mcp"
     },
     "open-computer-use": {
       "command": "open-computer-use",
-      "args": ["mcp"],
+      "args": [
+        "mcp"
+      ],
       "enabled": true,
       "timeout": 60
     }
