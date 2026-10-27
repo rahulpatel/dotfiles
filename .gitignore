@@ -2,6 +2,14 @@
 !home/.local/
 *.work
 
+# Machine-local mise config (profile selection, overrides)
+.miserc.local.toml
+mise.local.toml
+mise.*.local.toml
+
+# Only git-tracked files under home/ are linked into $HOME (manifest = "git"),
+# so apps no longer write state into this repo. These stay as a safety net.
+
 # Machine-local credentials and session data
 home/.config/herdr/*.log
 home/.config/herdr/session.json
