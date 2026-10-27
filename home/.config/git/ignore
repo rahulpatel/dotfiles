@@ -30,11 +30,6 @@ tags
 .tags
 .cache/
 
-# --- Agent reference repositories -----------------------------------------
-# `git vendor` uses git subtree, which can add these files even though they are
-# globally ignored. Editors and search tools can use the same convention.
-repos/
-
 # --- direnv ----------------------------------------------------------------
 .envrc.local
 
