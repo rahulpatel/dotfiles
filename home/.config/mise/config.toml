@@ -4,6 +4,12 @@ enter = "mise i -q"
 [settings]
 color_theme = "catppuccin"
 experimental = true
+# Keep every tool below up to date (within its version request).
+tool_update.global_auto = true
+
+# Check hourly in the background via launchd instead of at shell prompts.
+[bootstrap.services.mise-tool-update]
+builtin = "tool-update"
 
 [tools]
 "bun" = "latest"
