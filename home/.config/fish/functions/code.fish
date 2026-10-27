@@ -20,40 +20,21 @@ function code
         return 0
     end
 
-    set -l name (basename $selected)
-    set -l server_running (herdr status server --json 2>/dev/null | jq -r '.running')
-
-    # Start the headless server first so a restored session cannot ignore the
-    # selected project when the client attaches.
-    if test "$server_running" != true
-        command nohup herdr server >/dev/null 2>&1 </dev/null &
-        disown $last_pid
-
-        for attempt in (seq 1 50)
-            set server_running (herdr status server --json 2>/dev/null | jq -r '.running')
-            test "$server_running" = true; and break
-            sleep 0.1
-        end
-
-        if test "$server_running" != true
-            echo "code: failed to start the Herdr server" >&2
-            return 1
-        end
+    if not command -q rex
+        echo "code: rex is not on PATH; open Rex first" >&2
+        return 1
     end
 
-    set -l workspace_id (
-        herdr workspace list \
-            | jq -r --arg label "$name" '.result.workspaces[] | select(.label == $label) | .workspace_id' \
+    set -l name (basename $selected)
+    set -l session_id (
+        rex ls --json \
+            | jq -r --arg label "$name" '.sessions[] | select(.label == $label) | .session_id' \
             | head -n 1
     )
 
-    if test -n "$workspace_id"
-        herdr workspace focus $workspace_id >/dev/null
-    else
-        herdr workspace create --cwd $selected --label $name --focus >/dev/null
+    if test -z "$session_id"
+        set session_id (rex new $name -c $selected --json | jq -r '.session_id')
     end
 
-    if not set -q HERDR_ENV
-        command herdr
-    end
+    rex do session.select session_id=$session_id
 end
