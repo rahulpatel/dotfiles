@@ -11,6 +11,7 @@ font-thicken-strength = 255
 font-thicken = true
 
 keybind = cmd+k=clear_screen
+keybind = alt+backspace=text:\x1b\x7f
 
 macos-titlebar-style = "tabs"
 
