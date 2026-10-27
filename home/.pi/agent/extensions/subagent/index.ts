@@ -30,7 +30,7 @@ export default function (pi: ExtensionAPI) {
     const show = backgroundRunning().length > 0;
     if (show === widgetShown) return;
     widgetShown = show;
-    current.ui.setWidget("subagents", show ? (tui, theme) => widget(backgroundRunning, tui, theme) : undefined);
+    current.ui.setWidget("subagents", show ? (tui, theme) => widget(backgroundRunning, tui, theme, refreshWidget) : undefined);
   };
 
   const resolveModel = (ref: string, ctx: ExtensionContext) => {
@@ -343,10 +343,6 @@ export default function (pi: ExtensionAPI) {
     await Promise.allSettled([...runs.values()].map((run) => run.abort()));
     await Promise.allSettled([...runs.values()].map((run) => run.dispose()));
     runs.clear();
-    widgetShown = false;
-  });
-}
-);
     widgetShown = false;
   });
 }
