@@ -21,7 +21,8 @@ trap 'rm -rf "$work"' EXIT
 
 git init --quiet "$work/src"
 git -C "$work/src" remote add origin https://github.com/cursor/plugins.git
-git -C "$work/src" sparse-checkout set pstack
+team_skills=(deslop control-cli control-ui)
+git -C "$work/src" sparse-checkout set pstack "${team_skills[@]/#/cursor-team-kit/skills/}"
 git -C "$work/src" fetch --quiet --depth 1 --filter=blob:none origin "$PSTACK_REF"
 git -C "$work/src" checkout --quiet FETCH_HEAD
 
@@ -32,6 +33,10 @@ mkdir -p "$out"
 # pack behind. That includes skills/, agents/, docs/, automations/benny/, assets/,
 # and .cursor-plugin/. Cursor-only pieces stay dormant (see harness.md).
 cp -R "$src/." "$out/"
+# Extra skills from the sibling cursor-team-kit plugin.
+for skill in "${team_skills[@]}"; do
+  cp -R "$work/src/cursor-team-kit/skills/$skill" "$out/skills/"
+done
 cp "$here/harness.md" "$out/docs/harness/pi-opencode.md"
 
 line='In pi or opencode, read [the pi and opencode adapter](../../docs/harness/pi-opencode.md) once per session before you follow this skill. It maps the Cursor names in pstack skills to pi and opencode.'
