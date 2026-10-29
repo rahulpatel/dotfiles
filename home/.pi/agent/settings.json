@@ -1,24 +1,13 @@
 {
   "lastChangelogVersion": "1.4.0",
-  "theme": "dark",
   "defaultProvider": "github-copilot",
-  "defaultModel": "claude-opus-5.5",
-  "defaultThinkingLevel": "medium",
+  "defaultModel": "claude-sonnet-5.5",
+  "showHardwareCursor": true,
   "terminal": {
     "showTerminalProgress": true
   },
-  "followUpMode": "all",
-  "steeringMode": "all",
   "transport": "auto",
-  "quietStartup": false,
+  "showCacheMissNotices": true,
   "enableInstallTelemetry": false,
-  "defaultProjectTrust": "always",
-  "doubleEscapeAction": "tree",
-  "treeFilterMode": "default",
-  "packages": [
-    "npm:@plannotator/pi-extension",
-    "git:github.com/dmmulroy/pi-web-tools"
-  ],
-  "tuiMode": "regular",
-  "hideThinkingBlock": true
+  "defaultProjectTrust": "always"
 }
