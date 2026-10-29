@@ -207,7 +207,7 @@ fi
 '''
 
 [tasks."setup:rex"]
-description = "Install/update Rex's skill for pi and opencode"
+description = "Set up Rex: skill for pi/opencode, terminfo + ssh guard, fish completions"
 run = '''
 #!/usr/bin/env bash
 set -euo pipefail
@@ -219,6 +219,9 @@ if [ ! -x "$rex" ]; then
   exit 0
 fi
 "$rex" skill setup --agent pi --agent opencode
+"$rex" terminfo setup
+mkdir -p ~/.config/fish/completions
+"$rex" completion fish > ~/.config/fish/completions/rex.fish
 '''
 
 # --- Upgrades ----------------------------------------------------------------
