@@ -10,7 +10,7 @@ Everything lives in [`mise.toml`](mise.toml):
 | Dock, Finder, keyboard, trackpad, screenshots | `[bootstrap.macos.*]` |
 | Login shell (fish) | `[bootstrap.user]` |
 | Dev tools (node, bun, pi, …) | `home/.config/mise/config.toml` → `[tools]` |
-| Vite+, Rex skill, skills, Caps Lock → Esc | `[tasks.bootstrap]` and `setup:*` tasks |
+| Vite+, Rex skill, Caps Lock → Esc | `[tasks.bootstrap]` and `setup:*` tasks |
 
 ## Profiles
 
