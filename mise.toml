@@ -149,6 +149,16 @@ value = true
 [tasks.bootstrap]
 description = "Setup that the declarative sections do not cover"
 depends = ["setup:*"]
+# Runs after every setup:* task has finished.
+run = '''
+#!/usr/bin/env bash
+cat <<'EOF'
+
+Manual steps (macOS permission dialogs can't be automated):
+  cua-driver permissions grant    # Accessibility + Screen Recording for Cua Driver
+  cua-driver permissions status   # verify the grants afterwards
+EOF
+'''
 
 [tasks."setup:dirs"]
 description = "Create home directories"
