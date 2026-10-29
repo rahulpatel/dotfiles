@@ -1,15 +1,5 @@
 {
   "version": 3,
-  "skills": {
-    "open-computer-use": {
-      "source": "iFurySt/open-codex-computer-use",
-      "sourceType": "github",
-      "sourceUrl": "https://github.com/iFurySt/open-codex-computer-use.git",
-      "skillPath": "skills/open-computer-use/SKILL.md",
-      "skillFolderHash": "cc82b63e00196cdc64526fe08e5b495cd179dfad",
-      "installedAt": "2026-10-13T21:04:04.455Z",
-      "updatedAt": "2026-10-13T21:04:04.455Z"
-    }
-  },
+  "skills": {},
   "dismissed": {}
 }
