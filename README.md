@@ -23,19 +23,16 @@ env = ["personal"] # or ["work"]
 
 ## New machine
 
-```sh
-xcode-select --install   # git; wait for it to finish
-git clone https://github.com/rahulpatel/dotfiles.git ~/.dotfiles
-cd ~/.dotfiles
-echo 'env = ["personal"]' > .miserc.local.toml
+Paste this into Terminal on a fresh Mac, enter your password once, and walk away.
+Set `PROFILE` to `personal` or `work`:
 
-# Temporary mise; bootstrap installs the real one from brew:mise.
-curl -fsSL https://mise.run | MISE_INSTALL_PATH=/tmp/mise sh
-/tmp/mise trust
-/tmp/mise bootstrap
+```sh
+curl -fsSL https://raw.githubusercontent.com/rahulpatel/dotfiles/main/install.sh | PROFILE=personal bash
 ```
 
-Open a new terminal afterwards (the login shell changes to fish).
+[`install.sh`](install.sh) installs the Command Line Tools, clones this repo to
+`~/.dotfiles`, writes `.miserc.local.toml` for the profile, then runs
+`mise bootstrap`. Open a new terminal afterwards (the login shell changes to fish).
 
 ## Day to day
 

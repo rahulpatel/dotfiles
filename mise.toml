@@ -30,7 +30,6 @@ login_shell = "/opt/homebrew/bin/fish"
 "brew:gh" = "latest"
 "brew:jq" = "latest"
 "brew:lazygit" = "latest"
-"brew:mise" = "latest"
 "brew:neovim" = "latest"
 "brew:podman" = "latest"
 "brew:starship" = "latest"
@@ -246,6 +245,7 @@ run = [
   "git pull --ff-only",
   "mise bootstrap packages upgrade --yes",
   "env -u VP_HOME -u VP_BIN_DIR -u VP_DATA_DIR -u VP_CACHE_DIR ~/.local/share/vite-plus/bin/vp upgrade",
+  "mise self-update --yes",
   "mise upgrade",
   "mise bootstrap --yes",
 ]
