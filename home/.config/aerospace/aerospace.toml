@@ -84,11 +84,11 @@ enter = 'mode main'
 esc = 'mode main'
 
 [[on-window-detected]]
-if.app-name-regex-substring = 'Ghostty|Terminal'
+if.app-name-regex-substring = 'Rex|Ghostty|Terminal'
 run = ['layout tiling', 'move-node-to-workspace T']
 
 [[on-window-detected]]
-if.app-name-regex-substring = '<placeholder>'
+if.app-name-regex-substring = 'ChatGPT|Grok'
 run = ['layout tiling', 'move-node-to-workspace E']
 
 [[on-window-detected]]
@@ -96,7 +96,7 @@ if.app-name-regex-substring = 'Simulator|Podman|Zed|Xcode'
 run = ['layout tiling', 'move-node-to-workspace D']
 
 [[on-window-detected]]
-if.app-name-regex-substring = 'Arc|Chrome|Zen|Safari|Helium'
+if.app-name-regex-substring = 'Chrome|Safari|Helium'
 run = ['layout tiling', 'move-node-to-workspace B']
 
 [[on-window-detected]]
@@ -112,5 +112,5 @@ if.app-name-regex-substring = 'Spotify|Finder'
 run = ['layout tiling', 'move-node-to-workspace 1']
 
 [[on-window-detected]]
-if.app-name-regex-substring = 'Bruno'
+if.app-name-regex-substring = 'Bruno|Postman'
 run = ['layout tiling', 'move-node-to-workspace 2']

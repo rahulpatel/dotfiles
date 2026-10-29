@@ -43,7 +43,6 @@ login_shell = "/opt/homebrew/bin/fish"
 "brew-cask:font-fira-code" = "latest"
 "brew-cask:ghostty" = "latest"
 "brew-cask:helium-browser" = "latest"
-"brew-cask:homerow" = "latest"
 "brew-cask:anomalyco/tap/hex" = "latest"
 "brew-cask:macshot" = "latest"
 "brew-cask:nikitabobko/tap/aerospace" = "latest"
@@ -58,10 +57,6 @@ login_shell = "/opt/homebrew/bin/fish"
 # Profile: work
 "brew-cask:slack" = { env = "work" }
 
-[bootstrap.brew]
-# Take over apps that are already installed instead of replacing them.
-adopt = true
-
 # --- macOS preferences -------------------------------------------------------
 [bootstrap.macos.dock]
 autohide = true
@@ -72,7 +67,7 @@ show_recents = false
 # Finder is always pinned first by macOS, so it is not listed here.
 apps = [
   "/Applications/Helium.app",
-  "/Applications/Ghostty.app",
+  "/Applications/Rex Beta.app",
 ]
 
 [bootstrap.macos.finder]
