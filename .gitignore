@@ -29,3 +29,4 @@ home/.pi/agent/bin/
 home/.pi/agent/git/
 home/.pi/agent/npm/
 home/.pi/agent/models-store.json
+home/.agents/skills/cua-driver
