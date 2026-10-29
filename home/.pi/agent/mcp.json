@@ -2,6 +2,14 @@
   "mcpServers": {
     "executor": {
       "url": "https://mcp.executor.sh/mcp"
+    },
+    "cua-driver": {
+      "command": "cua-driver",
+      "args": [
+        "mcp"
+      ],
+      "enabled": true,
+      "timeout": 60
     }
   }
 }

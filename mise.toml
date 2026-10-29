@@ -211,20 +211,6 @@ fi
 "$rex" skill setup --agent pi --agent opencode
 '''
 
-[tasks."setup:cua-driver"]
-description = "Install Cua Driver's agent skill (used by pi via the CLI, no MCP)"
-run = '''
-#!/usr/bin/env bash
-set -euo pipefail
-
-if ! command -v cua-driver >/dev/null; then
-  echo "skipping cua-driver skill: cua-driver is not installed" >&2
-  exit 0
-fi
-cua-driver mcp-config --client pi >/dev/null
-cua-driver skills install
-'''
-
 [tasks."setup:skills"]
 description = "Install/update agent skills from ~/.agents/.skill-lock.json"
 run = '''
