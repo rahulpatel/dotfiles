@@ -39,6 +39,7 @@ login_shell = "/opt/homebrew/bin/fish"
 
 "brew-cask:1password" = "latest"
 "brew-cask:abue-ammar/tinycast/tinycast" = "latest"
+"brew-cask:cuadriver" = "latest"
 "brew-cask:figma" = "latest"
 "brew-cask:font-fira-code" = "latest"
 "brew-cask:ghostty" = "latest"
@@ -208,6 +209,20 @@ if [ ! -x "$rex" ]; then
   exit 0
 fi
 "$rex" skill setup --agent pi --agent opencode
+'''
+
+[tasks."setup:cua-driver"]
+description = "Install Cua Driver's agent skill (used by pi via the CLI, no MCP)"
+run = '''
+#!/usr/bin/env bash
+set -euo pipefail
+
+if ! command -v cua-driver >/dev/null; then
+  echo "skipping cua-driver skill: cua-driver is not installed" >&2
+  exit 0
+fi
+cua-driver mcp-config --client pi >/dev/null
+cua-driver skills install
 '''
 
 [tasks."setup:skills"]
