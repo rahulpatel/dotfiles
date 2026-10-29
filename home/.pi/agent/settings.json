@@ -19,9 +19,6 @@
     "npm:@plannotator/pi-extension",
     "git:github.com/dmmulroy/pi-web-tools"
   ],
-  "skills": [
-    "~/.local/share/pstack/skills"
-  ],
   "tuiMode": "regular",
   "hideThinkingBlock": true
 }

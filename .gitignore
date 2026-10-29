@@ -13,7 +13,6 @@ mise.*.local.toml
 # Machine-local credentials and session data
 home/.config/gh/
 home/.config/opencode/service.json
-home/.agents/pstack-models.md
 home/.pi/agent/*auth.json
 home/.pi/agent/sessions/
 home/.pi/agent/trust.json
@@ -23,10 +22,6 @@ home/.config/containers/
 home/.config/fish/fish_variables
 home/.local/bin/python3.12
 home/.config/nvim/lazy-lock.json
-home/.config/opencode/agents/comment-sicko.md
-home/.config/opencode/agents/poteto-agent.md
-home/.pi/agent/agents/comment-sicko.md
-home/.pi/agent/agents/poteto-agent.md
 home/.agents/skills/rex/
 home/.config/nvim/lazyvim.json
 home/.config/vite-plus/

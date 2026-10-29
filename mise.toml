@@ -239,11 +239,6 @@ cd "$HOME"
 npx skills experimental_install
 '''
 
-[tasks."setup:pstack"]
-description = "Install/update pstack skills for pi and opencode (see pstack/)"
-env = { PSTACK_REF = "b1695c2019b650ca5d4a66a6a6d805233c806d6d" } # cursor/plugins commit
-run = "pstack/install.sh"
-
 # --- Upgrades ----------------------------------------------------------------
 [tasks.upgrade]
 description = "Pull dotfiles, upgrade packages/tools, and re-apply everything"

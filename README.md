@@ -11,7 +11,6 @@ Everything lives in [`mise.toml`](mise.toml):
 | Login shell (fish) | `[bootstrap.user]` |
 | Dev tools (node, bun, pi, …) | `home/.config/mise/config.toml` → `[tools]` |
 | Vite+, Rex skill, skills, Caps Lock → Esc | `[tasks.bootstrap]` and `setup:*` tasks |
-| [pstack](https://github.com/cursor/plugins/tree/main/pstack) skills for pi and opencode | [`pstack/`](pstack) and `setup:pstack` |
 
 ## Profiles
 
@@ -56,19 +55,6 @@ Preview anything first with `--dry-run`, e.g. `mise bootstrap --dry-run`.
 
 Adding a dotfile: put it under `home/` and `git add` it, then `mise dot apply`.
 Adding a package: `mise bootstrap packages use brew:<name>` (or edit `mise.toml`).
-
-## pstack
-
-`mise run setup:pstack` installs pstack at the commit in `PSTACK_REF`
-(`mise.toml`) into `~/.local/share/pstack`, and adds its subagents to pi and
-opencode. It copies everything the plugin ships, including every skill and the
-optional packs, so an update never drops one. To update, change `PSTACK_REF` and
-run it again. pstack is written for Cursor;
-[`pstack/harness.md`](pstack/harness.md) maps its Cursor names to pi and opencode.
-
-Run `setup-pstack` once per machine, and again when your providers change. It
-writes the model for each role to `~/.agents/pstack-models.md` (not committed).
-Then start tasks with `/skill:poteto-mode` in pi or `@poteto-mode` in opencode.
 
 ## pi subagents
 
