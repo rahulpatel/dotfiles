@@ -13,6 +13,12 @@
 source = "home"
 mode = "symlink-each"
 manifest = "git"
+exclude = [".agents/skills"]
+
+# Link the whole skills directory so new skills appear without re-running.
+[dotfiles."~/.agents/skills"]
+source = "home/.agents/skills"
+mode = "symlink"
 
 # --- Login shell -------------------------------------------------------------
 # mise activation lives in home/.config/fish/conf.d/mise.fish.
