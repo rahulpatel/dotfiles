@@ -5,24 +5,25 @@
   },
   "animations": true,
   "session": {
-    "sidebar": "auto",
+    "sidebar": "hide",
     "scrollbar": false,
-    "thinking": "hide",
+    "thinking": "show",
     "markdown": "rendered",
-    "grouping": "auto",
+    "grouping": "none",
     "verbosity": "low",
     "new_location": "launch",
-    "permissions": "autoaccept"
+    "permissions": "autoaccept",
+    "image_preview": true
   },
   "tabs": {
-    "mode": "auto"
+    "mode": "off"
   },
   "prompt": {
     "paste": "full",
     "image_preview": true
   },
   "attention": {
-    "notifications": true
+    "notifications": false
   },
   "terminal": {
     "copy": "select"
