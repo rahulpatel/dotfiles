@@ -9,7 +9,7 @@ import { StringEnum } from "@earendil-works/pi-ai";
 import type { AgentToolResult, ExtensionAPI, ExtensionContext } from "@earendil-works/pi-coding-agent";
 import { Text } from "@earendil-works/pi-tui";
 import { Type } from "typebox";
-import { BLOCK_LABEL_PREFIX, ENV_DIR, ENV_PARENT_BLOCK, read, sleep, write } from "./protocol.ts";
+import { ENV_DIR, ENV_PARENT_BLOCK, read, sleep, write } from "./protocol.ts";
 
 const run = promisify(execFile);
 const rex = (...args: string[]) => run("rex", args);
@@ -179,7 +179,6 @@ export function registerParent(pi: ExtensionAPI): void {
         ).stdout,
       ) as { block_ids: string[] };
       const block = created.block_ids[0]!;
-      await api("session.set_block_label", { block_id: block, label: `${BLOCK_LABEL_PREFIX}${id}` }); // lets Rex key bindings recognise subagent panes
       await api("session.detach_block", { block_id: block }); // hide: out of the sidebar, still running
 
       const agent: Agent = { id, label, dir, block, state: "running", surfacedQuestion: 0 };
