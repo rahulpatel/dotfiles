@@ -3,7 +3,11 @@ import { rm } from "node:fs/promises";
 import { join } from "node:path";
 import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
 import { Type } from "typebox";
-import { read, sleep, write } from "./protocol.ts";
+import { execFile } from "node:child_process";
+import { promisify } from "node:util";
+import { ENV_PARENT_BLOCK, read, sleep, write } from "./protocol.ts";
+
+const rex = promisify(execFile).bind(null, "rex");
 
 const MAX_LINES = 40;
 const oneLine = (v: unknown, n = 100) => {
@@ -34,6 +38,17 @@ export function registerChild(pi: ExtensionAPI, dir: string): void {
     if (!last || !["stop", "length", "error"].includes(last.stopReason ?? "")) return;
     const failed = last.stopReason === "error";
     await write(dir, "result", { ok: !failed, text: failed ? last.error || last.text || "Subagent run failed with no error message." : last.text });
+  });
+
+  pi.registerCommand("detach", {
+    description: "Hide this subagent again (it keeps running in the background)",
+    handler: async (_args, ctx) => {
+      const { REX_SESSION: session, REX_BLOCK: block } = process.env;
+      if (!session || !block) return ctx.ui.notify("Not running in a Rex pane.", "error");
+      await rex(["api", "call", "-s", session, "session.detach_block", JSON.stringify({ block_id: block })]);
+      const parent = process.env[ENV_PARENT_BLOCK];
+      if (parent) await rex(["focus", "-s", session, parent]).catch(() => {});
+    },
   });
 
   let asked = 0;

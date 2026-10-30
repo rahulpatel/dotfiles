@@ -9,7 +9,7 @@ import { StringEnum } from "@earendil-works/pi-ai";
 import type { AgentToolResult, ExtensionAPI, ExtensionContext } from "@earendil-works/pi-coding-agent";
 import { Text } from "@earendil-works/pi-tui";
 import { Type } from "typebox";
-import { ENV_DIR, read, sleep, write } from "./protocol.ts";
+import { BLOCK_LABEL_PREFIX, ENV_DIR, ENV_PARENT_BLOCK, read, sleep, write } from "./protocol.ts";
 
 const run = promisify(execFile);
 const rex = (...args: string[]) => run("rex", args);
@@ -23,7 +23,6 @@ interface Agent {
   dir: string;
   block: string;
   state: State;
-  attached: boolean;
   surfacedQuestion: number;
 }
 interface Details { id: string; label: string; state: State; lines: string[] }
@@ -57,6 +56,12 @@ function resolveModel(ctx: ExtensionContext, spec: string | undefined): string {
   if (!hit) throw new Error(`Unknown model "${spec}". Available: ${available.map((m) => `${m.provider}/${m.id}`).join(", ")}`);
   return `${hit.provider}/${hit.id}`;
 }
+
+/** block id → "placed" | "detached", from Rex. The truth lives there: a subagent can detach itself. */
+const placements = async (): Promise<Map<string, string>> => {
+  const { stdout } = await rex("block", "ls", "-s", session(), "--json");
+  return new Map((JSON.parse(stdout).blocks as { block_id: string; placement: string }[]).map((b) => [b.block_id, b.placement]));
+};
 
 const blockExists = async (id: string) => {
   try {
@@ -168,15 +173,16 @@ export function registerParent(pi: ExtensionAPI): void {
         (
           await rex(
             "window", "new", "-s", session(), label, "-c", ctx.cwd, "--focus=false", "--keep-open", "--json", "--",
-            "env", `${ENV_DIR}=${dir}`,
+            "env", `${ENV_DIR}=${dir}`, `${ENV_PARENT_BLOCK}=${process.env.REX_BLOCK ?? ""}`,
             "pi", "--model", model, "--thinking", thinking, "--append-system-prompt", systemPrompt, params.task,
           )
         ).stdout,
       ) as { block_ids: string[] };
       const block = created.block_ids[0]!;
+      await api("session.set_block_label", { block_id: block, label: `${BLOCK_LABEL_PREFIX}${id}` }); // lets Rex key bindings recognise subagent panes
       await api("session.detach_block", { block_id: block }); // hide: out of the sidebar, still running
 
-      const agent: Agent = { id, label, dir, block, state: "running", attached: false, surfacedQuestion: 0 };
+      const agent: Agent = { id, label, dir, block, state: "running", surfacedQuestion: 0 };
       agents.set(id, agent);
       updateFooter(ctx);
       return waitForOutcome(agent, ctx, signal, onUpdate);
@@ -230,18 +236,21 @@ export function registerParent(pi: ExtensionAPI): void {
     return candidates.find((a) => choice?.startsWith(`${a.id} `));
   };
   const complete = (prefix: string) => names().filter((n) => n.startsWith(prefix)).map((n) => ({ value: n, label: n }));
+  const withPlacement = async (placement: "placed" | "detached") => {
+    const now = await placements();
+    return (a: Agent) => now.get(a.block) === placement;
+  };
 
   pi.registerCommand("attach", {
     description: "Show a subagent in a split beside this pane",
     getArgumentCompletions: complete,
     handler: async (arg, ctx) => {
-      const agent = await pick(ctx, arg.trim(), (a) => !a.attached && a.state !== "closed", "attach");
+      const agent = await pick(ctx, arg.trim(), await withPlacement("detached"), "attach");
       if (!agent) return;
       const anchor = process.env.REX_BLOCK;
       if (!anchor) return ctx.ui.notify("REX_BLOCK is not set; cannot place the split.", "error");
       await api("session.move_block", { block_id: agent.block, anchor_block_id: anchor, direction: "horizontal", side: "after", ratio: 0.5 });
       await rex("focus", "-s", session(), agent.block).catch(() => {});
-      agent.attached = true;
     },
   });
 
@@ -249,10 +258,9 @@ export function registerParent(pi: ExtensionAPI): void {
     description: "Hide an attached subagent again (it keeps running)",
     getArgumentCompletions: complete,
     handler: async (arg, ctx) => {
-      const agent = await pick(ctx, arg.trim(), (a) => a.attached, "detach");
+      const agent = await pick(ctx, arg.trim(), await withPlacement("placed"), "detach");
       if (!agent) return;
       await api("session.detach_block", { block_id: agent.block });
-      agent.attached = false;
       await rex("focus", "-s", session(), process.env.REX_BLOCK ?? "").catch(() => {});
     },
   });

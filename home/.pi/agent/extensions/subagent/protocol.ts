@@ -9,6 +9,10 @@ import { mkdir, readFile, rename, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 
 export const ENV_DIR = "PI_SUBAGENT_DIR";
+/** The coordinator's Rex block, so a subagent can hand focus back when it detaches itself. */
+export const ENV_PARENT_BLOCK = "PI_SUBAGENT_PARENT_BLOCK";
+/** Subagent panes carry this block label so Rex key bindings can tell them apart. */
+export const BLOCK_LABEL_PREFIX = "🤖 ";
 
 export interface Activity { lines: string[] }
 export interface Question { n: number; text: string }
