@@ -1,7 +1,10 @@
-/** Overlay listing subagents: ↑/↓ select, s steer, x cancel, esc close. */
+/** Overlay listing subagents: ↑/↓ select, s steer, x cancel, ctrl+a hide/show finished, esc close. */
 import type { Theme } from "@earendil-works/pi-coding-agent";
 import { type Component, type Focusable, matchesKey, truncateToWidth, wrapTextWithAnsi } from "@earendil-works/pi-tui";
 import { allAgents, onChange, type Subagent } from "./registry.ts";
+
+/** Survives closing the panel. */
+let showFinished = true;
 
 const DETAIL_LINES = 10;
 const secs = (a: Subagent) => `${Math.round(((a.endedAt ?? Date.now()) - a.startedAt) / 1000)}s`;
@@ -20,7 +23,7 @@ export class AgentPanel implements Component, Focusable {
   ) {
     this.unsubscribe = onChange(() => this.tui.requestRender());
     this.tick = setInterval(() => this.tui.requestRender(), 1000);
-    this.selectedId = allAgents().find((a) => a.status === "running")?.id ?? allAgents()[0]?.id;
+    this.selectedId = (this.visible().find((a) => a.status === "running") ?? this.visible()[0])?.id;
   }
 
   dispose(): void {
@@ -30,13 +33,17 @@ export class AgentPanel implements Component, Focusable {
 
   invalidate(): void {}
 
+  private visible(): Subagent[] {
+    return allAgents().filter((a) => showFinished || a.status === "running");
+  }
+
   private selected(): Subagent | undefined {
-    const list = allAgents();
+    const list = this.visible();
     return list.find((a) => a.id === this.selectedId) ?? list[0];
   }
 
   private move(delta: number): void {
-    const list = allAgents();
+    const list = this.visible();
     if (!list.length) return;
     const i = Math.max(0, list.findIndex((a) => a.id === this.selected()?.id));
     this.selectedId = list[(i + delta + list.length) % list.length]!.id;
@@ -53,6 +60,7 @@ export class AgentPanel implements Component, Focusable {
       } else if (matchesKey(data, "backspace")) this.input = this.input.slice(0, -1);
       else if (!/[\x00-\x1f\x7f]/.test(data) && !data.startsWith("\x1b")) this.input += data;
     } else if (matchesKey(data, "escape") || data === "q") this.done();
+    else if (matchesKey(data, "ctrl+a")) showFinished = !showFinished;
     else if (matchesKey(data, "up") || data === "k") this.move(-1);
     else if (matchesKey(data, "down") || data === "j") this.move(1);
     else if ((data === "s" || matchesKey(data, "return")) && agent?.status === "running") this.input = "";
@@ -64,12 +72,13 @@ export class AgentPanel implements Component, Focusable {
     const th = this.theme;
     const w = Math.max(20, width - 2);
     const row = (s: string) => th.fg("border", "│") + truncateToWidth(s, w, "", true) + th.fg("border", "│");
-    const list = allAgents();
+    const list = this.visible();
+    const hidden = allAgents().length - list.length;
     const sel = this.selected();
     const icon = (a: Subagent) =>
       a.status === "running" ? th.fg("accent", "●") : a.status === "done" ? th.fg("success", "✓") : th.fg("error", a.status === "error" ? "✗" : "⊘");
 
-    const out = [th.fg("border", `╭${"─".repeat(w)}╮`), row(` ${th.bold(th.fg("accent", "Subagents"))}`)];
+    const out = [th.fg("border", `╭${"─".repeat(w)}╮`), row(` ${th.bold(th.fg("accent", "Subagents"))}${hidden ? th.fg("dim", `  (${hidden} finished hidden)`) : ""}`)];
     if (!list.length) out.push(row(th.fg("dim", " none")));
     for (const a of list) {
       const active = a.id === sel?.id;
@@ -87,7 +96,7 @@ export class AgentPanel implements Component, Focusable {
       row(
         this.input !== undefined
           ? ` ${th.fg("accent", "steer ›")} ${this.input}${th.fg("dim", "▏")}  ${th.fg("dim", "enter send · esc back")}`
-          : th.fg("dim", " ↑↓ select · s steer · x cancel · esc close"),
+          : th.fg("dim", ` ↑↓ select · s steer · x cancel · ctrl+a ${showFinished ? "hide" : "show"} finished · esc close`),
       ),
     );
     out.push(th.fg("border", `╰${"─".repeat(w)}╯`));

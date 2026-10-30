@@ -3,7 +3,7 @@
  *
  * - `subagent` tool: task + optional model + thinking level. Blocks until the child finishes;
  *   several calls in one assistant message run in parallel.
- * - ↑ on an empty editor (or /agents) opens a panel to browse, steer, and cancel running agents.
+ * - /subagents opens a panel to browse, steer, and cancel agents; ctrl+a hides/shows finished ones.
  */
 import type { ThinkingLevel } from "@earendil-works/pi-agent-core";
 import { StringEnum } from "@earendil-works/pi-ai";
@@ -13,7 +13,6 @@ import {
   type ExtensionContext,
   SessionManager,
 } from "@earendil-works/pi-coding-agent";
-import { matchesKey } from "@earendil-works/pi-tui";
 import { Type } from "typebox";
 import { AgentPanel } from "./panel.ts";
 import { changed, finish, nextAgentId, onChange, pushLog, runningAgents, type Subagent, track } from "./registry.ts";
@@ -74,15 +73,10 @@ export default function (pi: ExtensionAPI) {
     if (ctx.mode !== "tui") return;
     const refresh = () => {
       const n = runningAgents().length;
-      ctx.ui.setStatus("subagents", n ? `● ${n} subagent${n > 1 ? "s" : ""} · ↑ to manage` : undefined);
+      ctx.ui.setStatus("subagents", n ? `● ${n} subagent${n > 1 ? "s" : ""} · /subagents` : undefined);
     };
     unsubscribers = [
       onChange(refresh),
-      ctx.ui.onTerminalInput((data) => {
-        if (!matchesKey(data, "up") || ctx.ui.getEditorText() !== "" || !runningAgents().length) return;
-        void openPanel(ctx);
-        return { consume: true };
-      }),
     ];
   });
 
@@ -92,8 +86,8 @@ export default function (pi: ExtensionAPI) {
     unsubscribers = [];
   });
 
-  pi.registerCommand("agents", {
-    description: "Show subagents (steer / cancel)",
+  pi.registerCommand("subagents", {
+    description: "Show subagents (steer / cancel / hide finished)",
     handler: async (_a, ctx) => openPanel(ctx),
   });
 

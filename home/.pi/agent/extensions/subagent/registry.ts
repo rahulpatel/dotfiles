@@ -42,15 +42,11 @@ export function onChange(fn: () => void): () => void {
   return () => listeners.delete(fn);
 }
 
-/** Finished agents stay visible for a short while so the user sees the outcome. */
-export function finish(agent: Subagent, status: Exclude<Status, "running">, keepMs = 15_000): void {
+/** Finished agents stay in the registry for the whole session; the panel can hide them. */
+export function finish(agent: Subagent, status: Exclude<Status, "running">): void {
   agent.status = status;
   agent.endedAt = Date.now();
   changed();
-  setTimeout(() => {
-    agents.delete(agent.id);
-    changed();
-  }, keepMs).unref?.();
 }
 
 export function pushLog(agent: Subagent, line: string, max = 200): void {
