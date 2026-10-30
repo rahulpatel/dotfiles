@@ -184,14 +184,18 @@ export function registerParent(pi: ExtensionAPI): void {
     renderCall(args, theme) {
       return new Text(`${theme.bold(`${MARKER} ${args.role}`)} ${theme.fg("dim", `· ${args.name}`)}${args.model ? theme.fg("dim", `  ${args.model}`) : ""}`, 0, 0);
     },
-    renderResult(result, { expanded, isPartial }, theme) {
+    renderResult(result, { expanded, isPartial }, theme, context) {
       const d = result.details as Details | undefined;
       const body = result.content.map((c) => (c.type === "text" ? c.text : "")).join("");
       if (isPartial && d) {
         const shown = d.lines.slice(expanded ? -12 : -3).map((l) => theme.fg("muted", `  ${l}`));
         return new Text([theme.fg("accent", `● ${d.id} working`), ...shown].join("\n"), 0, 0);
       }
-      const head = d ? theme.fg(d.state === "asking" ? "warning" : "success", `${d.state === "asking" ? "❓" : "✓"} ${d.id}`) : "";
+      const head = context.isError
+        ? theme.fg("error", "✗ subagent failed")
+        : d?.id
+          ? theme.fg(d.state === "asking" ? "warning" : "success", `${d.state === "asking" ? "❓" : "✓"} ${d.id}`)
+          : "";
       const lines = body.split("\n");
       const shown = expanded ? lines : lines.slice(0, 6);
       const more = lines.length > shown.length ? theme.fg("dim", `\n… ${lines.length - shown.length} more lines (ctrl+o)`) : "";

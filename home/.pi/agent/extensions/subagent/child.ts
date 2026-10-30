@@ -20,19 +20,20 @@ export function registerChild(pi: ExtensionAPI, dir: string): void {
     write(dir, "activity", { lines: [...lines] }).catch(() => {});
   };
 
-  let last: { text: string; stopReason?: string } | undefined;
+  let last: { text: string; stopReason?: string; error?: string } | undefined;
   pi.on("tool_execution_start", (e) => log(`→ ${e.toolName} ${oneLine(e.args)}`));
   pi.on("message_end", (e) => {
-    const m = e.message as { role?: string; content?: unknown; stopReason?: string };
+    const m = e.message as { role?: string; content?: unknown; stopReason?: string; errorMessage?: string };
     if (m.role !== "assistant" || !Array.isArray(m.content)) return;
     const text = m.content.filter((c: any) => c.type === "text").map((c: any) => c.text).join("\n");
-    last = { text, stopReason: m.stopReason };
+    last = { text, stopReason: m.stopReason, error: m.errorMessage };
     if (text.trim()) log(oneLine(text));
   });
   pi.on("agent_settled", async () => {
     // Only a finished turn counts: closing the tab settles mid-tool-call (toolUse) or aborted.
     if (!last || !["stop", "length", "error"].includes(last.stopReason ?? "")) return;
-    await write(dir, "result", { ok: last.stopReason !== "error", text: last.text });
+    const failed = last.stopReason === "error";
+    await write(dir, "result", { ok: !failed, text: failed ? last.error || last.text || "Subagent run failed with no error message." : last.text });
   });
 
   let asked = 0;
