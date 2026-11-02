@@ -1,7 +1,7 @@
 {
   "lastChangelogVersion": "1.4.0",
-  "defaultProvider": "github-copilot",
-  "defaultModel": "claude-sonnet-5.5",
+  "defaultProvider": "openai",
+  "defaultModel": "gpt-6.1-sol",
   "showHardwareCursor": true,
   "terminal": {
     "showTerminalProgress": true
@@ -9,5 +9,8 @@
   "transport": "auto",
   "showCacheMissNotices": true,
   "enableInstallTelemetry": false,
-  "defaultProjectTrust": "always"
+  "defaultProjectTrust": "always",
+  "packages": [
+    "git:github.com/dmmulroy/pi-web-tools"
+  ]
 }
