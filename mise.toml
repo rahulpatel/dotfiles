@@ -30,6 +30,14 @@ mode = "symlink"
 login_shell = "/opt/homebrew/bin/fish"
 
 # --- Packages ----------------------------------------------------------------
+# Third-party casks (Tinycast) need Ruby 3 to evaluate their definitions.
+# Packages run before the normal tools phase, so install Ruby ahead of them.
+[tools]
+ruby = "3"
+
+[bootstrap.hooks.pre-packages]
+run = "mise install ruby"
+
 # mise installs these itself; Homebrew does not need to be installed.
 [bootstrap.packages]
 "brew:bat" = "latest"
@@ -66,6 +74,7 @@ login_shell = "/opt/homebrew/bin/fish"
 "brew-cask:tailscale-app" = { env = "personal" }
 
 # Profile: work
+"brew-cask:slack" = { env = "work" }
 
 # --- macOS preferences -------------------------------------------------------
 [bootstrap.macos.dock]
