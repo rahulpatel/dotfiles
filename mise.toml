@@ -62,7 +62,6 @@ login_shell = "/opt/homebrew/bin/fish"
 "brew-cask:tailscale-app" = { env = "personal" }
 
 # Profile: work
-"brew-cask:slack" = { env = "work" }
 
 # --- macOS preferences -------------------------------------------------------
 [bootstrap.macos.dock]
