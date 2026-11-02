@@ -5,6 +5,10 @@
 #
 # See README.md for first-time setup and day-to-day commands.
 
+[settings]
+# Node 25+ no longer bundles Corepack; our npm tools do not need it.
+node.corepack = false
+
 # --- Dotfiles ----------------------------------------------------------------
 # Link every git-tracked file under ./home into $HOME, file by file. Ignored
 # files (app state, credentials, caches) are never linked, so apps write them

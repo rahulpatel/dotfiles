@@ -4,6 +4,8 @@ enter = "mise i -q"
 [settings]
 color_theme = "catppuccin"
 experimental = true
+# Node 25+ no longer bundles Corepack; our npm tools do not need it.
+node.corepack = false
 # Keep every tool below up to date (within its version request).
 tool_update.global_auto = true
 
