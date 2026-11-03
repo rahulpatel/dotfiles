@@ -1,0 +1,118 @@
+[settings]
+experimental = true
+install_layout = "identity"
+
+[bootstrap.directories."~/code"]
+phase = "pre-packages"
+
+[tools]
+ruby = "3"
+
+[bootstrap.hooks.pre-packages]
+run = "mise install ruby"
+
+[bootstrap.packages]
+"brew:fd" = "latest"
+"brew:fish" = "latest"
+"brew:fzf" = "latest"
+"brew:gh" = "latest"
+"brew:jq" = "latest"
+"brew:neovim" = "latest"
+"brew:podman" = "latest"
+"brew:starship" = "latest"
+"brew:zoxide" = "latest"
+
+"brew-cask:nikitabobko/tap/aerospace" = "latest"
+"brew-cask:cursor" = "latest"
+"brew-cask:font-fira-code" = "latest"
+"brew-cask:helium-browser" = "latest"
+"brew-cask:anomalyco/tap/hex" = "latest"
+"brew-cask:macshot" = "latest"
+"brew-cask:spotify" = "latest"
+"brew-cask:abue-ammar/tinycast/tinycast" = "latest"
+
+# Profile: personal
+"brew-cask:1password" = { env = "personal" }
+"brew-cask:cuadriver" = { env = "personal" }
+"brew-cask:obsidian" = { env = "personal" }
+"brew-cask:private-internet-access" = { env = "personal" }
+"brew-cask:tailscale-app" = { env = "personal" }
+
+# Profile: work
+"brew:glab" = { env = "work" }
+"brew-cask:slack" = { env = "work" }
+
+[dotfile_groups.agents]
+root = "home/.agents/"
+target = "~/.agents"
+mode = "symlink"
+manifest = "git"
+
+[dotfile_groups.config]
+root = "home/.config/"
+target = "~/.config"
+mode = "symlink"
+manifest = "git"
+
+[bootstrap.mise_shell_activate]
+fish = "auto"
+
+[bootstrap.macos.dock]
+autohide = true
+autohide_delay = 0
+tilesize = 48
+show_recents = false
+apps = [
+  "/Applications/Helium.app",
+  "/Applications/Rex Beta.app"
+]
+
+[bootstrap.macos.defaults."com.apple.dock"]
+minimize-to-application = true
+
+[bootstrap.macos.finder]
+show_all_files = true
+show_pathbar = true
+show_status_bar = true
+show_extensions_warning = false
+sort_folders_first = true
+preferred_view_style = "column"
+save_new_documents_to_cloud = false
+
+[bootstrap.macos.keyboard]
+key_repeat = 2
+initial_key_repeat = 15
+press_and_hold = true
+automatic_capitalization = false
+
+[bootstrap.macos.trackpad]
+tap_to_click = true
+
+[bootstrap.macos.defaults.NSGlobalDomain]
+AppleInterfaceStyle = "Dark"
+AppleShowAllExtensions = true
+AppleSpacesSwitchOnActivate = false
+NSAutomaticPeriodSubstitutionEnabled = false
+SLSMenuBarUseBlurredAppearance = true
+
+[bootstrap.user]
+login_shell = "fish"
+
+[bootstrap.hooks.post-defaults]
+run = "killall Dock Finder SystemUIServer || true"
+
+[tasks.bootstrap]
+run = [
+  "podman machine init",
+  "podman machine start"
+]
+
+[bootstrap.hooks.final]
+run = '''
+cat <<'EOF'
+
+Manual steps:
+  cua-driver permissions grant    # Accessibility + Screen Recording for Cua Driver
+  cua-driver permissions status   # verify the grants afterwards
+EOF
+'''

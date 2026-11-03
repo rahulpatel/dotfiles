@@ -1,0 +1,10 @@
+*.local
+!home/.local/
+*.work
+
+.miserc.local.toml
+mise.local.toml
+mise.*.local.toml
+
+home/.config/fish/fish_variables
+home/.config/containers

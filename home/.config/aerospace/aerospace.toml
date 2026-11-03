@@ -1,0 +1,112 @@
+config-version = 2
+
+start-at-login = true
+
+auto-reload-config = true
+
+enable-normalization-flatten-containers = true
+enable-normalization-opposite-orientation-for-nested-containers = true
+
+automatically-unhide-macos-hidden-apps = true
+
+accordion-padding = 0
+
+[gaps]
+inner.horizontal = 0
+inner.vertical = 0
+outer.left = 10
+outer.bottom = 10
+outer.top = 10
+outer.right = 10
+
+
+[mode.main.binding]
+alt-comma = 'layout accordion horizontal vertical'
+alt-period = 'layout floating tiling'
+alt-slash = 'layout tiles horizontal vertical'
+
+alt-f = 'fullscreen'
+
+alt-h = 'focus --boundaries-action wrap-around-the-workspace left'
+alt-j = 'focus --boundaries-action wrap-around-the-workspace down'
+alt-k = 'focus --boundaries-action wrap-around-the-workspace up'
+alt-l = 'focus --boundaries-action wrap-around-the-workspace right'
+
+alt-shift-h = 'move left'
+alt-shift-j = 'move down'
+alt-shift-k = 'move up'
+alt-shift-l = 'move right'
+
+alt-minus = 'resize smart -50'
+alt-equal = 'resize smart +50'
+
+alt-1 = 'workspace 1'
+alt-2 = 'workspace 2'
+
+alt-a = 'workspace A'
+alt-b = 'workspace B'
+alt-c = 'workspace C'
+alt-d = 'workspace D'
+alt-e = 'workspace E'
+alt-m = 'workspace M'
+alt-n = 'workspace N'
+alt-t = 'workspace T'
+
+alt-shift-a = 'move-node-to-workspace A'
+alt-shift-b = 'move-node-to-workspace B'
+alt-shift-c = 'move-node-to-workspace C'
+alt-shift-d = 'move-node-to-workspace D'
+alt-shift-e = 'move-node-to-workspace E'
+alt-shift-m = 'move-node-to-workspace M'
+alt-shift-n = 'move-node-to-workspace N'
+alt-shift-t = 'move-node-to-workspace T'
+
+alt-tab = 'workspace-back-and-forth'
+
+[[on-window-detected]]
+check-further-callbacks = true
+run = ['layout floating']
+
+[[on-window-detected]]
+if = 'test %{app-name} ~= finder'
+run = ['layout tiling', 'move-node-to-workspace 1']
+
+[[on-window-detected]]
+if = 'test %{app-name} ~= bruno || test %{app-name} ~= postman'
+run = ['layout tiling', 'move-node-to-workspace 2']
+
+[[on-window-detected]]
+if = 'test %{app-name} ~= chatgpt || test %{app-name} ~= claude || test %{app-name} ~= grok'
+run = ['layout tiling', 'move-node-to-workspace A']
+
+[[on-window-detected]]
+if = 'test %{app-name} ~= helium || test %{app-name} ~= chrome || test %{app-name} ~= safari'
+run = ['layout tiling', 'move-node-to-workspace B']
+
+[[on-window-detected]]
+if = 'test %{app-name} ~= slack || test %{app-name} ~= teams || test %{app-name} ~= zoom'
+run = ['layout tiling', 'move-node-to-workspace C']
+
+[[on-window-detected]]
+if = 'test %{app-name} ~= podman'
+run = ['layout tiling', 'move-node-to-workspace D']
+
+[[on-window-detected]]
+if = 'test %{app-name} ~= simulator'
+run = ['layout floating', 'move-node-to-workspace D'] 
+
+[[on-window-detected]]
+if = 'test %{app-name} ~= zed || test %{app-name} ~= xcode || test %{app-name} ~= cursor'
+run = ['layout tiling', 'move-node-to-workspace E']
+
+[[on-window-detected]]
+if = 'test %{app-name} ~= spotify'
+run = ['layout tiling', 'move-node-to-workspace M']
+
+[[on-window-detected]]
+if = 'test %{app-name} ~= obsidian || test %{app-name} ~= notes || test %{app-name} ~= reminders'
+run = ['layout tiling', 'move-node-to-workspace N']
+
+[[on-window-detected]]
+if = 'test %{app-name} ~= rex || test %{app-name} ~= ghostty || test %{app-name} ~= terminal'
+run = ['layout tiling', 'move-node-to-workspace T']

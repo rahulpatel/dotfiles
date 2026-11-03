@@ -1,0 +1,14 @@
+[hooks]
+enter = "mise i -q"
+
+[settings]
+color_theme = "catppuccin"
+tool_update.global_auto = true
+
+[bootstrap.services.mise-tool-update]
+builtin = "tool-update"
+
+[tools]
+node = "lts"
+pnpm = "latest"
+pi = "latest"

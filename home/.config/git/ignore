@@ -1,0 +1,37 @@
+# Global gitignore. Stowed to ~/.config/git/ignore where git picks it up
+# automatically (XDG default; no config entry needed).
+#
+# Keep this list to noise that is *never* meaningful in any repo. Anything
+# project-specific belongs in that project's own .gitignore.
+
+# --- macOS -----------------------------------------------------------------
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+.fseventsd
+.TemporaryItems
+
+# --- Editors ---------------------------------------------------------------
+# Vim / Neovim
+*.swp
+*.swo
+*~
+# JetBrains
+.idea/
+# VS Code (local settings only; project-shared .vscode/ is fine to commit)
+.vscode/
+
+# --- Tags / language servers ----------------------------------------------
+tags
+.ctags
+.tags
+.cache/
+
+# --- direnv ----------------------------------------------------------------
+.envrc.local
+
+# --- Misc local-only -------------------------------------------------------
+*.local
