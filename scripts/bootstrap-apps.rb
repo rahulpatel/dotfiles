@@ -8,9 +8,12 @@ require 'time'
 class BootstrapApps
   ROOT = File.expand_path('..', __dir__)
 
-  def initialize(home: Dir.home, dry_run: false)
+  CAPTURE_APPS = ['macshot.app', 'Tailscale.app'].freeze
+
+  def initialize(home: Dir.home, dry_run: false, settings_path: File.join(ROOT, 'settings/apps.json'))
     @home = home
     @dry_run = dry_run
+    @settings_path = settings_path
   end
 
   def command(*args, **options)
@@ -105,24 +108,63 @@ class BootstrapApps
     puts '  If already running, quit and reopen this app to load changed preferences.'
   end
 
-  def run
-    apps = JSON.parse(File.read(File.join(ROOT, 'settings/apps.json')))
+  def capture
+    apps = JSON.parse(File.read(@settings_path))
+    changed = false
     apps.each do |app|
-      path = installed_path(app.fetch('name'))
-      unless path
+      next unless CAPTURE_APPS.include?(app.fetch('name'))
+      unless installed_path(app['name'])
+        puts "Skipping #{app['name']} (not installed)"
+        next
+      end
+      settings = app.fetch('settings')
+      current = read_preferences(app.fetch('domain').gsub('~', @home), settings.keys)
+      settings.keys.each do |key|
+        xml = current[key]
+        unless xml
+          warn "Skipping #{app['name']}: #{key} is unset; keeping the saved value"
+          next
+        end
+        # Wrap the scalar in a dictionary: plutil cannot export a root boolean as JSON.
+        body = xml.match(/<plist[^>]*>(.*)<\/plist>/m)&.captures&.first
+        raise "Invalid plist for #{key}" unless body
+        wrapped = "<plist version=\"1.0\"><dict><key>value</key>#{body}</dict></plist>"
+        value = JSON.parse(command('/usr/bin/plutil', '-convert', 'json', '-o', '-', '-', stdin_data: wrapped)).fetch('value')
+        plist(value) # Reject unsupported types before updating the snapshot.
+        raise "Unexpected type for #{app['name']}: #{key}" unless value.class == settings[key].class || [true, false].include?(value) && [true, false].include?(settings[key])
+        next if value == settings[key]
+        puts "#{@dry_run ? 'Would capture' : 'Capturing'} #{app['name']}: #{key}"
+        settings[key] = value
+        changed = true
+      end
+    end
+    if changed && !@dry_run
+      # Write only after every app has been read successfully; atomically replace the snapshot.
+      temp = "#{@settings_path}.tmp-#{Process.pid}"
+      begin
+        File.write(temp, JSON.pretty_generate(apps) + "\n", perm: 0o600)
+        File.chmod(File.stat(@settings_path).mode & 0o777, temp)
+        File.rename(temp, @settings_path)
+      ensure
+        FileUtils.rm_f(temp)
+      end
+    end
+    puts 'Snapshot already matches available preferences.' unless changed
+    puts 'Tinycast syncs its JSON directly; edit AeroSpace config directly. 1Password remains manual.'
+  end
+
+  def run
+    apps = JSON.parse(File.read(@settings_path))
+    apps.each do |app|
+      unless installed_path(app.fetch('name'))
         puts "Skipping #{app['name']} (not installed)"
         next
       end
       puts app['name']
       begin
         restore(app)
-        if @dry_run
-          puts "  Would launch #{path} in background"
-        else
-          command('/usr/bin/open', '-g', path)
-        end
       rescue StandardError => e
-        # Do not launch with a failed restore, but continue with the other apps.
+        # Report a failed restore, but continue with the other apps.
         warn "  Warning: #{app['name']}: #{e.message}"
       end
     end
@@ -131,7 +173,9 @@ class BootstrapApps
 end
 
 if $PROGRAM_NAME == __FILE__
-  abort 'Usage: ruby scripts/bootstrap-apps.rb [--dry-run]' unless (ARGV - ['--dry-run']).empty?
+  action = ARGV.first == '--dry-run' || ARGV.empty? ? 'apply' : ARGV.shift
+  abort 'Usage: ruby scripts/bootstrap-apps.rb [apply|capture] [--dry-run]' unless ['apply', 'capture'].include?(action) && (ARGV - ['--dry-run']).empty?
   abort 'This script requires macOS' unless RUBY_PLATFORM.include?('darwin')
-  BootstrapApps.new(dry_run: ARGV.include?('--dry-run')).run
+  runner = BootstrapApps.new(dry_run: ARGV.include?('--dry-run'))
+  action == 'capture' ? runner.capture : runner.run
 end

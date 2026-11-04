@@ -119,6 +119,22 @@ run = [
   "podman machine inspect | jq -e '.[0].State == \"running\"' >/dev/null || podman machine start"
 ]
 
+[tasks."apps:capture"]
+description = "Save allowlisted macshot and Tailscale preferences to the repo"
+run = "ruby scripts/bootstrap-apps.rb capture"
+
+[tasks."apps:capture:preview"]
+description = "Preview preference snapshot updates without saving"
+run = "ruby scripts/bootstrap-apps.rb capture --dry-run"
+
+[tasks."apps:apply"]
+description = "Apply saved app preferences without launching apps"
+run = "ruby scripts/bootstrap-apps.rb apply"
+
+[tasks."apps:preview"]
+description = "Preview saved preferences to apply without changing apps"
+run = "ruby scripts/bootstrap-apps.rb apply --dry-run"
+
 [tasks.check]
 description = "Check shell syntax and Git diff whitespace without deploying"
 run = [
@@ -132,7 +148,7 @@ run = [
 ]
 
 [bootstrap.hooks.final]
-run = '''mise exec ruby -- ruby scripts/bootstrap-apps.rb
+run = '''mise run apps:apply
 echo 'Manual steps'
 if ! command -v rex >/dev/null 2>&1; then
   echo '  Install Rex'

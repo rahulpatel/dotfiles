@@ -60,11 +60,48 @@ Dir.mktmpdir('dotfiles-apps-test') do |home|
   File.write(File.join(home, '.config/tinycast/settings.json'), '{}')
   runner.restore(tinycast)
   assert(runner.read_preferences(domain, ['settingsFileEnabled']).fetch('settingsFileEnabled').include?('<true/>'), 'Tinycast mirror not enabled')
+
+  # Capture only existing allowlisted settings, preserving types and unmanaged records.
+  snapshot_path = File.join(home, 'apps.json')
+  snapshot = [app.merge('name' => 'macshot.app'), tinycast, { 'name' => '1Password.app' }]
+  snapshot[0]['settings'] = settings.merge('missing' => 'keep snapshot')
+  File.write(snapshot_path, JSON.pretty_generate(snapshot) + "\n")
+  snapshot_bytes = File.binread(snapshot_path)
+  capture = BootstrapApps.new(home: home, dry_run: true, settings_path: snapshot_path)
+  def capture.installed_path(name) = name
+  capture.capture
+  assert(File.binread(snapshot_path) == snapshot_bytes, 'Capture preview modified snapshot')
+  capture = BootstrapApps.new(home: home, settings_path: snapshot_path)
+  def capture.installed_path(name) = name
+  capture.capture
+  captured = JSON.parse(File.read(snapshot_path))
+  assert(captured[0]['settings'] == settings.merge('flag' => false, 'missing' => 'keep snapshot'), 'Captured incorrect types/keys')
+  assert(captured[1..] == snapshot[1..], 'Capture modified Tinycast or 1Password')
+  assert(File.binread("#{domain}.plist") != bytes, 'Test setup should have changed managed preferences')
+  preference_bytes = File.binread("#{domain}.plist")
+  capture.capture
+  assert(File.binread("#{domain}.plist") == preference_bytes, 'Capture wrote app preferences')
+
+  # A failed read/unsupported value must not partially update the repo snapshot.
+  runner.command('/usr/bin/plutil', '-replace', 'flag', '-bool', 'true', "#{domain}.plist")
+  runner.command('/usr/bin/plutil', '-replace', 'text', '-data', 'AP8=', "#{domain}.plist")
+  saved_bytes = File.binread(snapshot_path)
+  begin
+    capture.capture
+    raise 'Invalid capture was accepted'
+  rescue RuntimeError => e
+    raise if e.message == 'Invalid capture was accepted'
+  end
+  assert(File.binread(snapshot_path) == saved_bytes, 'Failed capture partially saved snapshot')
+  def capture.installed_path(_name) = nil
+  capture.capture
+  assert(File.binread(snapshot_path) == saved_bytes, 'Missing app modified snapshot')
 end
 
-class LaunchProbe < BootstrapApps
+class RestoreProbe < BootstrapApps
   attr_reader :events
   def initialize
+    super
     @events = []
   end
   def installed_path(name)
@@ -79,13 +116,9 @@ class LaunchProbe < BootstrapApps
     @events << [:command, *args]
   end
 end
-probe = LaunchProbe.new
+probe = RestoreProbe.new
 probe.run
-launches = probe.events.select { |e| e.first == :command }
-assert(launches.length == 3, 'Missing app/failed restore should not launch')
-assert(launches.all? { |e| e[1] == '/usr/bin/open' && e[2] == '-g' }, 'Launches must use open -g')
-launches.each do |event|
-  name = File.basename(event.last)
-  assert(probe.events.index([:restore, name]) < probe.events.index(event), 'App launched before restore')
-end
+assert(probe.events.none? { |e| e.first == :command }, 'Apply must never launch apps')
+assert(probe.events.include?([:restore, '1Password.app']), 'Apply should continue after restore failure')
+assert(!probe.events.include?([:restore, 'Tailscale.app']), 'Apply should skip missing apps')
 puts 'App bootstrap tests passed'

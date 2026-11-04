@@ -1,73 +1,88 @@
 # App preferences
 
-Bootstrap's final hook runs `scripts/bootstrap-apps.rb` after dotfiles deployment
-and the bootstrap task. It restores the allowlisted preferences in `apps.json`,
-then opens installed apps in the background. Apps in `/Applications` and
-`~/Applications` are supported, regardless of the selected package profile.
-Missing apps are skipped. Restore/launch failures are warnings; a failed restore
-skips that app's launch rather than starting it with incomplete settings.
+Bootstrap's final hook restores allowlisted preferences from `apps.json` after
+dotfiles deployment and the bootstrap task. **It never launches or quits apps.**
+Installed apps in `/Applications` and `~/Applications` are supported regardless
+of the selected package profile. Missing apps are skipped; restore errors are
+reported as warnings and remaining apps are still processed.
 
-Preview without changing preferences or launching apps:
+## Tasks
 
 ```sh
-mise exec ruby -- ruby scripts/bootstrap-apps.rb --dry-run
+mise run apps:capture:preview  # Preview local macshot/Tailscale changes to save
+mise run apps:capture          # Save those changes to settings/apps.json
+mise run apps:preview          # Preview applying the repo snapshot
+mise run apps:apply            # Apply the snapshot, without opening apps
 ```
 
-## Tinycast on a fresh Mac
+To save settings changed in macshot or Tailscale:
+
+1. Quit the app so its latest preferences are flushed to disk.
+2. Run `mise run apps:capture:preview`, then `mise run apps:capture`.
+3. Review `git diff -- settings/apps.json`, commit and push.
+
+Capture reads **only keys already listed for macshot and Tailscale** in
+`apps.json`; it never exports new keys, credentials, account profiles or app data.
+Unset keys retain the saved value with a warning: app-specific default values
+cannot safely be inferred. Edit the snapshot explicitly if you want a different
+value for such a key. Unsupported values or read failures abort capture without
+partially saving the snapshot. Missing apps leave their snapshots unchanged.
+Capture does not read Tinycast's opt-in flag back into the snapshot.
+
+To apply saved settings on an existing Mac, quit the affected apps before
+`mise run apps:apply`, then reopen them manually. Apps can cache or overwrite
+preferences changed while running. Bootstrap also applies this snapshot, so
+capture local changes **before** bootstrapping if you want to keep them.
+
+## Tinycast and AeroSpace
+
+- **Tinycast:** change preferences in the app. Its settings-file sync writes
+  changes through the symlink to `home/.config/tinycast/settings.json`.
+- **AeroSpace:** edit `home/.config/aerospace/aerospace.toml` directly. Live window
+  positions and workspace state are not captured.
+
+These files are deployed by the existing dotfile group. Review their Git diffs,
+commit and push separately from the snapshot workflow.
+
+### Tinycast on a fresh Mac
 
 The dotfile group deploys `home/.config/tinycast/settings.json` to
-`~/.config/tinycast/settings.json`. Merely placing the file there is insufficient:
-Tinycast's settings-file feature is off by default. Before launching Tinycast,
-the script sets `settingsFileEnabled = true` in `com.tinycast.app`.
-On launch, Tinycast imports the existing JSON after its first app scan.
+`~/.config/tinycast/settings.json`. The script also sets `settingsFileEnabled =
+true` in `com.tinycast.app`; merely placing the file there is insufficient because
+the settings-file feature is off by default. **When you first open Tinycast
+manually**, it imports the existing JSON after its first app scan.
 
 This behavior is verified against Tinycast's [settings-file documentation](https://github.com/abue-ammar/tinycast/blob/main/docs/features/settings-file.md)
-and `AppCore.start` / `AppSettingsKey.settingsFileEnabled`. It relies on that
-preference key continuing to exist; recheck it if Tinycast changes its format.
-It does not bypass onboarding or capability/permission prompts.
+and `AppCore.start` / `AppSettingsKey.settingsFileEnabled`. Recheck that key if
+Tinycast changes its format. It does not bypass onboarding or capability prompts.
+If Tinycast was already running with sync disabled, quit and reopen it after apply.
 
-Tinycast follows the symlink and writes settings changes back to the repo file.
-This is intentional: review those changes with `git diff` before committing.
-If Tinycast was already running with the feature disabled, quit and reopen it
-once after bootstrap. Bootstrap does not forcibly quit any app.
+## Managed snapshot
 
-## What is managed
-
-- **AeroSpace:** the existing `home/.config/aerospace/aerospace.toml` remains the
-  source of truth. Bootstrap does not capture live window/workspace state.
-- **Tinycast:** your JSON file, plus the opt-in preference above. Private content
-  and credentials are not captured separately.
 - **macshot:** tools/actions, filename template, OCR shortcut/action, copy sound,
   menu-bar icon, translation provider, automatic-update and login preferences.
-  Sandboxed preferences use targeted `plutil` edits in the container (macOS
-  `defaults` can silently ignore writes to these paths). Other apps use `defaults`. No
-  screenshots, save-directory bookmarks, permission flags or transient UI state.
+  Sandboxed preferences use targeted `plutil` edits in the container (`defaults`
+  can silently ignore writes to these paths). No screenshots, save-directory
+  bookmarks, permission flags or transient UI state.
 - **Tailscale:** Dock icon, update/telemetry channel and start-on-login preferences.
   No accounts, keys, profiles, VPN state or connection settings.
-- **1Password:** launch only. Its ordinary preference domains do not expose the
-  settings needed here; internal storage and vault data are deliberately untouched.
-  Configure its settings in the app after signing in.
+- **Tinycast:** only the settings-file opt-in flag; its settings use the JSON above.
+- **1Password:** no preferences are managed. Configure it manually after sign-in;
+  its internal storage and vault data are deliberately untouched.
 
-Login preference flags do not copy macOS service registration or approval.
-Approve login items, VPN setup, Accessibility and Screen Recording when prompted.
-Launching after bootstrap does not imply configuring every app to launch at login.
+Existing launch-at-login preferences remain managed; they are separate from
+launching apps after bootstrap, which has been removed. Preference flags cannot
+copy macOS service registration or approval. Approve login items, VPN setup,
+Accessibility and Screen Recording when prompted.
 
-## Editing and backups
+## Backups
 
-`apps.json` is an explicit, reviewed snapshot, not a live export. To change it,
-inspect and copy only the intended non-secret keys. Bootstrap never rewrites it.
-Values retain their types, including integer arrays; unmanaged keys remain intact.
-
-Before applying changes, bootstrap saves the previous **managed values only** in
+Before applying changes, the script saves previous **managed values only** in
 `~/.local/state/dotfiles/app-preferences/<timestamp>/<domain>.json` (mode 0600).
-Each entry is a typed XML plist value; `null` means the key was absent.
-For a normal domain, restore an entry with `defaults write DOMAIN KEY XML_VALUE`;
-for an absent key, use `defaults delete DOMAIN KEY`. For an absolute sandbox domain,
-use `plutil -replace KEY -xml XML_VALUE DOMAIN.plist`, or `plutil -remove KEY
-DOMAIN.plist` for a previously absent key. The backup includes the exact domain.
-Quit the affected app before manual rollback and reopen afterwards.
+Entries are typed XML plist values; `null` means the key was absent.
 
-Apps can cache or overwrite preferences while running. For predictable restoration
-on an existing Mac, quit the affected apps before running bootstrap. A fresh install
-restores settings before the apps' first launch. No live preferences were changed
-while developing this setup; tests use temporary domains only.
+For a normal domain, restore with `defaults write DOMAIN KEY XML_VALUE`, or
+`defaults delete DOMAIN KEY` for a previously absent key. For an absolute sandbox
+domain, use `plutil -replace KEY -xml XML_VALUE DOMAIN.plist`, or
+`plutil -remove KEY DOMAIN.plist`. The backup contains the exact domain.
+Quit the app before manual rollback and reopen afterwards.
