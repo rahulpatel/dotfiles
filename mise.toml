@@ -127,11 +127,12 @@ run = [
 
 [bootstrap.hooks.final]
 run = '''
-printf '\nManual steps:\n'
+echo '\nManual steps\n'
+
 if ! command -v rex >/dev/null 2>&1; then
-  echo '  Install Rex and open it once so the rex CLI is available (required by the Fish code function).'
-  echo '  https://www.superlogical.com/rex'
+  echo '  Install Rex | https://www.superlogical.com/rex'
 fi
+
 if command -v cua-driver >/dev/null 2>&1; then
   echo '  cua-driver permissions grant    # Accessibility + Screen Recording for Cua Driver'
   echo '  cua-driver permissions status   # verify the grants afterwards'
