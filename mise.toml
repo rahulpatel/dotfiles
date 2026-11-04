@@ -44,10 +44,7 @@ run = "mise install ruby@3"
 
 "brew-cask:slack" = { env = "work" }
 
-[bootstrap.directories."{{ vars.code_dir | regex_replace(pattern='^~(/|$)', rep=env.HOME ~ '/') | absolute | quote }}"]
-
 [bootstrap.directories."~/.local/share/dotfiles"]
-
 [bootstrap.files."~/.local/share/dotfiles/env.fish"]
 template = true
 content = """
@@ -114,6 +111,7 @@ run = "killall Dock Finder SystemUIServer || true"
 
 [tasks.bootstrap]
 run = [
+  "mkdir -p {{ vars.code_dir | regex_replace(pattern='^~(/|$)', rep=env.HOME ~ '/') | absolute | quote }}",
   "podman machine inspect >/dev/null 2>&1 || podman machine init",
   "podman machine inspect | jq -e '.[0].State == \"running\"' >/dev/null || podman machine start"
 ]
