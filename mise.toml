@@ -127,8 +127,6 @@ run = [
 
 [bootstrap.hooks.final]
 run = '''
-echo '\nManual steps\n'
-
 if ! command -v rex >/dev/null 2>&1; then
   echo '  Install Rex | https://www.superlogical.com/rex'
 fi
