@@ -19,10 +19,7 @@
 *.swp
 *.swo
 *~
-# JetBrains
-.idea/
-# VS Code (local settings only; project-shared .vscode/ is fine to commit)
-.vscode/
+# Shared .idea/ and .vscode/ configuration is intentionally not ignored.
 
 # --- Tags / language servers ----------------------------------------------
 tags

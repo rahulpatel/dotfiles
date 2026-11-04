@@ -1,14 +1,10 @@
 function code
-    if test -z $argv
-        set argv ""
-    end
-
-    set -l query (string replace '/' '' $argv)
+    set -l query (string join ' ' -- $argv)
 
     set -l selected (
         begin
-            find (dirname "$DOTFILES_DIR") -mindepth 1 -maxdepth 1 -type d -name (basename "$DOTFILES_DIR")'*'
-            find "$HOME/.config" -maxdepth 0 -type d
+            printf '%s\n' "$DOTFILES_DIR"
+            printf '%s\n' "$HOME/.config"
 
             if test -d "$CODE_DIR"
                 find "$CODE_DIR" -mindepth 1 -maxdepth 1 -type d
@@ -16,7 +12,7 @@ function code
         end | fzf --select-1 --query "$query"
     )
 
-    if test -z $selected
+    if test -z "$selected"
         return 0
     end
 
@@ -25,16 +21,20 @@ function code
         return 1
     end
 
-    set -l name (basename $selected)
-    set -l session_id (
-        rex ls --json \
-            | jq -r --arg label "$name" '.sessions[] | select(.label == $label) | .session_id' \
-            | head -n 1
-    )
+    set -l name (basename "$selected")
+    set -l label "$name [$selected]"
+    set -l sessions (rex ls --json)
+    or return 1
+
+    set -l session_id (printf '%s\n' "$sessions" | jq -r --arg label "$label" '[.sessions[] | select(.label == $label)][0].session_id // empty')
+    or return 1
 
     if test -z "$session_id"
-        set session_id (rex new $name -c $selected --json | jq -r '.session_id')
+        set -l created (rex new "$label" -c "$selected" --json)
+        or return 1
+        set session_id (printf '%s\n' "$created" | jq -er '.session_id | select(type == "string" and length > 0 and . != "null")')
+        or return 1
     end
 
-    rex do session.select session_id=$session_id
+    rex do session.select "session_id=$session_id"
 end

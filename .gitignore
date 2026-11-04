@@ -8,3 +8,4 @@ mise.*.local.toml
 
 home/.config/fish/fish_variables
 home/.config/containers
+home/.config/gh/hosts.yml

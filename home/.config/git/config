@@ -32,14 +32,5 @@
 [tag]
   sort = -version:refname  # Sort version numbers as you would expect
 
-# Machine-local overrides (not committed). Restored out-of-band per machine.
-# Put work routing and identity here so employer details never enter the repo:
-#
-#   [includeIf "hasconfig:remote.*.url:git@github.com:<employer-org>/**"]
-#       path = ./config.local
-#   [includeIf "gitdir:~/work/"]
-#       path = ./config.local
-#
-# ...and keep the work identity itself in ./config.local, also out-of-band.
 [include]
-  path = ./.config.local
+  path = ~/.gitconfig.local
