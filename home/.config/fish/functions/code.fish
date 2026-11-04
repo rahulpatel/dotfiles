@@ -21,8 +21,7 @@ function code
         return 1
     end
 
-    set -l name (basename "$selected")
-    set -l label "$name [$selected]"
+    set -l label (basename "$selected")
     set -l sessions (rex ls --json)
     or return 1
 
