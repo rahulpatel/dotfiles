@@ -9,7 +9,7 @@ git_email = { default = "rahulpatel@users.noreply.github.com", prompt = "Git aut
 code_dir = { default = "{{ env.HOME }}/code", prompt = "Code directory" }
 
 [bootstrap.hooks.pre-packages]
-run = "mise install ruby@3"
+run = "mise use ruby@3"
 
 [bootstrap.packages]
 "brew:fd" = "latest"
