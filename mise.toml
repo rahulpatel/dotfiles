@@ -123,13 +123,17 @@ run = [
 description = "Check shell syntax and Git diff whitespace without deploying"
 run = [
   "bash -n install.sh",
+  "ruby -c scripts/bootstrap-apps.rb",
+  "ruby tests/bootstrap-apps.rb",
+  "jq -e . home/.config/tinycast/settings.json settings/apps.json >/dev/null",
   "find home/.config/fish -name '*.fish' -type f -print0 | xargs -0 -n 1 fish --no-config --no-execute",
   "git diff --check",
   "git diff --cached --check"
 ]
 
 [bootstrap.hooks.final]
-run = '''echo 'Manual steps'
+run = '''mise exec ruby -- ruby scripts/bootstrap-apps.rb
+echo 'Manual steps'
 if ! command -v rex >/dev/null 2>&1; then
   echo '  Install Rex'
   echo '  https://www.superlogical.com/rex'

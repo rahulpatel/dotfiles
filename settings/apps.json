@@ -1,0 +1,77 @@
+[
+  {
+    "name": "AeroSpace.app"
+  },
+  {
+    "name": "Tinycast.app",
+    "domain": "com.tinycast.app",
+    "settings": {
+      "settingsFileEnabled": true
+    }
+  },
+  {
+    "name": "macshot.app",
+    "domain": "~/Library/Containers/com.sw33tlie.macshot.macshot/Data/Library/Preferences/com.sw33tlie.macshot.macshot",
+    "settings": {
+      "enabledActions": [
+        1001,
+        1002,
+        1003,
+        1004,
+        1005,
+        1006,
+        1007,
+        1008,
+        1009,
+        1010,
+        1011,
+        1012,
+        1013
+      ],
+      "enabledTools": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        15,
+        16,
+        17,
+        18
+      ],
+      "filenameTemplate": "Screenshot {date} at {time}",
+      "hotkeyOCRKeyCode": 12,
+      "hotkeyOCRModifiers": 768,
+      "ocrAction": 0,
+      "playCopySound": false,
+      "statusBarIconMode": "symbol",
+      "statusBarIconSymbolName": "viewfinder",
+      "translationProvider": "google",
+      "SUAutomaticallyUpdate": false,
+      "launchAtLogin": true
+    }
+  },
+  {
+    "name": "1Password.app"
+  },
+  {
+    "name": "Tailscale.app",
+    "domain": "io.tailscale.ipn.macsys",
+    "settings": {
+      "HideDockIcon": true,
+      "SUAutomaticallyUpdate": true,
+      "SUEnableAutomaticChecks": true,
+      "SUSendProfileInfo": false,
+      "TailscaleStartOnLogin": true,
+      "UnstableUpdatesEnabled": false
+    }
+  }
+]
