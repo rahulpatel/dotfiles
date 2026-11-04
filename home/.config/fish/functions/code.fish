@@ -9,12 +9,14 @@ function code
             if test -d "$CODE_DIR"
                 find "$CODE_DIR" -mindepth 1 -maxdepth 1 -type d
             end
-        end | fzf --select-1 --query "$query"
+        end | string replace -- "$HOME/" '~/' | fzf --select-1 --query "$query"
     )
 
     if test -z "$selected"
         return 0
     end
+
+    set selected (string replace --regex '^~/' "$HOME/" -- "$selected")
 
     if not command -q rex
         echo "code: rex is not on PATH; open Rex first" >&2
