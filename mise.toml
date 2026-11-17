@@ -9,7 +9,7 @@ git_email = { default = "rahulpatel@users.noreply.github.com", prompt = "Git aut
 code_dir = { default = "{{ env.HOME }}/code", prompt = "Code directory" }
 
 [tools]
-ruby = "3"
+ruby = "4"
 
 [bootstrap.hooks.pre-packages]
 run = "mise install ruby"
@@ -22,6 +22,7 @@ run = "mise install ruby"
 "brew:jq" = "latest"
 "brew:neovim" = "latest"
 "brew:podman" = "latest"
+"brew:ripgrep" = "latest"
 "brew:starship" = "latest"
 "brew:zoxide" = "latest"
 
@@ -33,7 +34,7 @@ run = "mise install ruby"
 "brew-cask:anomalyco/tap/hex" = "latest"
 "brew-cask:macshot" = "latest"
 "brew-cask:spotify" = "latest"
-"brew-cask:abue-ammar/tinycast/tinycast" = "latest"
+"brew-cask:tinycast" = "latest"
 
 # Profile: personal
 "brew-cask:1password" = { env = "personal" }
@@ -45,6 +46,7 @@ run = "mise install ruby"
 # Profile: work
 "brew:glab" = { env = "work" }
 
+"brew-cask:bruno" = { env = "work" }
 "brew-cask:slack" = { env = "work" }
 
 [bootstrap.directories."~/.local/share/dotfiles"]

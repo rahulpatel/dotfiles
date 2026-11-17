@@ -14,10 +14,10 @@ accordion-padding = 0
 [gaps]
 inner.horizontal = 0
 inner.vertical = 0
-outer.left = 10
-outer.bottom = 10
-outer.top = 10
-outer.right = 10
+outer.left = 2
+outer.bottom = 2
+outer.top = 2
+outer.right = 2
 
 
 [mode.main.binding]

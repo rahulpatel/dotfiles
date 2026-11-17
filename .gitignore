@@ -5,3 +5,5 @@
 home/.config/fish/fish_variables
 home/.config/containers
 home/.config/gh/hosts.yml
+
+home/.config/nvim/lazy-lock.json
